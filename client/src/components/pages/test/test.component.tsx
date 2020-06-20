@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './test.component.css';
-import * as userRemote from '../../remote/users.remote';
-import { Reimburse } from '../../models/Reimburse';
-
-
+import * as userRemote from '../../../remote/test.remote';
+import { Reimburse } from '../../../models/test-models/Reimburse';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 
@@ -42,19 +40,19 @@ export const TestComponent: React.FC = () => {
             type: inputType
         };
 
-        await userRemote.createUser(payload);  /**SEND REQUEST HERE */
+        await userRemote.createUser(payload);  /**SEND POST REQUEST HERE */
         // setInputeimbID(''); //clear fields
         setInputAmount(0); //clear fields
-        setInputSumitDate(''); //clear fields
-        setInputResolvedDate(''); //clear fields
-        setInputDescription(''); //clear fields
-        setInputReciept(''); //clear fields
-        setInputAuthorID(0); //clear fields
-        setInputResolverID(0); //clear fields
-        setInputStatusID(0); //clear fields
-        setInputType(0); //clear fields
+        setInputSumitDate(''); 
+        setInputResolvedDate(''); 
+        setInputDescription(''); 
+        setInputReciept(''); 
+        setInputAuthorID(0); 
+        setInputResolverID(0); 
+        setInputStatusID(0); 
+        setInputType(0); 
 
-        setModalVisible(false) /*CLOSE HERE*/
+        setModalVisible(false) /*CLOSE MODAL HERE*/
 
         loadPeople(); /**GET REQUEST HERE */
     }
@@ -67,13 +65,13 @@ export const TestComponent: React.FC = () => {
 
     
     return (
-        <div>
+        <main>
             {/* BootStrap Table */}
             <header>
                 <h2 id="accounts-header" className="dark">Accounts Section 
                     <button 
                         className="btn btn-success"
-                        onClick={() => setModalVisible(true)} /*OPEN HERE*/
+                        onClick={() => setModalVisible(true)} /*OPEN MODAL HERE*/
                         >Add Person</button>
                 </h2>
             </header>
@@ -164,6 +162,6 @@ export const TestComponent: React.FC = () => {
                     <Button onClick={() => addUser()}>Submit</Button>
                 </Modal.Footer>
             </Modal>
-        </div>
+        </main>
     );
 };

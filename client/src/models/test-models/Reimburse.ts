@@ -1,4 +1,4 @@
-/**Convert Postres Schema into Javascript Object */
+/**Reimbursement model for test.component.tsx */
 export interface Reimburse {
     reimbId?: number;
     amount?: number;

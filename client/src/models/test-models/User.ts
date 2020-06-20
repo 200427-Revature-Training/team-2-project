@@ -1,4 +1,4 @@
-/**Convert Postres Schema into Javascript Object */
+/**User model for test.component.tsx */
 export interface User {
     id?: number;
     userName?: string;

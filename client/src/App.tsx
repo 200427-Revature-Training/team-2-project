@@ -4,8 +4,8 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import NavbarComponent from './components/main/navbar.component';
 
 /**Lazy */
-const LoginComponent = lazy(() => import('./components/login/login.component').then(({LoginComponent}) => ({default: LoginComponent})));
-const TestComponent = lazy(() => import('./components/test/test.component').then(({TestComponent}) => ({default: TestComponent})));
+const LoginComponent = lazy(() => import('./components/pages/login/login.component').then(({LoginComponent}) => ({default: LoginComponent})));
+const TestComponent = lazy(() => import('./components/pages/test/test.component').then(({TestComponent}) => ({default: TestComponent})));
 
 
 function App() {
