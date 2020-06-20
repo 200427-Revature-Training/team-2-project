@@ -22,12 +22,12 @@ export const AdminComponent: React.FC = () => {
 
     const addUser = async () => {
         const payload = { //!Change schema properties here
-            ticket_id: number;
+            ticket_id: number; 
             description: string;
             adminName: string;
             resolvedDate: Date | string;
             employeeName: string;
-            
+
             // reimbId: inputReimbID,
             amount: inputAmount,
             sumitDate: inputSumitDate
