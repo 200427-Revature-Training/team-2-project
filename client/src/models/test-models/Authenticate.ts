@@ -1,4 +1,4 @@
-/**Convert Postres Schema into Javascript Object */
+/**Authentication model for test.component.tsx */
 export interface Authenticate {
     userName: string;
     userPassword: string;

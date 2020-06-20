@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import * as usersRemote from '../../remote/users.remote';
-import { User } from '../../models/User';
-import '../login/login.component.css'
+import * as usersRemote from '../../../remote/test.remote';
+import { User } from '../../../models/test-models/User';
+import './login.component.css'
 import { useHistory } from 'react-router';
 
 

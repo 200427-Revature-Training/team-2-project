@@ -1,7 +1,8 @@
+/**Test remote for test.component.tsx */
 import { internalAxios, authAxios } from './internal-axios';
-import { Authenticate } from '../models/Authenticate';
-import { Reimburse } from '../models/Reimburse';
-import { User } from '../models/User';
+import { Authenticate } from '../models/test-models/Authenticate';
+import { Reimburse } from '../models/test-models/Reimburse';
+import { User } from '../models/test-models/User';
 
 
 // Employee: Add Reimbursement
@@ -34,20 +35,10 @@ export const getAllReimbursements = async () => {
     });
 }
 
-// Account: Post to reimbursement table  ************
+// Account: Post to reimbursement table  
 export const createUser = async (reimburse: any) => {
-let reader = new FileReader();
-reader.readAsDataURL(reimburse.reciept);
-const promise = new Promise((resolve, reject)=>{
-  
-    reader.onload = async ()=>{
-        reimburse.reciept = await reader.result;
-        console.log('AXIOS', reimburse.reciept);
-        const response = await internalAxios.post('/employees/reimburse', reimburse);
-      resolve(response);
-    }
-  });
-  return promise;
+  const response = await internalAxios.post('/employees/reimburse', reimburse);
+  return response;
 }
 
 
@@ -55,7 +46,7 @@ const promise = new Promise((resolve, reject)=>{
 // Authenication:request token
 export const createToken = async (login: Authenticate) => {
     const response = await internalAxios.post('/authentication/login', login);
-    return response; //console.log(response);
+    return response; 
 }
 
 
