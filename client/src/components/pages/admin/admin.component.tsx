@@ -1,53 +1,68 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './admin.component.css';
-import * as userRemote from '../../../remote/test.remote';
-import { Administrator } from '../../../models/Administrators';
+import * as adminRemote from '../../../remote/admin.remote';
+import { Tickets } from '../../../models/Tickets';
+import { Replies } from '../../../models/Replies';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 export const AdminComponent: React.FC = () => {
-    const [administrator, setAdministrator] = useState<Administrator[]>([]); //Set data to page
 
-    // const [inputReimbID, setInputeimbID] = useState(0);
-    const [inputTicketID, setInputTicketID] = useState(0);
-    const [inputAmount, setInputAmount] = useState(0);
-    const [inputAmount, setInputAmount] = useState(0);
-    const [inputAmount, setInputAmount] = useState(0);
-    const [inputAmount, setInputAmount] = useState(0);
+    //Populate Comments Data
+    const [allReplies, setAllReplies] = useState<Replies[]>([]); 
 
-    const [modalVisible, setModalVisible] = useState(false); /**MODAL HERE */
+    // Recent Tickets
+    const [allRecentTickets, setAllRecentTickets] = useState<Tickets[]>([]); //Populate Ticket Data
+    const [modal1Visible, setModal1Visible] = useState(false);  //Modal
+
+    // Accepted Tickets
+    const [allAcceptedTickets, setAllAcceptedTickets] = useState<Tickets[]>([]); //Populate Ticket Data
+    const [modal2Visible, setModal2Visible] = useState(false);   //Modal
+    
+    // Shared by Recent Tickets & Accepted Tickets
+    const [inputTicketID, setInputTicketID] = useState(0); //Update status by id
+    const [inputStatusID, setInputStatusID] = useState(0); //Update Status
+
+    // All tickets
+    const [allTickets, setAllTickets] = useState<Tickets[]>([]); //Populate Ticket Data
+
 
     useEffect(() => {
-        loadAdmins();   
+        loadTables();   
     }, [])
 
-    const addUser = async () => {
-        const payload = { //!Change schema properties here
-            ticket_id: number; 
-            description: string;
-            adminName: string;
-            resolvedDate: Date | string;
-            employeeName: string;
-
-            // reimbId: inputReimbID,
-            amount: inputAmount,
-            sumitDate: inputSumitDate
+    const updateTicket = async () => {
+        let SetDate = new Date(); /**SET DATE HERE */
+        const payload = { 
+            ticketId: inputTicketID,
+            ticketStatus: inputStatusID,
+            adminId: 1
         };
 
-        await userRemote.updateStatus(payload);  /**SEND REQUEST HERE */
-        // setInputeimbID(''); //clear fields
-        setInputAmount(0); //clear fields
-        setInputSumitDate(''); 
+        await adminRemote.updateTicketStatus(payload);  /**SEND REQUEST HERE */
         
+        setModal1Visible(false) /*CLOSE Modal*/
+        setModal2Visible(false) /*CLOSE Modal*/
 
-        setModalVisible(false) /*CLOSE HERE*/
-
-        loadAdmins(); /**GET REQUEST HERE */
+        loadTables(); /**GET REQUEST HERE */
     }
 
-    const loadAdmins = () => {  /**REFRESH PAGE HERE */
-        userRemote.getAllTicketTable().then(administrator => {
-            setAdministrator(administrator);
-        });        
+    /**REFRESH PAGE based on state */ 
+    const loadTables = () => {  
+        adminRemote.getAllReplies().then(tickets => {
+            setAllReplies(tickets);
+        });
+
+        adminRemote.getAllRecentTickets().then(tickets => {
+            setAllRecentTickets(tickets);
+        });
+
+        adminRemote.getAllRecentTickets().then(tickets => {
+            setAllAcceptedTickets(tickets);
+        });
+
+        adminRemote.getAllTickets().then(tickets => {
+            setAllTickets(tickets);
+        });
     };
     
     return (
@@ -55,111 +70,221 @@ export const AdminComponent: React.FC = () => {
             {/* NavPanel */}
             <nav> NavPanel Here</nav>
             <main>
-                {/* Recent Tickets */}
-                <section> Recent Tickets</section>
-                
-                {/* All Tickets Table */}
-                <section>
-                    ///test table
-                     {/* BootStrap Table */}
-            <header>
-                <h2 id="accounts-header" className="dark">Accounts Section 
-                    <button 
-                        className="btn btn-success"
-                        onClick={() => setModalVisible(true)} /*OPEN MODAL HERE*/
-                        >Add Person</button>
-                </h2>
-            </header>
 
-            <table className="table table-striped">
-                <thead className="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Submission</th>
-                        <th scope="col">Resolved</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {administrator.map(u => {
-                        return (<tr key={u.reimbId}>
-                            <th scope="row">{u.reimbId}</th>
-                            <td>{u.amount}</td>
-                            <td>{typeof u.sumitDate == 'string' ? u.sumitDate : u.sumitDate.toDateString()}</td>
-                            <td>{typeof u.resolvedDate == 'string' ? u.resolvedDate : u.resolvedDate.toDateString()}</td>
-                            <td>{u.description}</td>
-                            <td>{u.authorId}</td>
-                            <td>{u.resolverId}</td>
-                            <td>{u.statusId}</td>
-                            <td>{u.type}</td>
-                        </tr>)
-                    })}
-                </tbody>
-            </table>
+                {/* Recent Tickets */}
+                <section>
+                     {/* BootStrap Table */}
+                    <header>
+                        <h2 id="accounts-header" className="dark">Recent Tickets 
+                            <button 
+                                className="btn btn-success"
+                                onClick={() => setModal1Visible(true)} /*OPEN MODAL HERE*/
+                                >View</button>
+                        </h2>
+                    </header>
+
+                    <table className="table table-striped">
+                        <thead className="thead-dark">
+                            <tr>
+                                <th scope="col"># ID: </th>
+                                <th scope="col">Post: </th>
+                                <th scope="col">Request Date: </th>
+                                <th scope="col">Status: </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {allRecentTickets.map(u => {
+                                return (<tr key={u.ticketId}>
+                                    <th scope="row">{u.ticketId}</th>
+                                    <td>{u.title}</td>
+                                    <td>{typeof u.datePosted == 'string' ? u.datePosted : u.datePosted.toDateString()}</td>
+                                    <td>{u.ticketStatus}</td>
+                                </tr>)
+                            })}
+                        </tbody>
+                    </table>
+                </section>
+                
+                 {/* Recent Tickets Modal */}
+                 <section>
+                    {/* react-bootstrap components  */}
+                   
+                    <Modal show={modal1Visible} onHide={() => setModal1Visible(false)}>
+                        <Modal.Header>
+                            <Modal.Title>New User</Modal.Title>
+                            
+                        </Modal.Header>
+                        <Modal.Body>
+                        {allRecentTickets.map(u => {
+                            return(
+                                <Form>
+                                <Form.Group>  
+                                        <Form.Label># ID</Form.Label>
+                                        <p> {u.ticketId} </p>
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Employee</Form.Label>
+                                        <p> {u.userFirstName} {u.userLastName} </p>
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Content</Form.Label>
+                                        <p> {u.message} </p>
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Status:</Form.Label>
+                                        <p> {u.ticketStatus} </p>
+                                    </Form.Group>
+                                        {allReplies.map(m => {
+                                            return(
+                                                <Form.Group>
+                                                <Form.Label>Comments:</Form.Label>
+                                                    <p> {m.timestamp} </p>
+                                                    <p> {m.ticketPostId} </p>
+                                                    <p> {m.userId} </p>
+                                                    <p> {m.replies} </p>
+                                                </Form.Group>)
+                                            })}
+                                    <Form.Group>
+                                        <Form.Label> Accept:</Form.Label>
+                                        <input value="3" onChange={(e) => setInputStatusID(+e.target.value) }  type="radio"  name="status"/>
+                                    </Form.Group>
+                                </Form>)
+                        })}
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={() => setModal1Visible(false)}>Close</Button>
+                            <Button onClick={() => updateTicket()}>Accept</Button>
+                            <input value={inputTicketID} onChange={(e) => setInputTicketID(+e.target.value)} type="radio"/>
+                            
+                        </Modal.Footer>
+                    </Modal>
+                    
                 </section>
 
-                {/* Modal */}
+
+                {/* Accepted Tickets */}
                 <section>
+                     {/* BootStrap Table */}
+                    <header>
+                        <h2 id="accounts-header" className="dark">Recent Tickets 
+                            <button 
+                                className="btn btn-success"
+                                onClick={() => setModal2Visible(true)} /*OPEN MODAL HERE*/
+                                >View</button>
+                        </h2>
+                    </header>
+
+                    <table className="table table-striped">
+                        <thead className="thead-dark">
+                            <tr>
+                                <th scope="col"># ID: </th>
+                                <th scope="col">Post: </th>
+                                <th scope="col">Request Date: </th>
+                                <th scope="col">Status: </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {allAcceptedTickets.map(u => {
+                                return (<tr key={u.ticketId}>
+                                    <th scope="row">{u.ticketId}</th>
+                                    <td>{u.title}</td>
+                                    <td>{typeof u.datePosted == 'string' ? u.datePosted : u.datePosted.toDateString()}</td>
+                                    <td>{u.ticketStatus}</td>
+                                </tr>)
+                            })}
+                        </tbody>
+                    </table>
+                </section>
+                
+                 {/* Accepted Tickets Modal */}
+                 <section>
                     {/* react-bootstrap components  */}
-                    <Modal show={modalVisible} onHide={() => setModalVisible(false)}>
+                    <Modal show={modal2Visible} onHide={() => setModal2Visible(false)}>
                         <Modal.Header>
                             <Modal.Title>New User</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form>
-                            {/* <Form.Group>  
-                                    <Form.Label> ReimbID:::</Form.Label>
-                                    <Form.Control type="number" value={inputReimbID} onChange={(e) => setInputeimbID(+e.target.value) } />
-                                </Form.Group> */}
-                                <Form.Group>
-                                    <Form.Label> Amount:</Form.Label>
-                                    <Form.Control type="number" value={inputAmount} onChange={(e) => setInputAmount(+e.target.value) } />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>Submission:</Form.Label>
-                                    <Form.Control type="date" value={inputSumitDate} onChange={(e) => setInputSumitDate(e.target.value) } />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>resolved::</Form.Label>
-                                    <Form.Control type="date" value={inputResolvedDate} onChange={(e) => setInputResolvedDate(e.target.value) } />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>Description:</Form.Label>
-                                    <Form.Control type="text" value={inputDescription} onChange={(e) => setInputDescription(e.target.value) } />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>Reciept:</Form.Label>
-                                    <Form.Control type="text" value={inputReciept} onChange={(e) => setInputReciept(e.target.value) } />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>authorId::</Form.Label>
-                                    <Form.Control type="number" value={inputAuthorID} onChange={(e) => setInputAuthorID(+e.target.value) } />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>resolverId::</Form.Label>
-                                    <Form.Control type="number" value={inputResolverID} onChange={(e) => setInputResolverID(+e.target.value) } />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>statusId::</Form.Label>
-                                    <Form.Control type="number" value={inputStatusID} onChange={(e) => setInputStatusID(+e.target.value) } />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>Type:</Form.Label>
-                                    <Form.Control type="number" value={inputType} onChange={(e) => setInputType(+e.target.value) } />
-                                </Form.Group>
-                            </Form>
+                            {allAcceptedTickets.map(u => {
+                                return(
+                                    <Form>
+                                <Form.Group>  
+                                        <Form.Label># ID</Form.Label>
+                                        <p> {u.ticketId} </p>
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Employee</Form.Label>
+                                        <p> {u.userFirstName} {u.userLastName} </p>
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Content</Form.Label>
+                                        <p> {u.message} </p>
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Status:</Form.Label>
+                                        <p> {u.ticketStatus} </p>
+                                    </Form.Group>
+                                    {allReplies.map(m => {
+                                        return(
+                                            <Form.Group>
+                                            <Form.Label>Comments:</Form.Label>
+                                            <p> {m.timestamp} </p>
+                                            <p> {m.ticketPostId} </p>
+                                            <p> {m.userId} </p>
+                                            <p> {m.replies} </p>
+                                        </Form.Group>
+                                        )
+                                        
+                                     })}
+                                </Form>
+                                )
+                                
+                            })}
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button onClick={() => setModalVisible(false)}>Close</Button>
-                            <Button onClick={() => addUser()}>Submit</Button>
+                            <Button onClick={() => setModal2Visible(false)}>Close</Button>
+                            <Button onClick={() => updateTicket()}>Resolve</Button>
+                            <input value={inputTicketID} onChange={(e) => setInputTicketID(+e.target.value)} type="radio"/>
                         </Modal.Footer>
                     </Modal>
                 </section>
+
+
+
+
+                {/* All Tickets Table */}
+                <section>
+                     {/* BootStrap Table */}
+                    <header>
+                        <h2 id="accounts-header" className="dark">All Tickets 
+                        </h2>
+                    </header>
+
+                    <table className="table table-striped">
+                        <thead className="thead-dark">
+                            <tr>
+                                <th scope="col">ID Ticket: </th>
+                                <th scope="col">Description: </th>
+                                <th scope="col">Admin</th>
+                                <th scope="col">History</th>
+                                <th scope="col">Poster</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {allTickets.map(u => {
+                                return (<tr key={u.ticketId}>
+                                    <td>{u.img}</td>
+                                    <th scope="row">{u.ticketId}</th>
+                                    <td>{u.title}</td>
+                                    <td>{typeof u.datePosted == 'string' ? u.datePosted : u.datePosted.toDateString() }</td>
+                                    <td>{u.userFirstName} {u.userLastName}</td>
+                                </tr>)
+                            })}
+                        </tbody>
+                    </table>
+                </section>
+
+                <section>logout</section>
+
             </main>
         </div>
     );
