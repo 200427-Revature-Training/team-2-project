@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import * as employeeRemote from '../../../remote/employee.remote';
 import '../employee/employee-dashboard.css';
 import { Modal, Button, Form, Card } from 'react-bootstrap';
-import { Posts } from '../../../models/Posts';
-import { Replies } from '../../../models/Replies';
+import { Posts } from '../../../models/employee/Posts';
+// import { Replies } from '../../../models/Replies';
+import { Categories } from '../../../models/employee/Categories';
+import { HistoryPost } from '../../../models/employee/HistoryPost';
 
 
 export const EmployeeComponent:React.FC = () => {
@@ -12,7 +14,7 @@ export const EmployeeComponent:React.FC = () => {
     const [allPosts, setAllPosts] = useState<Posts[]>([]);
 
     //Populate Comments Data
-    const [allReplies, setAllReplies] = useState<Replies[]>([]); 
+    // const [allReplies, setAllReplies] = useState<Replies[]>([]); 
 
     // Post/Ticket Creation Modal
     const [inputTitle, setInputTitle] = useState(''); // Forum post title
@@ -37,14 +39,15 @@ export const EmployeeComponent:React.FC = () => {
             setAllPosts(posts);
         });
 
-        employeeRemote.getAllReplies().then(posts => {
-            setAllReplies(posts);
-        });
-
-        // employeeRemote.getTicketByCategory(inputStatusID).then(posts => {
-        //     getTicketByCategory(posts);
+        // employeeRemote.getAllReplies().then(posts => {
+        //     setAllReplies(posts);
         // });
+
     }
+    
+    const filterByCategory = async (category: string) => {
+        setFilterCategory(0);
+        };
 
     const createPost = async () => {
         let SetDate = new Date(); /**SET DATE HERE */
@@ -72,12 +75,16 @@ export const EmployeeComponent:React.FC = () => {
                 {/* Create New Post Button */}
                 <Button onClick={() => setModalVisible(true)}>New Post</Button>
                 {/* Categories Tab */}
-                <div>
-                    <input type="radio" value="Post" name="category" /> Post
+                <form>
+                    <label>
+                    <input type="radio" value="Post" name="category" /> 
+                        Post
+                    </label>
+                    <label></label>
                     <input type="radio" value="Pending" name="category" /> Pending
                     <input type="radio" value="Accepted" name="category" /> Accepted
                     <input type="radio" value="Resolved" name="category" /> Resolved
-                </div>
+                </form>
                 <Card>
                     {allPosts.map(u =>{
                     return(
@@ -96,7 +103,7 @@ export const EmployeeComponent:React.FC = () => {
                     </Modal.Header>
                     <Modal.Body>
                         <Form>
-                            
+
                         </Form>
                         )
                     </Modal.Body>

@@ -1,7 +1,9 @@
 import { internalAxios, authAxios } from './internal-axios';
 // import { Tickets } from '../models/Tickets';
-import { Posts } from '../models/Posts';
+import { Posts } from '../models/employee/Posts';
 import { Replies } from '../models/Replies';
+import { Categories } from '../models/employee/Categories';
+import { HistoryPost } from '../models/employee/HistoryPost';
 
 // Get all posts table
 export const getAllPosts = async () => {
@@ -26,10 +28,8 @@ export const getAllReplies = async () => {
 
 // Get ticket by category
 export const getTicketByCategory = async (statusId: number) => {
-    const response = await internalAxios.get<Posts[]>(`/employees/post/${statusId}`);
+    const response = await internalAxios.get<Categories[]>(`/employees/post/${statusId}`);
     return response.data.map(categories => {
-        categories.datePosted = new Date(categories.datePosted);
-        categories.dateResolved = new Date(categories.dateResolved);
         return categories;
     });
 }
