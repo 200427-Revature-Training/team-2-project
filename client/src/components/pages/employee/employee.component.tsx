@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import * as employeeRemote from '../../../remote/employee.remote';
 import '../employee/employee-dashboard.css';
 import { Modal, Button, Form, Card } from 'react-bootstrap';
-import { Posts } from '../../../models/employee/Posts';
+// import { Posts } from '../../../models/employee/Posts';
 // import { Replies } from '../../../models/Replies';
-import { Categories } from '../../../models/employee/Categories';
-import { HistoryPost } from '../../../models/employee/HistoryPost';
+// import { Categories } from '../../../models/employee/Categories';
+// import { HistoryPost } from '../../../models/employee/HistoryPost';
 
 
 export const EmployeeComponent:React.FC = () => {
 
     // Populate Posts
-    const [allPosts, setAllPosts] = useState<Posts[]>([]);
+    // const [allPosts, setAllPosts] = useState<Posts[]>([]);
 
     //Populate Comments Data
     // const [allReplies, setAllReplies] = useState<Replies[]>([]); 
@@ -24,48 +24,48 @@ export const EmployeeComponent:React.FC = () => {
     const [inputStatusID, setInputStatusID] = useState(0); // Set whether you want to make ticket
     const [modalVisible, setModalVisible] = useState(false); // Modal view
 
-    // Filter Categories
-    const [filterCategory, setFilterCategory] = useState(0); // Category Filter
+    // // Filter Categories
+    // const [filterCategory, setFilterCategory] = useState(0); // Category Filter
 
-    // See History Post
-    const [historyPost, setHistoryPost] = useState<Posts[]>([]);
+    // // See History Post
+    // const [historyPost, setHistoryPost] = useState<Posts[]>([]);
 
-    useEffect(() => {
-        loadPosts();
-    }, []);
+    // useEffect(() => {
+    //     loadPosts();
+    // }, []);
 
-    const loadPosts = () => {
-        employeeRemote.getAllPosts().then(posts => {
-            setAllPosts(posts);
-        });
+    // const loadPosts = () => {
+    //     employeeRemote.getAllPosts().then(posts => {
+    //         setAllPosts(posts);
+    //     });
 
         // employeeRemote.getAllReplies().then(posts => {
         //     setAllReplies(posts);
         // });
 
-    }
+    // }
     
-    const filterByCategory = async (category: string) => {
-        setFilterCategory(0);
-        };
+    // const filterByCategory = async (category: string) => {
+    //     setFilterCategory(0);
+    //     };
 
-    const createPost = async () => {
-        let SetDate = new Date(); /**SET DATE HERE */
-        const payload = { 
-            title: inputTitle,
-            datePosted: SetDate,
-            userFirstName: inputUserFirstName,
-            userLastName: inputUserLastName,
-            message: inputMessage,
-            ticketStatus: inputStatusID
-        };
+    // const createPost = async () => {
+    //     let SetDate = new Date(); /**SET DATE HERE */
+    //     const payload = { 
+    //         title: inputTitle,
+    //         datePosted: SetDate,
+    //         userFirstName: inputUserFirstName,
+    //         userLastName: inputUserLastName,
+    //         message: inputMessage,
+    //         ticketStatus: inputStatusID
+    //     };
 
-        await employeeRemote.createPost(payload);  /**SEND REQUEST HERE */
+    //     await employeeRemote.createPost(payload);  /**SEND REQUEST HERE */
         
-        setModalVisible(false); /*CLOSE Modal*/
+    //     setModalVisible(false); /*CLOSE Modal*/
 
-        loadPosts(); /**GET REQUEST HERE */
-    }
+    //     loadPosts(); /**GET REQUEST HERE */
+    // }
 
     return(
         <div>
@@ -86,7 +86,7 @@ export const EmployeeComponent:React.FC = () => {
                     <input type="radio" value="Resolved" name="category" /> Resolved
                 </form>
                 <Card>
-                    {allPosts.map(u =>{
+                    {/* {allPosts.map(u =>{
                     return(
                         <Card.Body>
                         <Card.Title>{u.title}</Card.Title>
@@ -95,7 +95,7 @@ export const EmployeeComponent:React.FC = () => {
                             <Card.Text>{u.message}</Card.Text>
                         </Card.Body>
                     )
-                    })}
+                    })} */}
                 </Card>
                 <Modal show={modalVisible} onHide={() => setModalVisible(false)}>
                     <Modal.Header>
