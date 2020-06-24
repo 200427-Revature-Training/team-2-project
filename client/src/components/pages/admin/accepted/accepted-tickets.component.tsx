@@ -7,7 +7,7 @@ import { Replies } from '../../../../models/Replies'; //Global Model
 import { Modal, Button, Form } from 'react-bootstrap';
 
 //Test Object if server not working
-const payloadAllOver = [{ 
+const testPayload = [{ 
     ticketId: 1,
     title: 'title',
     datePosted: '12-12-12-12-12-12',
@@ -70,13 +70,12 @@ export const AcceptedTicketsComponent: React.FC = ()=> {
 
     /**Load ticket-card data */ 
     const loadTables = () => {  
-        adminRemote.getAllReplies().then(replies => {
+        adminRemote.getRepliesById().then(replies => {
             setAllReplies(replies);
         });
 
         adminRemote.getAllTickets().then(tickets => {
             setAllTickets(tickets);
-
         });
     };
 
@@ -109,7 +108,7 @@ export const AcceptedTicketsComponent: React.FC = ()=> {
                         </tr>
                     </thead>
                     <tbody>
-                        {payloadAllOver.map(a => {
+                        {testPayload.map(a => {
                             return (
                             <tr key={a.ticketId}>
                                 <th scope="row">{a.ticketId}</th>

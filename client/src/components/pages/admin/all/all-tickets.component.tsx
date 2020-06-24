@@ -2,7 +2,7 @@ import React from 'react';
 import './all-tickets.component.css';
 
 //Test Object if server not working
-const payloadAllOver = [{ 
+const testPayload = [{ 
     ticketId: 1,
     title: 'title',
     datePosted: '12-12-12-12-12-12',
@@ -39,7 +39,7 @@ export const AllTicketsComponent: React.FC = ()=> {
                         </tr>
                     </thead>
                     <tbody>
-                        {payloadAllOver.map(u => {
+                        {testPayload.map(u => {
                             return (<tr key={u.ticketId}>
                                 <td>{u.img}</td>
                                 <th scope="row">{u.ticketId}</th>

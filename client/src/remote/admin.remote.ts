@@ -16,7 +16,7 @@ export const getAllTickets = async () => {
 }
 
 // Get all ticket replies
-export const getAllReplies = async () => {
+export const getRepliesById = async () => {
     const response = await internalAxios.get<Replies[]>('/administators/replies');
     return response.data.map(replies => {
         replies.timestamp = new Date(replies.timestamp); // Replace string birthdate with Date object
