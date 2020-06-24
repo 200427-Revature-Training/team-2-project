@@ -42,38 +42,17 @@ export function getReplies(rid: number): Promise<Replies> {
     .then(result => result.rows.map(row => Replies.from(row))[0]);
 }
 
-// // Make new Post/Ticket
-// export function savePost(post: PostForum): Promise<PostForum> {
-//     const sql = `INSERT INTO public.ers_reimbursement (reimb_amount, reimb_submitted, \
-//         reimb_resolved, reimb_description, reimb_receipt, reimb_author, reimb_resolver, \
-//         reimb_status_id, reimb_type_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`;
-//         return db.query<ReimbursementPostRow>(sql, [
-//             reimbursement.reimbAmount,
-//             new Date(),
-//             null,
-//             reimbursement.reimbDescription,
-//             reimbursement.reimbReceipt,
-//             reimbursement.reimbAuthor,
-//             null,
-//             1,
-//             reimbursement.reimbTypeId
-//         ]).then(result => result.rows.map(row => ReimbursementPost.from(row))[0]);
-// }
-
-// export function saveReimbursement(reimbursement: ReimbursementPost): Promise<ReimbursementPost> {
-//     const sql = `INSERT INTO public.ers_reimbursement (reimb_amount, reimb_submitted, \
-//         reimb_resolved, reimb_description, reimb_receipt, reimb_author, reimb_resolver, \
-//         reimb_status_id, reimb_type_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`;
-//         return db.query<ReimbursementPostRow>(sql, [
-//             reimbursement.reimbAmount,
-//             new Date(),
-//             null,
-//             reimbursement.reimbDescription,
-//             reimbursement.reimbReceipt,
-//             reimbursement.reimbAuthor,
-//             null,
-//             1,
-//             reimbursement.reimbTypeId
-//         ]).then(result => result.rows.map(row => ReimbursementPost.from(row))[0]);
-// }
-
+// Make new Post/Ticket
+export function savePost(post: PostForum): Promise<PostForum> {
+    const sql = `INSERT INTO public.cards (ticket_status, user_id, admin_id, entry_time\
+        date_resolved, title, message) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
+        return db.query<PostForumRow>(sql, [
+            post.statusId,
+            post.userId,
+            post.adminId,
+            new Date(),
+            null,
+            post.title,
+            post.message
+        ]).then(result => result.rows.map(row => PostForum.from(row))[0]);
+}

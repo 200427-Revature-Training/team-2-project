@@ -1,61 +1,56 @@
 export class PostForum {
     postId: number;
-    userFirstName: string;
-    userLastName: string;
-    title: string;
-    message: string;
     statusId: number;
+    userId: number;
+    adminId: number;
     datePosted: Date | string;
     dateResolved: Date | string;
-    adminId: number
+    title: string;
+    message: string;
 
     static from(obj:PostForumRow): PostForum {
         const postForum = new PostForum(
             obj.card_id,
-            obj.first_name,
-            obj.last_name,
-            obj.title,
-            obj.message,
             obj.ticket_status,
+            obj.user_id,
+            obj.admin_id,
             new Date(obj.entry_time),
             new Date(obj.date_resolved),
-            obj.admin_id
+            obj.title,
+            obj.message
         );
         return postForum;
     }
 
     constructor(
         postId: number,
-        userFirstName: string,
-        userLastName: string,
-        title: string,
-        message: string,
         statusId: number,
+        userId: number,
+        adminId: number,
         datePosted: Date,
         dateResolved: Date,
-        adminId: number
+        title: string,
+        message: string
     )
     {
     this.postId = postId;
-    this.userFirstName = userFirstName;
-    this.userLastName = userLastName;
-    this.title = title;
-    this.message = message;
     this.statusId = statusId;
+    this.userId = userId;
+    this.adminId = adminId;
     this.datePosted = datePosted;
     this.dateResolved = dateResolved;
-    this.adminId = adminId;
+    this.title = title;
+    this.message = message;
     }
 }
 
 export interface PostForumRow {
     card_id: number;
-    first_name: string,
-    last_name: string,
-    title: string;
-    message: string;
     ticket_status: number;
+    user_id: number;
+    admin_id: number;
     entry_time: Date | string;
     date_resolved: Date | string;
-    admin_id: number;
+    title: string;
+    message: string;
 }

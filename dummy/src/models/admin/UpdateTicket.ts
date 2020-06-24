@@ -1,56 +1,27 @@
-export class UpdateTickets {
-    ticketId: number;
-    title: string;
-    dateResolved: Date | string;
-    userFirstName: string;
-    userLastName: string;
-    message: string;
+export class UpdateTicket {
+    tid: number;
     ticketStatus: number;
-    adminId: number;
 
-    static from(obj: UpdateTicketsRow): UpdateTickets {
-        const updateTickets = new UpdateTickets(
-            obj.card_id,
-            obj.title,
-            new Date(obj.date_resolved),
-            obj.firstname,
-            obj.lastname,
-            obj.message,
-            obj.ticket_status,
-            obj.admin_id
+
+    static from(obj: UpdateTicketRow): UpdateTicket {
+        const updateTickets = new UpdateTicket(
+            obj.tid,
+            obj.ticket_status
         );
         return updateTickets;
     }
 
     constructor(
-        ticketId: number,
-        title: string,
-        dateResolved: Date | string,
-        userFirstName: string,
-        userLastName: string,
-        message: string,
-        ticketStatus: number,
-        adminId: number
+        tid: number,
+        ticketStatus: number
         )
         {
-        this.ticketId = ticketId;
-        this.title = title;
-        this.dateResolved = dateResolved;
-        this.userFirstName = userFirstName;
-        this.userLastName = userLastName;
-        this.message = message;
+        this.tid = tid;
         this.ticketStatus = ticketStatus;
-        this.adminId = adminId;
     }
 }
 
-export interface UpdateTicketsRow {
-    card_id: number;
-    title: string;
-    date_resolved: string;
-    firstname: string;
-    lastname: string;
-    message: string;
+export interface UpdateTicketRow {
+    tid: number;
     ticket_status: number;
-    admin_id: number;
 }

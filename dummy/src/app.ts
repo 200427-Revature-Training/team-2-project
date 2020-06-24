@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import { db } from './daos/db';
 import { employeeRouter } from './routers/employee.router';
-// import { adminRouter } from './routers/admin .router';
+import { adminRouter } from './routers/admin.router';
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.use((request, response, next) => {
 app.use(bodyParser.json());
 
 app.use('/employee', employeeRouter);
-// app.use('/admin', adminRouter);
+app.use('/admin', adminRouter);
 
 process.on('unhandledRejection', () => {
     db.end().then(() => {

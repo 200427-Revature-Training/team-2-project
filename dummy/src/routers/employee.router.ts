@@ -3,6 +3,7 @@ import * as employeeService from '../services/employee.service';
 import { Tickets } from '../models/Tickets';
 import { HistoryPost } from '../models/employees/HistoryPost';
 import { Replies } from '../models/Replies';
+import { PostForum } from '../models/employees/PostForum';
 
 export const employeeRouter = express.Router();
 
@@ -99,4 +100,22 @@ employeeRouter.get('/replies/:rid', async(request, response, next)=> {
         response.json(replies);
     }
     next();
+});
+
+employeeRouter.post('', async (request, response, next) => {
+    console.log('Request received - processing post');
+    const postForumRequest = request.body;
+    let newPostForum: PostForum;
+
+    console.log(postForumRequest);
+    try {
+        newPostForum = await employeeService.savePost(postForumRequest);
+        response.status(201);
+        response.json(postForumRequest);
+        next();
+    } catch(error) {
+        console.log(error);
+        response.sendStatus(500);
+        next();
+    }
 });

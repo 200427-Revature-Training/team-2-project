@@ -18,7 +18,7 @@ export class Tickets {
             new Date(obj.date_resolved),
             obj.firstname,
             obj.lastname,
-            obj.user_img,
+            obj.user_img_id,
             obj.message,
             obj.ticket_status,
             obj.admin_id
@@ -59,7 +59,7 @@ export interface TicketsRow {
     date_resolved: string;
     firstname: string;
     lastname: string;
-    user_img: string;
+    user_img_id: string;
     message: string;
     ticket_status: number;
     admin_id: number;
