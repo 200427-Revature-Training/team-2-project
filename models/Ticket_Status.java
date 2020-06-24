@@ -10,9 +10,10 @@ public class Ticket_Status {
 	private int id;
 	private String status;
 	
-	public Ticket_Status(String status) {
+	public Ticket_Status(int id, String status) {
 		super();
 		this.status = status;
+		this.id=id;
 	}
 	public int getId() {
 		return id;
