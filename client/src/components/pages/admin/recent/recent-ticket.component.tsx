@@ -104,7 +104,7 @@ export const RecentTicketsComponent: React.FC = ()=> {
                     </tr>
                 </thead>
                 <tbody>
-                    {testPayload.map(a => {
+                    {allTickets.map(a => {
                         return (
                             <tr key={a.ticketId}>
                                 <th scope="row">{a.ticketId}</th>
