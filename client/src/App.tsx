@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import './App.css';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import NavbarComponent from './components/main/navbar.component';
+import { AdminComponent } from './components/pages/admin/admin.component';
 
 /**Lazy */
 const LoginComponent = lazy(() => import('./components/pages/login/login.component').then(({LoginComponent}) => ({default: LoginComponent})));
@@ -27,6 +28,10 @@ function App() {
 
             <Route path="/template">
             { isEmployee ? (<TestComponent />) : (<Redirect to="/"/>)} {/* Lazy load */} 
+            </Route>
+
+            <Route path="/administrator">
+              <AdminComponent />
             </Route>
             </div>
           </Switch>
