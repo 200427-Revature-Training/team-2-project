@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './all-tickets.component.css';
+import { Tickets } from '../../../../models/Tickets';
+import * as adminRemote from  '../../../../remote/admin.remote';
 
 //Test Object if server not working
 const testPayload = [{ 
@@ -15,8 +17,22 @@ const testPayload = [{
     adminId: 1
 }];
 
-
 export const AllTicketsComponent: React.FC = ()=> {
+
+    // All tickets from Global Model
+    const [allTickets, setAllTickets] = useState<Tickets[]>([]);
+
+    useEffect(() => {
+        loadTables(); //Refresh page   
+    }, [])
+
+    /**Load ticket-card data */ 
+    const loadTables = () => { 
+        adminRemote.getAllTickets().then(tickets => {
+            setAllTickets(tickets);
+        });
+    };
+
     return(
         <div>
 
