@@ -16,6 +16,16 @@ export const getAllPosts = async () => {
     }); 
 }
 
+export const getAllHistoryPosts = async () => {
+    const response = await internalAxios.get<HistoryPost[]>('/employees/history');
+    return response.data.map(posts => {
+        posts.datePosted = new Date(posts.datePosted); // Replace string birthdate with Date object
+        posts.dateResolved = new Date(posts.dateResolved);
+        console.log(response);
+        return posts;
+    }); 
+}
+
 // Get all ticket/post replies
 export const getAllReplies = async () => {
     const response = await internalAxios.get<Replies[]>('/employees/replies');
