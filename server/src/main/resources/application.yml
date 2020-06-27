@@ -1,0 +1,15 @@
+server:
+  port: 5432
+  
+spring:
+  datasource:
+    url: jdbc:postgresql://${NODE_APP_URL}/postgres
+    username: ${NODE_APP_ROLE}
+    password: ${NODE_APP_PASS}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    
