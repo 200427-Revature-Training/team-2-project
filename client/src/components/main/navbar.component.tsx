@@ -26,7 +26,7 @@ const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
                 </div>
             </nav>
         
-            <section>logout</section>
+            <section className="breakout">logout</section>
         </div>
    );
 };
