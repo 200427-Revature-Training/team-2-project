@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +15,16 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-//	public Collection<User> getAllUsers() {
-//		return userRepository.getAllUsers();
-//	}
+	public Collection<User> getAllUsers() {
+		return userRepository.getAllUsers();
+	}
 	
 	public Optional<User> getUserById(int id) {
 		return userRepository.getUserById(id);
 	}
 	
+	
 	public User save(User user) {
 		return userRepository.save(user);
 	}
-
-	public Optional<User> getUserByUsername(String username) {
-		return userRepository.getUserByUsername(username);
-	}
-
 }

@@ -35,6 +35,6 @@ public class ReplyController {
 	
 	@GetMapping("/administrators/replies")
 	public Optional<Reply> getReplyById(@RequestBody Reply reply) {
-		return replyService.getReplyById(reply.getId());
+		return replyService.getReplyById(reply.getRid());
 	}
 }

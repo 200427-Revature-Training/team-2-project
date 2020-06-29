@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 public class Reply {
 	@Id//id is set to be the primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//auto-generated
-	private int id;
+	private int rid;
 	@OneToMany
 	@JoinTable(name="public.replies", joinColumns = { @JoinColumn(name="cid") },//cid=comment_id
 			inverseJoinColumns = { @JoinColumn(name="card_id")})//card_id replaced post_id
@@ -25,10 +25,10 @@ public class Reply {
 	private String replies;
 	private String timestamp_posted;
 	
-	public Reply(int id, int card_id, int user_id,String replies) {
+	public Reply(int rid, int card_id, int user_id,String replies) {
 		super();
 		this.card_id = card_id;
-		this.id=id;
+		this.rid=rid;
 		this.user_id=user_id;
 		this.replies=replies;
 		Timestamp ts=new Timestamp(System.currentTimeMillis());
@@ -39,8 +39,8 @@ public class Reply {
 		return card_id;
 	}
 	
-	public int getId() {
-		return id;
+	public int getRid() {
+		return rid;
 	}
 	public int getCard_id() {
 		return card_id;
@@ -61,7 +61,7 @@ public class Reply {
 	}
 	@Override
 	public String toString() {
-		return "Reply [id=" + id + ", card_id=" + card_id + ", user_id=" + user_id + ", replies=" + replies + "]";
+		return "Reply [rid=" + rid + ", card_id=" + card_id + ", user_id=" + user_id + ", replies=" + replies + "]";
 	}
 	
 }

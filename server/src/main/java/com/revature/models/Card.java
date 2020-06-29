@@ -11,15 +11,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
+
+
 public class Card {
 	
 	@Id//id is set to be the primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//auto-generated
 	private int id;
 	@OneToMany
-	@JoinTable(name="public.ticket_statuses", joinColumns = { @JoinColumn(name="card_id") },
-			inverseJoinColumns = { @JoinColumn(name="tid")})//tid was ticket_status_id
-	private int ticket_status;
+	@JoinTable(name="public.ticketStatuses", joinColumns = { @JoinColumn(name="card_id") },
+			inverseJoinColumns = { @JoinColumn(name="tid")})//tid was ticketStatus_id
+	private int ticketStatus;
 	private String title;
 	private String message;
 	private String timestamp_posted;
@@ -34,10 +36,10 @@ public class Card {
 			inverseJoinColumns = { @JoinColumn(name="uid")})//uid
 	private int admin_id;
 	
-	public Card(int id, int ticket_status, String title, String message, int user_id) {
+	public Card(int id, int ticketStatus, String title, String message, int user_id) {
 		super();
 		this.id = id;
-		this.ticket_status = ticket_status;
+		this.ticketStatus = ticketStatus;
 		this.title = title;
 		this.message = message;
 		this.user_id=user_id;
@@ -51,10 +53,10 @@ public class Card {
 	/*
 	 * Second constructor for Chris's update Ticket model
 	 */
-	public Card(int id, int ticket_status, String title, String message, int user_id, int admin_id) {
+	public Card(int id, int ticketStatus, String title, String message, int user_id, int admin_id) {
 		super();
 		this.id = id;
-		this.ticket_status = ticket_status;
+		this.ticketStatus = ticketStatus;
 		this.title = title;
 		this.message = message;
 		this.user_id=user_id;
@@ -64,8 +66,8 @@ public class Card {
         this.timestamp_posted=date.toString();//Example:2017-11-02 02:36:57.204
 		
 	}
-	public int getTicket_status() {
-		return ticket_status;
+	public int getTicketStatus() {
+		return ticketStatus;
 	}
 	public int getId() {
 		return id;
@@ -99,8 +101,8 @@ public class Card {
 	public int getUser_id() {
 		return user_id;
 	}
-	public void setTicket_status(int ticket_status) {
-		this.ticket_status = ticket_status;
+	public void setTicketStatus(int ticketStatus) {
+		this.ticketStatus = ticketStatus;
 	}
 	public String getTitle() {
 		return title;
@@ -119,8 +121,11 @@ public class Card {
 	}
 	@Override
 	public String toString() {
-		return "Card [id=" + id + ", ticket_status=" + ticket_status + ", title=" + title + ", message=" + message
+		return "Card [id=" + id + ", ticketStatus=" + ticketStatus + ", title=" + title + ", message=" + message
 				+ ", timestamp_posted=" + timestamp_posted + ", user_id=" + user_id + ", admin_id=" + admin_id + "]";
+	}
+	public Card() {
+		super();
 	}
 	
 }

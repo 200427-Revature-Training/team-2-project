@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.security.crypto.bcrypt.BCrypt;
+//import org.springframework.security.crypto.bcrypt.BCrypt;
 /**
  * @Entity - Defines that a class can have its persistence managed by a
  *         JPA/Hibernate
@@ -47,8 +47,8 @@ public class User {
 		this.user_firstname= user_firstname;
 		this.user_lastname=user_lastname;
 		this.password = password;
-		this.salt=BCrypt.gensalt();
-		this.setHash(BCrypt.hashpw(password, salt));
+//		this.salt=BCrypt.gensalt();
+//		this.setHash(BCrypt.hashpw(password, salt));
 		this.email = email;
 	}
 	
@@ -140,6 +140,12 @@ public class User {
 	public void setHash(String hash) {
 		this.hash = hash;
 	}
+
+	public User() {
+		super();
+	}
+	
+	
 	
 	/*
 	 *returns the average user rating calculated via the 

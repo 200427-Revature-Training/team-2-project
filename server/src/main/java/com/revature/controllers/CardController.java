@@ -1,13 +1,13 @@
 package com.revature.controllers;
 
 import java.util.Collection;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,13 +34,31 @@ public class CardController {
 
 	}
 	
-	@PatchMapping("managers/approvals/")
-	public Card patch(@RequestBody Map<String, String> values) {
-		return cardService.patch(values);
+	@GetMapping("/employees/posts")
+	public Collection<Card> getAllPosts() {
+			return cardService.getAllCards();
+
 	}
 	
-	@GetMapping("/{ticket_status}")
-	public Card getCardByStatusId(@PathVariable int ticket_status) {
-		return cardService.getCardByStatusId(ticket_status);
+	@PatchMapping("/managers/approvals")
+	public Card updateTicket(@RequestBody Card card) {
+		System.out.println(card);
+		return cardService.updateTicket(card);
+	}
+	
+	@GetMapping("/ticket-status")
+	public Collection<Card> getCardsByTicketStatus(@RequestBody Card card) {
+		return cardService.getCardsByTicketStatus(card.getTicketStatus());
+	}
+	
+	@GetMapping("/employees/post/{statusId}")
+	public Collection<Card> getCardsByTicketStatus(@PathVariable int statusId) {
+		return cardService.getCardsByTicketStatus(statusId);
+	}
+	
+	
+	@PostMapping("/employees/post")
+	public Card save(@RequestBody Card card) {
+		return cardService.save(card);
 	}
 }
