@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 /**
  * @Entity - Defines that a class can have its persistence managed by a
  *         JPA/Hibernate
@@ -24,36 +24,35 @@ public class User {
 	
 	@Id//id is set to be the primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//auto-generated
-	private int id;
+	private int uid;
 	private int user_type;
 	@Column(unique = true)//sets unique constraint on the column "username"
 	private String username;
-	private String password;
-	private String user_firstname;
-	private String user_lastname;
+	private String userpass;
+	private String firstname;
+	private String lastname;
 	@Column(unique = true)//sets unique constraint on the column "email"
 	private String email;
 	private float rating_sigma=0;
 	private int times_rated=0;
-	private String img;
+	private String user_img;
 	private String hash;
 	private String salt;
-	
-	public User(int id, int user_type, String username,String user_firstname,String user_lastname, String password, String email) {
+	public User(int uid, int user_type, String username,String firstname,String lastname, String userpass, String email) {
 		super();
-		this.id=id;
+		this.uid=uid;
 		this.user_type = user_type;
 		this.username = username;
-		this.user_firstname= user_firstname;
-		this.user_lastname=user_lastname;
-		this.password = password;
-//		this.salt=BCrypt.gensalt();
-//		this.setHash(BCrypt.hashpw(password, salt));
+		this.firstname= firstname;
+		this.lastname=lastname;
+		this.userpass = userpass;
+		this.salt=BCrypt.gensalt();
+		this.hash=BCrypt.hashpw(userpass, salt);
 		this.email = email;
 	}
 	
-	public int getId() {
-		return id;
+	public int getUid() {
+		return uid;
 	}
 	public String getSalt() {
 		return salt;
@@ -66,11 +65,11 @@ public class User {
 	}
 	
 	public String getImg() {
-		return img;
+		return user_img;
 	}
 
-	public void setImg(String img) {
-		this.img = img;
+	public void setImg(String user_img) {
+		this.user_img = user_img;
 	}
 
 	public String getUsername() {
@@ -80,27 +79,27 @@ public class User {
 		this.username = username;
 	}
 	
-	public String getUser_firstname() {
-		return user_firstname;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setUser_firstname(String user_firstname) {
-		this.user_firstname = user_firstname;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public String getUser_lastname() {
-		return user_lastname;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setUser_lastname(String user_lastname) {
-		this.user_lastname = user_lastname;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getUserpass() {
+		return userpass;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUserpass(String userpass) {
+		this.userpass = userpass;
 	}
 	public String getEmail() {
 		return email;
@@ -127,24 +126,16 @@ public class User {
 	}
 
 	@Override
-	public String toString() {//omitted the img string
-		return "User [id=" + id + ", user_type=" + user_type + ", username=" + username + ", password=" + password
-				+ ", user_firstname=" + user_firstname + ", user_lastname=" + user_lastname + ", email=" + email
+	public String toString() {//omitted the user_img string
+		return "User [uid=" + uid + ", user_type=" + user_type + ", username=" + username + ", userpass=" + userpass
+				+ ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
 				+ ", rating_sigma=" + rating_sigma + ", times_rated=" + times_rated + "]";
-	}
-
-	public String getHash() {
-		return hash;
-	}
-
-	public void setHash(String hash) {
-		this.hash = hash;
 	}
 
 	public User() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-	
 	
 	
 	/*

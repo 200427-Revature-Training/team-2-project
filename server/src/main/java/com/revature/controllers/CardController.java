@@ -1,6 +1,7 @@
 package com.revature.controllers;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -47,18 +48,19 @@ public class CardController {
 	}
 	
 	@GetMapping("/ticket-status")
-	public Collection<Card> getCardsByTicketStatus(@RequestBody Card card) {
-		return cardService.getCardsByTicketStatus(card.getTicketStatus());
+	public List<Card> getCardsByTicketStatus(@RequestBody Card card) {
+		int ts=card.getTicket_status();
+		return cardService.getCardsByTicketStatus(ts);
 	}
 	
 	@GetMapping("/employees/post/{statusId}")
-	public Collection<Card> getCardsByTicketStatus(@PathVariable int statusId) {
+	public List<Card> getCardsByTicketStatus(@PathVariable int statusId) {
 		return cardService.getCardsByTicketStatus(statusId);
 	}
 	
 	
 	@PostMapping("/employees/post")
 	public Card save(@RequestBody Card card) {
-		return cardService.save(card);
+		return cardService.saveNew(card);
 	}
 }

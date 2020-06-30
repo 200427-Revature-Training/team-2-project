@@ -1,52 +1,71 @@
 package com.revature.repositories;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
+import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.Card;
+import com.revature.models.Reply;
 
 @Repository
 public class CardRepository {
+	
+	@Autowired
+	EntityManager em;
 
-	Map<Integer, Card> cards = new HashMap<>();
-	
-	//Initialize some cards
-	{
-		cards.put(1, new Card(1, 1, "Test Ticket", "Test Ticket's Message", 1));
-		cards.put(2, new Card(2, 0, "Test Post", "Test Post's message", 2));
-		cards.put(3, new Card(3, 1, "Test Ticket 2", "Test Ticket 2's message", 2));
-	}
-	public Collection<Card> getAllCards() {
-		return cards.values();
+	public List<Card> getAllCards() {
+		Session session = em.unwrap(Session.class);
+		List<Card> cards = session.createQuery("from Card", Card.class)
+			.list();
+			session.getTransaction();
+		return cards;
 	}
 	
-	public Optional<Card> getCardById(int id) {
-		return Optional.ofNullable(cards.get(id));
-	}
 	
+	@Transactional(propagation = Propagation.REQUIRED)
 	public Card save(Card card) {
-		cards.put(cards.size()+1, card);
+		Session session = em.unwrap(Session.class);
+		session.save(card);
 		return card;
 	}
 
-	public Card patch(Card card) {
-		cards.put(card.getId(), card);
-		System.out.println(card);
-		return card;
+//	@Transactional(propagation = Propagation.REQUIRED)
+//	public Card patch(Card card) {
+//		Session session = em.unwrap(Session.class);
+//		System.out.println(patchId);
+//		Card fullcard = session.get(Card.class, patchId);
+//		System.out.println(fullcard);
+//
+//		session.save(fullcard);
+//		return fullcard;
+//	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Optional<Card> getCardById(int id) {
+		Session session = em.unwrap(Session.class);
+		Card card = session.get(Card.class, id);
+		return Optional.ofNullable(card);
+	}
+	
+	
+
+		@Transactional(propagation = Propagation.REQUIRED)
+		public List<Card> getCardsByTicketStatus(int ticket_Status) {
+			Session session = em.unwrap(Session.class);
+			List<Card> cards = session.createQuery("from Card where ticket_status = :ticket_Status", Card.class)
+				.setParameter("ticket_Status", ticket_Status)
+					.list();
+					session.getTransaction();
+					return cards;
 	}
 
-	public Collection<Card> getCardsByTicketStatus(int ticketStatus) {	
-			return cards
-					.values()
-					.stream()
-					.distinct()
-					.filter(status -> status.getTicketStatus()==ticketStatus)
-					.collect(Collectors.toList());	
-	}
+
 
 }	

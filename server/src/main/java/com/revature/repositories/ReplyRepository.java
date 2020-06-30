@@ -1,36 +1,46 @@
 package com.revature.repositories;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.Reply;
 
 @Repository
 public class ReplyRepository {
+	
+	@Autowired
+	EntityManager em;
 
-	Map<Integer, Reply> replies = new HashMap<>();
-	
-	//Initialize some flavors
-	{
-		replies.put(1, new Reply(1, 1, 1, "Test Reply Message"));
-		replies.put(2, new Reply(2, 2, 2, "Test Reply 2 message"));
-		replies.put(3, new Reply(3, 1, 2, "Test Reply 3 message"));
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<Reply> getAllReplies() {
+		Session session = em.unwrap(Session.class);
+		List<Reply> replies = session.createQuery("from Reply", Reply.class)
+			.list();
+			session.getTransaction();
+		return replies;
 	}
 	
-	public Collection<Reply> getAllReplies() {
-		return replies.values();
-	}
-		
+	@Transactional(propagation = Propagation.REQUIRED)
 	public Reply save(Reply reply) {
-		replies.put(replies.size()+1, reply);
+		Session session = em.unwrap(Session.class);
+		session.save(reply);
 		return reply;
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
 	public Optional<Reply> getReplyById(int id) {
-		return Optional.ofNullable(replies.get(id));
+		Session session = em.unwrap(Session.class);
+		Reply reply = session.get(Reply.class, id);
+		return Optional.ofNullable(reply);
 	}
 }
