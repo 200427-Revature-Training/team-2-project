@@ -1,3 +1,18 @@
 a:visited, a:link {
     color: inherit;
 }
+
+.navbar {
+    margin-top: 0;
+    background-color: #888;
+    color: #FFF;
+}
+
+.breakout {
+    position: relative;
+    float: right;
+    text-align: right;
+    padding-right: 15%;
+    margin-top: -5.4rem;
+    color: #FFF;
+}

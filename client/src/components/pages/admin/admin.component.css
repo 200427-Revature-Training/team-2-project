@@ -1,0 +1,9 @@
+p {
+    color: #EEE;
+    background-color: #333;
+}
+
+.nav {
+    position: relative;
+    float: right;
+}
