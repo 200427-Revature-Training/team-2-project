@@ -132,10 +132,6 @@ public class User {
 				+ ", rating_sigma=" + rating_sigma + ", times_rated=" + times_rated + "]";
 	}
 
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	
 	
 	/*
