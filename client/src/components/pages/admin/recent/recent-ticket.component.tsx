@@ -82,8 +82,6 @@ export const RecentTicketsComponent: React.FC = ()=> {
         setModalVisible(true); //Open Modal
     }
 
-
-
     return(
         <div>
             {/* Recent Tickets Cards*/}

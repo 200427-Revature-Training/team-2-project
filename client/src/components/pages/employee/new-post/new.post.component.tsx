@@ -47,8 +47,8 @@ export const NewPostComponent: React.FC = () => {
     };
 
     const loadPosts = () => {
-        employeeRemote.getAllPosts().then(posts => {
-            setAllPosts(posts);
+        employeeRemote.getAllTickets().then(tickets => {
+            setAllPosts(tickets);
         });
     }
 

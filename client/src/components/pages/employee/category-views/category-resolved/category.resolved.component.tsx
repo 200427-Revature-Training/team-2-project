@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './category.resolved.component.css';
 import { Tickets } from '../../../../../models/Tickets';
 import { Replies } from '../../../../../models/Replies';
-import { Card, Modal, Button, ButtonGroup } from 'react-bootstrap';
+import { Form, Modal, Button, ButtonGroup } from 'react-bootstrap';
 import * as employeeRemote from '../../../../../remote/employee.remote';
 
 interface CategoryResolvedComponentProps {
@@ -31,7 +31,7 @@ const testRepliesPost : Replies[] = [{
     replies: 'jdfalk;sjdfkal;sfdjl;ksdafj;lksad'
 }];
 
-export const CategoryPostComponent: React.FC<CategoryResolvedComponentProps> = (props) => {
+export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps> = (props) => {
 
     // All tickets from Global Model
     const [allTickets, setAllTickets] = useState<Tickets[]>([]);
@@ -45,11 +45,19 @@ export const CategoryPostComponent: React.FC<CategoryResolvedComponentProps> = (
     // Get ticket by id
     const [ticketById, setTicketById] = useState<Tickets[]>([]);
 
-    // const renderPostCategoryComponent = () => {
-    //     return props.tickets.map(ticket => {
-    //         return (<CategoryPostComponent key={ticket.ticketStatus} ticket={ticket} />)
-    //     })
-    // }
+        // Populate Modal from selected ticket
+        const [allRecentTickets, setAllRecentTickets] = useState<Tickets>({
+            ticketId: 0,
+            title: '',
+            datePosted: '',
+            dateResolved: '',
+            userFirstName: '',
+            userLastName: '',
+            img: '',
+            message: '',
+            ticketStatus: 0,
+            adminId: 0
+            });
 
     useEffect(() => {
         loadPosts();
@@ -61,7 +69,7 @@ export const CategoryPostComponent: React.FC<CategoryResolvedComponentProps> = (
                 setAllReplies(replies);
             });
     
-            employeeRemote.getTicketByPostCategory(0).then(tickets => {
+            employeeRemote.getTicketByPostCategory().then(tickets => {
                 setAllTickets(tickets);
             });
         };
@@ -112,43 +120,47 @@ export const CategoryPostComponent: React.FC<CategoryResolvedComponentProps> = (
                 </table>
             </section>
             <section>
-                <Modal show={modalVisible} onHide={() => setModalVisible(false)}  >
-                    <Modal.Header>
-                        <Modal.Title>
-                            Ticket/Post Entry
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th scope="col"># ID: </th>
-                                    <th scope="col">Post: </th>
-                                    <th scope="col">Request Date: </th>
-                                    <th scope="col">Date Resolved: </th>
-                                    <th scope="col">Status: </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {testTicketsResolved.map(a => {
-                                    return (
-                                    <tr key={a.ticketId}>
-                                        <th scope="row">{a.ticketId}</th>
-                                        <td>{a.title}</td>
-                                        <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
-                                        <td>{typeof a.dateResolved == 'string' ? a.dateResolved : a.dateResolved.toDateString()}</td>
-                                        <td>{a.ticketStatus}</td>
-                                    </tr>
+            <Modal show={modalVisible} onHide={() => setModalVisible(false)}  >
+                <Modal.Header>
+                    <Modal.Title>
+                        Ticket/Post Entry
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                <Form>
+                    <Form.Group>  
+                        <Form.Label># ID::</Form.Label>
+                            <p> {allRecentTickets.ticketId} </p>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Employee::</Form.Label>
+                                <p> {allRecentTickets.userFirstName} {allRecentTickets.userLastName} </p>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Content::</Form.Label>
+                                <p> {allRecentTickets.message} </p>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Status::</Form.Label>
+                                <p> {allRecentTickets.ticketStatus} </p>
+                            </Form.Group>
+                                {allReplies.map(b => {
+                                    return(
+                                        <Form.Group>
+                                            <Form.Label>Comments:</Form.Label>
+                                            <p> {b.timestamp} </p>
+                                            <p> {b.ticketPostId} </p>
+                                            <p> {b.userId} </p>
+                                            <p> {b.replies} </p>
+                                        </Form.Group>
                                     )
-                                })}      
-                            </tbody>
-                        </table>
-
-                        <Modal.Footer>
-                            <Button onClick={() => setModalVisible(false)}>Close</Button>
-                        </Modal.Footer>
-                    </Modal.Body>
-                </Modal>
+                                })}
+                        </Form>
+                     <Modal.Footer>
+                         <Button onClick={() => setModalVisible(false)}>Close</Button>
+                     </Modal.Footer>
+                 </Modal.Body>
+             </Modal>
             </section>    
         </div>
     )   

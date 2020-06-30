@@ -6,7 +6,7 @@ export interface Tickets {
     dateResolved: Date | string;
     userFirstName: string,
     userLastName: string,
-    img?: File; //!implement img storage
+    img?: File | string; //!implement img storage
     message: string;
     ticketStatus: number;
     adminId: number;
