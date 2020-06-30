@@ -11,8 +11,30 @@ const testPayload = [{
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'first',
     userLastName: 'last',
-    img: 'image.png', //!implement img storage
+    img: 'image1.png', //!implement img storage
     message: 'message',
+    ticketStatus: 1,
+    adminId: 1
+}, {
+    ticketId: 2,
+    title: 'titleistitle',
+    datePosted: '12-48-65',
+    dateResolved: '12-56-09',
+    userFirstName: 'Charlie',
+    userLastName: 'Adminman',
+    img: 'image2.png', //!implement img storage
+    message: 'message',
+    ticketStatus: 1,
+    adminId: 1
+}, {
+    ticketId: 3,
+    title: 'This is the title of a ticket',
+    datePosted: '1-2-2004',
+    dateResolved: '12-15-2021',
+    userFirstName: 'Anna',
+    userLastName: 'Hardy',
+    img: 'image3.png', //!implement img storage
+    message: 'Hello World',
     ticketStatus: 1,
     adminId: 1
 }];
@@ -44,6 +66,40 @@ export const AllTicketsComponent: React.FC = ()=> {
                     <h2 id="accounts-header" className="dark">All Tickets 
                     </h2>
                 </header>
+                <table className="alternating table-striped">
+                    <tbody>
+                        {testPayload.map(u => {
+                            return (
+                                <tr key={u.ticketId}>
+                                    <td className="imgTD">{u.img}</td>
+                                    <tr className="top">
+                                        <td className="first">ID Ticket:</td>
+                                        <td className="second">: {u.ticketId}</td>
+                                        <td className="first">Admin:</td>
+                                        <td className="second">: {u.userFirstName}</td>
+                                        <td className="first">History:</td>
+                                        <td className="second">: {u.datePosted}</td>
+                                        <td className="first">Poster:</td>
+                                        <td className="second">: {u.userFirstName}</td>
+                                    </tr>
+                                    <tr className="bottom">
+                                        <td className="first">Description:</td>
+                                        <td className="second">: {u.title}</td>
+                                        <td className="first"></td>
+                                        <td className="second">: {u.userLastName}</td>
+                                        <td className="first"></td>
+                                        <td className="second"></td>
+                                        <td className="first"></td>
+                                        <td className="second">: {u.userLastName}</td>
+                                    </tr>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+
+                <br />
+
                 <table className="table table-striped">
                     <thead className="thead-dark">
                         <tr>
