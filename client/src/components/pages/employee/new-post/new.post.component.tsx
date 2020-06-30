@@ -37,7 +37,7 @@ export const NewPostComponent: React.FC = () => {
 
      // Post/Ticket Creation Modal
     const [inputTitle, setInputTitle] = useState(''); // Forum post title
-    const [inputUsername, setInputUsername] = useState(1); // Post username
+    // const [inputUsername, setInputUsername] = useState(1); // Post username
     const [inputMessage, setInputMessage] = useState(''); // Forum post body
     const [inputStatusId, setInputStatusId] = useState(0); // Set whether you want to make ticket
     const [modalVisible, setModalVisible] = useState(false); // Modal view
@@ -56,7 +56,7 @@ export const NewPostComponent: React.FC = () => {
             let SetDate = new Date(); /**SET DATE HERE */
             const payload = { 
                 statusId: inputStatusId,
-                userId: inputUsername,
+                // userId: inputUsername,
                 adminId: null,
                 datePosted: SetDate,
                 title: inputTitle,
