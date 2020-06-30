@@ -57,11 +57,25 @@ public class User {
 	public String getSalt() {
 		return salt;
 	}
+		
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+	
+	public String getHash() {
+		return hash;
+	}
+
+	public void setHash(String hash) {
+		this.hash = hash;
+	}
+
 	public int isUser_type() {
 		return user_type;
 	}
 	public void setUser_type(int user_type) {
 		this.user_type = user_type;
+
 	}
 	
 	public String getImg() {
@@ -130,6 +144,11 @@ public class User {
 		return "User [uid=" + uid + ", user_type=" + user_type + ", username=" + username + ", userpass=" + userpass
 				+ ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
 				+ ", rating_sigma=" + rating_sigma + ", times_rated=" + times_rated + "]";
+	}
+
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	

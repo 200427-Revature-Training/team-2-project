@@ -18,6 +18,7 @@ public class UserService {
 	UserRepository userRepository;
 
 	public User save(User user) {
+		
 		return userRepository.save(user);
 	}
 	
@@ -25,18 +26,22 @@ public class UserService {
 		return userRepository.update(user);
 	}
 	
-	public Optional<User> getUserById(int id) {
+	public User getUserById(int id) {
 		System.out.println("passthrough user service");
-		return userRepository.getUserById(id);
-	}
+			return userRepository.getUserById(id)
+				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
+		}
 	
 	public List<User> getAllUsers() {
 		return userRepository.getAllUsers();
 	}
 	
-	public User login(String username, String password) {
-		User user= userRepository.login(username,password);
-		if (user==null) {throw new HttpClientErrorException(HttpStatus.NOT_FOUND);}
-		else {return user;}
+	public User login(User user) {
+		User fulluser = userRepository.getUserByUsername(user.getUsername());
+		if (fulluser==null) {throw new HttpClientErrorException(HttpStatus.NOT_FOUND);}
+		else {
+			System.out.println(user.getUserpass());
+			return userRepository.login(fulluser.getUid(), user.getUserpass());
+		}
 	}
 }

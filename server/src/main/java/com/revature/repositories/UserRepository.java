@@ -56,7 +56,6 @@ public class UserRepository {
 	public Optional<User> getUserById(int uid) {
 		Session session = em.unwrap(Session.class);
 		User user = session.get(User.class, uid);
-		System.out.println(session.get(User.class, uid));
 		return Optional.ofNullable(user);
 	}
 	
@@ -70,9 +69,9 @@ public class UserRepository {
 		return users;
 	}
 	
-	public User login(String username, String userpass){
+	public User login(int uid, String userpass) {
 		Session session = em.unwrap(Session.class);
-		Optional<User> user = Optional.ofNullable(session.get(User.class, username));
+		Optional<User> user = Optional.ofNullable(session.get(User.class, uid));
 		boolean access=user.isPresent();//validates whether a user can be pulled matching the username given
 		if (access==true) {//authentication begins
 			User auth=user.get();//retrieves the user from the optional
@@ -84,6 +83,18 @@ public class UserRepository {
 			else {return null;}
 		}
 		else{return null;}//if the object is empty no usernames match the description
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public User getUserByUsername(String username) {
+		System.out.println(username);
+		Session session = em.unwrap(Session.class);
+		User user = session.createQuery("from User where username = :username", User.class)
+				.setParameter("username", username).getSingleResult();
+				session.getTransaction();
+				System.out.println(user);
+				return user;
+		
 	}
 }
 

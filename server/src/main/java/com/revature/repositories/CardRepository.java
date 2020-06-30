@@ -36,6 +36,8 @@ public class CardRepository {
 		return card;
 	}
 
+// Original Patch Method
+	
 //	@Transactional(propagation = Propagation.REQUIRED)
 //	public Card patch(Card card) {
 //		Session session = em.unwrap(Session.class);
