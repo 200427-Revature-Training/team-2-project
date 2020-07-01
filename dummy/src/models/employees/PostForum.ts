@@ -3,8 +3,8 @@ export class PostForum {
     statusId: number;
     userId: number;
     adminId: number;
-    datePosted: Date | string;
-    dateResolved: Date | string;
+    datePosted: Date;
+    dateResolved: null;
     title: string;
     message: string;
 
@@ -15,7 +15,7 @@ export class PostForum {
             obj.user_id,
             obj.admin_id,
             new Date(obj.entry_time),
-            new Date(obj.date_resolved),
+            null,
             obj.title,
             obj.message
         );
@@ -28,7 +28,7 @@ export class PostForum {
         userId: number,
         adminId: number,
         datePosted: Date,
-        dateResolved: Date,
+        dateResolved: null,
         title: string,
         message: string
     )

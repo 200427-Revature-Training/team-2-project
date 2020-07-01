@@ -59,19 +59,6 @@ const testTicketsAll: Tickets[] = [
     adminId: 1
 }];
 
-const testTicketsOne: Tickets[] = [{
-    ticketId: 3,
-    title: 'title',
-    datePosted: '12-12-12-12-12-12',
-    dateResolved: '12-12-12-12-12-12',
-    userFirstName: 'first',
-    userLastName: 'last',
-    img: undefined, //!implement img storage
-    message: 'message',
-    ticketStatus: 2,
-    adminId: 1
-}];
-
 const testRepliesPost : Replies[] = [{
     rid: 1,
     ticketPostId: 1,
@@ -90,12 +77,9 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
  
      // Modal to see post
      const [modalVisible, setModalVisible] = useState(false);
- 
-    // Get ticket by id
-    const [ticketById, setTicketById] = useState<Tickets[]>([]);
 
     // Populate Modal from selected ticket
-    const [allRecentTickets, setAllRecentTickets] = useState<Tickets>({
+    const [ticketById, setTicketById] = useState<Tickets>({
     ticketId: 0,
     title: '',
     datePosted: '',
@@ -179,21 +163,25 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                 <Form>
                     <Form.Group>  
                         <Form.Label># ID::</Form.Label>
-                            <p> {allRecentTickets.ticketId} </p>
+                            <p> {ticketById.ticketId} </p>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Employee::</Form.Label>
-                                <p> {allRecentTickets.userFirstName} {allRecentTickets.userLastName} </p>
+                                <p> {ticketById.userFirstName} {ticketById.userLastName} </p>
+                            </Form.Group>
+                            <Form.Group>
+                            <Form.Label>Title::</Form.Label>
+                                <p> {ticketById.title} </p>
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Content::</Form.Label>
-                                <p> {allRecentTickets.message} </p>
+                                <p> {ticketById.message} </p>
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Status::</Form.Label>
-                                <p> {allRecentTickets.ticketStatus} </p>
+                                <p> {ticketById.ticketStatus} </p>
                             </Form.Group>
-                                {allReplies.map(b => {
+                                {testRepliesPost.map(b => {
                                     return(
                                         <Form.Group>
                                             <Form.Label>Comments:</Form.Label>

@@ -1,37 +1,57 @@
 import React, { useState, useEffect } from 'react';
 import './history.component.css';
-// import { Tickets } from '../../../../models/Tickets';
-import { HistoryPost } from '../../../../models/employee/HistoryPost';
+import { Tickets } from '../../../../models/Tickets';
+// import { HistoryPost } from '../../../../models/employee/HistoryPost';
 import * as employeeRemote from '../../../../remote/employee.remote';
-import { Modal, Button } from 'react-bootstrap';
+import { Form, Modal, Button } from 'react-bootstrap';
 
-const testPayload = [{
-    userId: 1,
+const testPayload: Tickets[]  = [{
     ticketId: 1,
     title: 'A Post',
-    datePosted: new Date(),
-    dateResolved: new Date(),
-    ticketStatus: 2
-}]
+    datePosted: '12-12-12-12-12-12',
+    dateResolved: '12-12-12-12-12-12',
+    userFirstName: 'Joe',
+    userLastName: 'Smith',
+    img: 'image',
+    message: 'asfasd',
+    ticketStatus: 2,
+    adminId: 2
+    }];
 
 export const HistoryComponent: React.FC = () => {
 
     // See History Post
-    const [historyPost, setHistoryPost] = useState<HistoryPost[]>([])
+    const [historyPost, setHistoryPost] = useState<Tickets[]>([])
+    
     const [modalVisible, setModalVisible] = useState(false); //Modal Set to default [Off]
 
-    useEffect(() => {
-        loadTables();
-    }, [])
+    const [historyPostById, setHistoryPostById] = useState<Tickets>({
+        ticketId: 0,
+        title: '',
+        datePosted: '',
+        dateResolved: '',
+        userFirstName: '',
+        userLastName: '',
+        img: '',
+        message: '',
+        ticketStatus: 0,
+        adminId: 0
+    });
 
-    const loadTables = () => {
+    useEffect(() => {
+        loadPosts();
+    }, []);
+
+
+    const loadPosts = () => {
         employeeRemote.getAllHistoryPosts().then(posts => {
             setHistoryPost(posts);
-        })
+        });
     }
+
     /**View Ticket Button */
     const loadModal = (a: any)=> {
-        setHistoryPost(a); //load modal with ticket data
+        setHistoryPostById(a); //load modal with ticket data
         setModalVisible(true); //Open Modal
     };
 
@@ -75,30 +95,32 @@ export const HistoryComponent: React.FC = () => {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th scope="col"># ID: </th>
-                                    <th scope="col">Post: </th>
-                                    <th scope="col">Request Date: </th>
-                                    <th scope="col">Date Resolved: </th>
-                                    <th scope="col">Status: </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {testPayload.map(a => {
-                                    return (
-                                    <tr key={a.ticketId}>
-                                        <th scope="row">{a.ticketId}</th>
-                                        <td>{a.title}</td>
-                                        <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
-                                        <td>{typeof a.dateResolved == 'string' ? a.dateResolved : a.dateResolved.toDateString()}</td>
-                                        <td>{a.ticketStatus}</td>
-                                    </tr>
-                                    )
-                                })}      
-                            </tbody>
-                        </table>
+                    <Form>
+                    <Form.Group>  
+                        <Form.Label># ID::</Form.Label>
+                            <p> {historyPostById.ticketId} </p>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Employee::</Form.Label>
+                                <p> {historyPostById.userFirstName} {historyPostById.userLastName}</p>
+                            </Form.Group>
+                            <Form.Group>
+                            <Form.Label>Title::</Form.Label>
+                                <p> {historyPostById.title} </p>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Content::</Form.Label>
+                                <p> {historyPostById.datePosted} </p>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Content::</Form.Label>
+                                <p> {historyPostById.dateResolved} </p>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Status::</Form.Label>
+                                <p> {historyPostById.ticketStatus} </p>
+                            </Form.Group>
+                            </Form>
                         <Modal.Footer>
                             <Button onClick={() => setModalVisible(false)}>Close</Button>
                         </Modal.Footer>

@@ -9,13 +9,11 @@ export const NewPostComponent: React.FC = () => {
     // All tickets from Global Model
     const [allTickets, setAllTickets] = useState<Tickets[]>([]);
 
-    // For Post Modal
-    // const [postTicket, setPostTicket] = useState<PostForum[]>([]);
-
      // Post/Ticket Creation Modal
     const [inputTitle, setInputTitle] = useState(''); // Forum post title
-    const [inputUserId, setInputUserId] = useState(0); // Set user id
-    const [inputUsername, setInputUsername] = useState(0); // Post username
+    const [inputUserId, setInputUserId] = useState(1); // Set user id
+    // const [inputUsername, setInputUsername] = useState(0); // Post username, may be needed later
+    const [inputDatePosted, setDatePosted] = useState('');
     const [inputMessage, setInputMessage] = useState(''); // Forum post body
     const [inputStatusId, setInputStatusId] = useState(0); // Set whether you want to make ticket
     const [modalVisible, setModalVisible] = useState(false); // Modal view
@@ -24,31 +22,33 @@ export const NewPostComponent: React.FC = () => {
         loadPosts();
     }, [])
 
+    // Creating a new post function that makes the axios call
     const createPost = async () => {
-            let SetDate = new Date(); /**SET DATE HERE */
-            const payload = { 
-                statusId: inputStatusId,
-                userId: inputUsername,
-                adminId: null,
-                datePosted: SetDate,
-                title: inputTitle,
-                message: inputMessage
-            };
+        let SetDate = new Date(); /**SET DATE HERE */
+        const payload = { 
+            statusId: inputStatusId,
+            userId: inputUserId,
+            datePosted: SetDate,
+            title: inputTitle,
+            message: inputMessage
+        };
     
-            await employeeRemote.createPost(payload);  /**SEND REQUEST HERE */
-            setInputTitle('');
-            setInputMessage('');
-            setInputStatusId(0);
-            setInputUsername(0);
-            setInputUserId(0);
-            setModalVisible(false); /*CLOSE Modal*/
-            loadPosts(); /**GET REQUEST HERE */
+        await employeeRemote.createPost(payload);  /**SEND REQUEST HERE */
+        setInputStatusId(0);
+        setInputUserId(1);
+        setDatePosted('');
+        setInputTitle('');
+        setInputMessage('');
+        setModalVisible(false); /*CLOSE Modal*/
+        loadPosts(); /**GET REQUEST HERE */
     }
-
+    
+    // Load modal when you click to make a new post
     const loadModal = (a: any)=> {
         setModalVisible(true); //Open Modal
     };
 
+    // Loads posts after submitting ticket/post
     const loadPosts = () => {
         employeeRemote.getAllTickets().then(tickets => {
             setAllTickets(tickets);
