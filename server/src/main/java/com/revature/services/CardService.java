@@ -17,16 +17,19 @@ public class CardService {
 
 	@Autowired
 	CardRepository cardRepository;
-	
+
+	//No business logic for method, passed directly to repository
 	public Collection<Card> getAllCards() {
 		return cardRepository.getAllCards();
 	}
 	
+	//No business logic for method, passed directly to repository
 	public List<Card> getCardsByTicketStatus(int ticket_Status) {
 		return cardRepository.getCardsByTicketStatus(ticket_Status);
 	}
 	
 	public Card saveNew(Card card) {
+		
 		Timestamp ts=new Timestamp(System.currentTimeMillis());
 		if (card.getEntry_time() == null) {
 			card.setEntry_time(ts);
@@ -35,18 +38,20 @@ public class CardService {
 		if (card.getAdmin_id() == 0) {
 			card.setAdmin_id(1);
 			System.out.println("nonzero admin ID invoked");
-	}
+		}
 		return cardRepository.save(card);
 	}
-	
+
+
+	//Internal mechanism for PATCH Card logic. Applies new values to existing posticket, then saves the altered version.
 	public Card updateTicket(Card card) {
-		System.out.println(card);
+		
+		//grab received posticket's id as an int, then uses that to pull the existing posticket from the database as a new card
 		int patchId = card.getCard_id();
-		System.out.println("card ID");
-		System.out.println(patchId);
 		Card fullcard = getCardById(patchId);
-		System.out.println("before");
-		System.out.println(fullcard);
+		
+		//These blocks check if the field values are something we want to put in the database.
+		//If so, it feeds the getter for the received data's card field into the setter for the database card's field.
 		if (card.getAdmin_id() != 0) {
 			fullcard.setAdmin_id(card.getAdmin_id());
 		}
@@ -56,10 +61,12 @@ public class CardService {
 		if (card.getTicket_status() != 0) {
 			fullcard.setTicket_status(card.getTicket_status());			
 		}
-		System.out.println("after");
-		System.out.println(fullcard);
+
+		//Once the changes have been made, the altered card is sent to overwrite the existing database row.
 		return cardRepository.save(fullcard);
 	}
+	
+	//
 	public Card getCardById(int id) {
 		return cardRepository.getCardById(id)
 				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
