@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './all-tickets.component.css';
 import { Tickets } from '../../../../models/Tickets';
 import * as adminRemote from  '../../../../remote/admin.remote';
+import anim0 from '../../../../temppics/aa0.png';
+import anim1 from '../../../../temppics/aa1.png';
+import anim2 from '../../../../temppics/aa2.png';
+import anim3 from '../../../../temppics/aa3.png';
 
 //Test Object if server not working
 const testPayload = [{ 
@@ -11,7 +15,7 @@ const testPayload = [{
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'first',
     userLastName: 'last',
-    img: 'image1.png', //!implement img storage
+    img: <img src={anim0} width="50.5%" alt='0' />, //!implement img storage
     message: 'message',
     ticketStatus: 1,
     adminId: 1
@@ -22,7 +26,7 @@ const testPayload = [{
     dateResolved: '12-56-09',
     userFirstName: 'Charlie',
     userLastName: 'Adminman',
-    img: 'image2.png', //!implement img storage
+    img: <img src={anim1} width="50.5%" alt='0' />, //!implement img storage
     message: 'message',
     ticketStatus: 1,
     adminId: 1
@@ -33,8 +37,30 @@ const testPayload = [{
     dateResolved: '12-15-2021',
     userFirstName: 'Anna',
     userLastName: 'Hardy',
-    img: 'image3.png', //!implement img storage
+    img: <img src={anim2} width="50.5%" alt='0' />, //!implement img storage
     message: 'Hello World',
+    ticketStatus: 1,
+    adminId: 1
+}, {
+    ticketId: 4,
+    title: 'This is the title of a ticket that has carried on for far too long.',
+    datePosted: '1-2-2225',
+    dateResolved: '12-15-1985',
+    userFirstName: 'Zorp',
+    userLastName: 'Bardeny',
+    img: <img src={anim3} width="50.5%" alt='0' />, //!implement img storage
+    message: 'This might be a message.',
+    ticketStatus: 1,
+    adminId: 1
+}, {
+    ticketId: 5,
+    title: 'The wind is blowing the wifi away.',
+    datePosted: '5-23-2020',
+    dateResolved: '',
+    userFirstName: 'the',
+    userLastName: 'boss',
+    img: <img src={anim1} width="50.5%" alt='0' />, //!implement img storage
+    message: 'Wind blows away my wifi when I leave the building.',
     ticketStatus: 1,
     adminId: 1
 }];
@@ -74,23 +100,23 @@ export const AllTicketsComponent: React.FC = ()=> {
                                     <td className="imgTD">{u.img}</td>
                                     <tr className="top">
                                         <td className="first">ID Ticket:</td>
-                                        <td className="second">: {u.ticketId}</td>
+                                        <td className="second">| {u.ticketId}</td>
                                         <td className="first">Admin:</td>
-                                        <td className="second">: {u.userFirstName}</td>
+                                        <td className="second">| {u.userFirstName}</td>
                                         <td className="first">History:</td>
-                                        <td className="second">: {u.datePosted}</td>
+                                        <td className="second">| {u.datePosted}</td>
                                         <td className="first">Poster:</td>
-                                        <td className="second">: {u.userFirstName}</td>
+                                        <td className="second">| {u.userFirstName}</td>
                                     </tr>
                                     <tr className="bottom">
                                         <td className="first">Description:</td>
-                                        <td className="second">: {u.title}</td>
+                                        <td className="second">| {u.title}</td>
                                         <td className="first"></td>
-                                        <td className="second">: {u.userLastName}</td>
+                                        <td className="second">| {u.userLastName}</td>
                                         <td className="first"></td>
                                         <td className="second"></td>
                                         <td className="first"></td>
-                                        <td className="second">: {u.userLastName}</td>
+                                        <td className="second">| {u.userLastName}</td>
                                     </tr>
                                 </tr>
                             )
@@ -100,7 +126,7 @@ export const AllTicketsComponent: React.FC = ()=> {
 
                 <br />
 
-                <table className="table table-striped">
+                {/* <table className="table table-striped">
                     <thead className="thead-dark">
                         <tr>
                             <th scope="col">ID Ticket: </th>
@@ -116,13 +142,13 @@ export const AllTicketsComponent: React.FC = ()=> {
                                 <td>{u.img}</td>
                                 <th scope="row">{u.ticketId}</th>
                                 <td>{u.title}</td>
-                                {/* <td>{typeof u.datePosted == 'string' ? u.datePosted : u.datePosted.toDateString()}</td> */}
+                                { *//* <td>{typeof u.datePosted == 'string' ? u.datePosted : u.datePosted.toDateString()}</td> *//* }</section>
                                 <td>{u.userFirstName} {u.userLastName}</td>
                                 </tr>
                             )
                         })}
                     </tbody>
-                </table>
+                </table> */}
             </section>
         </div>
     );
