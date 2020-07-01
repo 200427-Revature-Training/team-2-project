@@ -15,6 +15,8 @@ public class ReplyService {
 	@Autowired
 	ReplyRepository replyRepository;
 	
+/* Nothing to see here, just a handful of passthroughs */	
+
 	public Collection<Reply> getAllReplies() {
 		return replyRepository.getAllReplies();
 	}

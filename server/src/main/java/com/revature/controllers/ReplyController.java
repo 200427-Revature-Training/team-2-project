@@ -26,15 +26,16 @@ public class ReplyController {
 	@Autowired
 	ReplyService replyService;
 	
+	//GET all replies from database and returns them as an array of JSON objects.
 	@GetMapping("/employees/replies")
 	public Collection<Reply> getAllReplies() {
-			return replyService.getAllReplies();
+			return replyService.getAllReplies(); //no logic here, just a call to service when the request is received.
 
 	}
 
-	
+	//GET a specific reply by its id. Expects the id to be sent in request body ( "rid": {id} )
 	@GetMapping("/administrators/replies")
-	public Optional<Reply> getReplyById(@RequestBody Reply reply) {
-		return replyService.getReplyById(reply.getRid());
+	public Optional<Reply> getReplyById(@RequestBody Reply reply) { //maps the id received in the request body to a Reply object.
+		return replyService.getReplyById(reply.getRid()); //passes value to a service call for getting the Relpy from the database.
 	}
 }

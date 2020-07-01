@@ -1,11 +1,9 @@
 package com.revature.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,25 +18,28 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
+	//GET the user with the uid matching the provided path variable.
+	@GetMapping("/id/{id}")
+	public User getUserById(@PathVariable int id) {
+		return userService.getUserById(id); //path variable exracted as an int
+	}
+	
+	//GET login credentials. Currently returns a user.
+	@GetMapping("/login")
+	public User login(@RequestBody User user) {
+		return userService.login(user); //creates User object from user data sent in request body and passes it to userService as args.
+	}
+
+	//POST - receive a user in the request body and save it to the database.
 	@PostMapping("")
 	public User saveUser(@RequestBody User user) {
-		user.setSalt(BCrypt.gensalt());
-		user.setHash(BCrypt.hashpw(user.getHash(), user.getSalt()));
 		return userService.save(user);
 	}
 	
-	@PutMapping("")
-	public User updateUser(@RequestBody User user) {
-		return userService.update(user);
-	}
-	
-	@GetMapping("/id/{id}")
-	public User getUserById(@PathVariable int id) {
-		return userService.getUserById(id);
-	}
-	
-	@GetMapping("/login")
-	public User login(@RequestBody User user) {
-		return userService.login(user);
-	}
+	//receive updated user data and PUT it into database. I've disabled the endpoint as this function isn't utilized.
+//	@PutMapping("")
+//	public User updateUser(@RequestBody User user) {
+//		return userService.update(user);
+//	}
+
 }

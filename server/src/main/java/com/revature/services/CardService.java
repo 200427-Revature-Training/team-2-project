@@ -28,17 +28,22 @@ public class CardService {
 		return cardRepository.getCardsByTicketStatus(ticket_Status);
 	}
 	
+	//Logic for creating new cards
 	public Card saveNew(Card card) {
 		
+		//If a timestamp wasn't sent from the server, it will add the current timestamp here, otherwise it will use the existing timestamp
 		Timestamp ts=new Timestamp(System.currentTimeMillis());
 		if (card.getEntry_time() == null) {
 			card.setEntry_time(ts);
 			System.out.println("timestamp generator invoked");
 		}
+		
+		//The database won't accept an admin ID for a user that doesn't exist, so if we catch an admin_id of 0 here we change it to a 1
 		if (card.getAdmin_id() == 0) {
 			card.setAdmin_id(1);
 			System.out.println("nonzero admin ID invoked");
 		}
+		//Once those two fields have been checked, the card is ready to send to the repository
 		return cardRepository.save(card);
 	}
 
@@ -66,7 +71,7 @@ public class CardService {
 		return cardRepository.save(fullcard);
 	}
 	
-	//
+	//If this method fails to find a card with the specified ID, it will return a 404 status instead of a card
 	public Card getCardById(int id) {
 		return cardRepository.getCardById(id)
 				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));

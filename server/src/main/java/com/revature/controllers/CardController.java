@@ -33,6 +33,7 @@ public class CardController {
 	//GET a posticket by its card_id and returns it as a JSON object.
 	@GetMapping("/posticket/{id}")
 	public Card getCardById(@PathVariable int id) {
+		id = 1; //replacing any received information with hardcoded value. delete this line to re-enable full functionality.
 		return cardService.getCardById(id); //path variable is used as an arg for method in cardService
 	}
 	

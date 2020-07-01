@@ -10,50 +10,66 @@ import javax.persistence.Id;
 
 import javax.persistence.Table;
 
+
+//all Reply class properties have the same names as the "replies" database table columns for ease and simplicity of db access.
 @Entity
 @Table(name = "replies")
 public class Reply {
 	@Id//id is set to be the primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//auto-generated
 	private int rid;
-//	@OneToMany
-//	@JoinTable(name="public.replies", joinColumns = { @JoinColumn(name="cid") },//cid=comment_id
-//			inverseJoinColumns = { @JoinColumn(name="tpid")})//tpid replaced post_id
 	private int tpid;
-//	@OneToMany
-//	@JoinTable(name="public.replies", joinColumns = { @JoinColumn(name="cid") },//cid=comment_id
-//			inverseJoinColumns = { @JoinColumn(name="uid")})//uid
 	private int user_id;
 	private String replies;
 	private String entry_time;
 	
+	
+	/* Primary Constructor */
 	public Reply(int rid, int tpid, int user_id,String replies) {
 		super();
 		this.tpid = tpid;
 		this.rid=rid;
 		this.user_id=user_id;
 		this.replies=replies;
+		//not sure why this constructor this method for the timestamp when the other classes don't, but I'll leave it unless it causes problems.
 		Timestamp ts=new Timestamp(System.currentTimeMillis());
 		Date date=ts;
-        this.entry_time=date.toString();//Example:2017-11-02 02:36:57.204
+        this.entry_time=date.toString();//Example:2017-11-02 02:36:57.204 
+        }
+
+	/* Default Constructor */
+	public Reply() {
+		super();
 	}
+	
+	
+	
+	/* Getters and Setters */
+	//All have default behavior, unused setters haven't been created.
 	public int getPost_id() {
 		return tpid;
 	}
+
 	
 	public int getRid() {
 		return rid;
 	}
+	
+	
 	public int getCard_id() {
 		return tpid;
 	}
+	
+	
 	public int getUser_id() {
 		return user_id;
 	}
 	
+	
 	public String getEntry_time() {
 		return entry_time;
 	}
+	
 	
 	public String getReplies() {
 		return replies;
@@ -61,13 +77,13 @@ public class Reply {
 	public void setReplies(String replies) {
 		this.replies = replies;
 	}
+	
+	
+	
+	/* ToString Method */
 	@Override
 	public String toString() {
 		return "Reply [rid=" + rid + ", tpid=" + tpid + ", user_id=" + user_id + ", replies=" + replies + "]";
-	}
-	public Reply() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 }
