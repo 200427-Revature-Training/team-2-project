@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.Card;
-import com.revature.models.Reply;
 
 @Repository
 public class CardRepository {

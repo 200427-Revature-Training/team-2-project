@@ -14,7 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import org.hibernate.Session;
 
-import com.revature.models.Card;
 import com.revature.models.User;
 
 /**

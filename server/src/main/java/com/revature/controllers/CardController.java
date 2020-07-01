@@ -29,6 +29,11 @@ public class CardController {
 	@Autowired
 	CardService cardService;
 	
+	@GetMapping("/posticket/{id}")
+	public Card getCardById(@PathVariable int id) {
+		return cardService.getCardById(id);
+	}
+	
 	@GetMapping("/administrators/all-tickets")
 	public Collection<Card> getAllCards() {
 			return cardService.getAllCards();
