@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.Card;
+import com.revature.models.User;
 
 @Repository
 public class CardRepository {
@@ -64,6 +65,19 @@ public class CardRepository {
 				session.getTransaction();
 				return cards;
 	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<Card> getCardsByUser_Id(int id) {
+		Session session = em.unwrap(Session.class);
+		System.out.println(id);
+		List<Card> cards = session.createQuery("from Card where user_id = :user_id", Card.class) //HQL to select the card matching provided user_id.
+				.setParameter("user_id", id) //user_id parameter is set to the value provided in the arg.
+					.getResultList(); //converts the result into a list of Card objects.
+				session.getTransaction();
+				System.out.println(cards);
+				return cards;
+	}
+	
 
 	
 	// Original repository level PATCH method commented out. will be deleted once I'm sure we don't need it.

@@ -27,7 +27,7 @@ public class ReplyController {
 	ReplyService replyService;
 	
 	//GET all replies from database and returns them as an array of JSON objects.
-	@GetMapping("/employees/replies")
+	@GetMapping("/employee/replies")
 	public Collection<Reply> getAllReplies() {
 			return replyService.getAllReplies(); //no logic here, just a call to service when the request is received.
 

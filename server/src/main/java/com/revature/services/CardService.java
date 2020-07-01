@@ -19,7 +19,7 @@ public class CardService {
 	CardRepository cardRepository;
 
 	//No business logic for method, passed directly to repository
-	public Collection<Card> getAllCards() {
+	public List<Card> getAllCards() {
 		return cardRepository.getAllCards();
 	}
 	
@@ -75,6 +75,11 @@ public class CardService {
 	public Card getCardById(int id) {
 		return cardRepository.getCardById(id)
 				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
+	}
+
+	public List<Card> getCardsByUser_id(int id) {
+		System.out.println(id);
+		return cardRepository.getCardsByUser_Id(id);
 	}
 
 }
