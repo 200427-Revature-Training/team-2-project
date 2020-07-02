@@ -34,7 +34,7 @@ public class ReplyController {
 	}
 
 	//GET a specific reply by its id. Expects the id to be sent in request body ( "rid": {id} )
-	@GetMapping("/administrators/replies")
+	@GetMapping("/administrator/replies")
 	public Optional<Reply> getReplyById(@RequestBody Reply reply) { //maps the id received in the request body to a Reply object.
 		return replyService.getReplyById(reply.getRid()); //passes value to a service call for getting the Relpy from the database.
 	}

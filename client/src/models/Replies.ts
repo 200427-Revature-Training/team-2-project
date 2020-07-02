@@ -3,6 +3,8 @@ export interface Replies {
     rid: number;
     ticketPostId: number;
     timestamp: Date | string;
-    userId: number;
+    userFirstName: string;
+    userLastName: string;
+    userImage: string;
     replies: string;
 };

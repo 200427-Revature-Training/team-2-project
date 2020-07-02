@@ -71,7 +71,7 @@ export const RecentTicketsComponent: React.FC = ()=> {
             setAllReplies(replies);
         });
 
-        adminRemote.getAllTickets().then(tickets => {
+        adminRemote.getRecentTickets().then(tickets => {
             setAllTickets(tickets);
         });
     };
