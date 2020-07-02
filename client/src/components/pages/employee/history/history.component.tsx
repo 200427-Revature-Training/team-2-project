@@ -11,10 +11,11 @@ const testPayload: Tickets[]  = [{
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'Joe',
     userLastName: 'Smith',
-    img: 'image',
+    userImage: 'image',
     message: 'asfasd',
     ticketStatus: 2,
-    adminId: 2
+    adminFirstName: "Bob",
+    adminLastName: "Smith"
     }];
 
 export const HistoryComponent: React.FC = () => {
@@ -31,10 +32,11 @@ export const HistoryComponent: React.FC = () => {
         dateResolved: '',
         userFirstName: '',
         userLastName: '',
-        img: '',
+        userImage: '',
         message: '',
         ticketStatus: 0,
-        adminId: 0
+        adminFirstName: '',
+        adminLastName: ''
     });
 
     useEffect(() => {

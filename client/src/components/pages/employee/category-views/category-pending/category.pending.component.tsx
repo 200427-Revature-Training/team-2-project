@@ -12,23 +12,26 @@ interface CategoryPendingComponentProps {
 
 // Test objects if data is needed
 const testTicketsPending: Tickets[] = [{
-        ticketId: 2,
-        title: 'title',
-        datePosted: '12-12-12-12-12-12',
-        dateResolved: '12-12-12-12-12-12',
-        userFirstName: 'first',
-        userLastName: 'last',
-        img: undefined, //!implement img storage
-        message: 'message',
-        ticketStatus: 1,
-        adminId: 1
+    ticketId: 2,
+    title: 'title',
+    datePosted: '12-12-12-12-12-12',
+    dateResolved: '12-12-12-12-12-12',
+    userFirstName: 'first',
+    userLastName: 'last',
+    userImage: 'animage',
+    message: 'message',
+    ticketStatus: 1,
+    adminFirstName: 'Dad',
+    adminLastName: 'Dad'
 }];
 
 const testRepliesPending : Replies[] = [{
-    rid: 1,
-    ticketPostId: 1,
+    rid: 2,
+    ticketPostId: 2,
     timestamp: 'a date',
-    userId: 1,
+    userFirstName: 'some guy',
+    userLastName: 'anotherguy',
+    userImage: 'animage',
     replies: 'jdfalk;sjdfkal;sfdjl;ksdafj;lksad'
 }];
 
@@ -52,10 +55,11 @@ export const CategoryPendingComponent: React.FC<CategoryPendingComponentProps> =
         dateResolved: '',
         userFirstName: '',
         userLastName: '',
-        img: '',
+        userImage: '',
         message: '',
         ticketStatus: 0,
-        adminId: 0
+        adminFirstName: '',
+        adminLastName: ''
     });
 
     useEffect(() => {
@@ -107,7 +111,7 @@ export const CategoryPendingComponent: React.FC<CategoryPendingComponentProps> =
                         {testTicketsPending.map(a => {
                             return (
                                 <tr key={a.ticketId}>
-                                    <td>{a.img}</td>
+                                    <td>{a.userImage}</td>
                                     <th scope="row">{a.ticketId}</th>
                                     <td>{a.title}</td>
                                     <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
@@ -158,7 +162,8 @@ export const CategoryPendingComponent: React.FC<CategoryPendingComponentProps> =
                                             <Form.Label>Comments:</Form.Label>
                                             <p> {b.timestamp} </p>
                                             <p> {b.ticketPostId} </p>
-                                            <p> {b.userId} </p>
+                                            <p> {b.userFirstName} </p>
+                                            <p> {b.userLastName} </p>
                                             <p> {b.replies} </p>
                                         </Form.Group>
                                     )
