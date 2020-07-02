@@ -16,13 +16,16 @@ export const getAllTickets = async () => {
 }
 
 // May be needed for later, leave for now
+// export const getTicketById = async (ticketId: number) => {
+    // const response = await internalAxios.get<Tickets[]>(`/employee/tickets/${ticketId}`)
 export const getTicketById = async () => {
     const response = await internalAxios.get<Tickets[]>(`/employee/tickets/1`)
+    console.log(response);
     return response.data.map(ticket => {
         ticket.datePosted = new Date(ticket.datePosted); // Replace string birthdate with Date object
         ticket.dateResolved = new Date(ticket.dateResolved);
-        console.log(response);
-        return response;
+        console.log('This is line 25', ticket);
+        return ticket;
     });
 }
 

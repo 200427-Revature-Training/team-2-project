@@ -1,3 +1,4 @@
+// Post Category
 import React, { useState, useEffect } from 'react';
 import './category.post.component.css';
 import { Tickets } from '../../../../../models/Tickets';
