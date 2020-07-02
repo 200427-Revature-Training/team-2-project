@@ -6,14 +6,14 @@
     overflow: hidden;
 }
 
-.imgTD {
+/* .imgTD {
     /* padding-right: 2rem;
     padding-left: 2rem;
     padding-bottom: 5px; */
     /* background-color: rgba(0, 0, 0, 0.05); */
-    border-radius: 50px 0 0 50px;
+    /* border-radius: 50px 0 0 50px;
     overflow: hidden;
-}
+} */
 
 img {
     border-radius: 110px;
@@ -21,14 +21,18 @@ img {
 }
 
 .first {
-    width: 6rem;
+    width: 4.5rem;
     padding-right: 1rem;
 }
 
 .second {
-    width: 20rem;
+    width: 10rem;
     padding-right: 2rem;
     color: #5f5f5f;
+}
+
+.long {
+    width: 20rem;
 }
 
 .top * {
@@ -45,10 +49,10 @@ img {
     /* background-color: rgba(0, 0, 0, 0.05); */
 }
 
-.alternateCard {
+/* .alternateCard {
     background-color: #EEE;
-}
+} */
 
-  tbody > tr:nth-of-type(2) {
+  /* tbody > tr:nth-of-type(2) {
     background-color: white;
-  }
+  } */
