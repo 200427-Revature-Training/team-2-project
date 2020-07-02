@@ -17,10 +17,11 @@ const testTicketsAll: Tickets[] = [
         dateResolved: '12-12-12-12-12-12',
         userFirstName: 'first',
         userLastName: 'last',
-        img: undefined, //!implement img storage
+        userImage: 'animage',
         message: 'message',
         ticketStatus: 0,
-        adminId: 1
+        adminFirstName: 'Mom',
+        adminLastName: 'Mom'
     },
     {
         ticketId: 2,
@@ -29,10 +30,11 @@ const testTicketsAll: Tickets[] = [
         dateResolved: '12-12-12-12-12-12',
         userFirstName: 'first',
         userLastName: 'last',
-        img: undefined, //!implement img storage
+        userImage: 'animage',
         message: 'message',
         ticketStatus: 1,
-        adminId: 1
+        adminFirstName: 'Dad',
+        adminLastName: 'Dad'
     },
     {
         ticketId: 3,
@@ -41,10 +43,11 @@ const testTicketsAll: Tickets[] = [
         dateResolved: '12-12-12-12-12-12',
         userFirstName: 'first',
         userLastName: 'last',
-        img: undefined, //!implement img storage
+        userImage: 'animage',
         message: 'message',
         ticketStatus: 2,
-        adminId: 1
+        adminFirstName: 'Steve',
+        adminLastName: 'King'
     },
     {
     ticketId: 4,
@@ -53,17 +56,20 @@ const testTicketsAll: Tickets[] = [
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'first',
     userLastName: 'last',
-    img: undefined, //!implement img storage
-    message: 'message',
+    userImage: 'animage',
+    message: 'Flavortown',
     ticketStatus: 3,
-    adminId: 1
+    adminFirstName: 'Guy',
+    adminLastName: 'Feiri'
 }];
 
 const testRepliesPost : Replies[] = [{
     rid: 1,
     ticketPostId: 1,
     timestamp: 'a date',
-    userId: 1,
+    userFirstName: 'some guy',
+    userLastName: 'anotherguy',
+    userImage: 'animage',
     replies: 'jdfalk;sjdfkal;sfdjl;ksdafj;lksad'
 }];
 
@@ -80,16 +86,17 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
 
     // Populate Modal from selected ticket
     const [ticketById, setTicketById] = useState<Tickets>({
-    ticketId: 0,
-    title: '',
-    datePosted: '',
-    dateResolved: '',
-    userFirstName: '',
-    userLastName: '',
-    img: '',
-    message: '',
-    ticketStatus: 0,
-    adminId: 0
+        ticketId: 0,
+        title: '',
+        datePosted: '',
+        dateResolved: '',
+        userFirstName: '',
+        userLastName: '',
+        userImage: '',
+        message: '',
+        ticketStatus: 0,
+        adminFirstName: '',
+        adminLastName: ''
     });
 
      useEffect(() => {
@@ -141,7 +148,7 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                         {testTicketsAll.map(a => {
                             return (
                                 <tr key={a.ticketId}>
-                                <td>{a.img}</td>
+                                <td>{a.userImage}</td>
                                 <th scope="row">{a.ticketId}</th>
                                 <td>{a.title}</td>
                                 <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
@@ -167,7 +174,7 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                 <Modal.Body>
                 <Form>
                     <Form.Group>
-                        <p>{ticketById.img}</p>
+                        <p>{ticketById.userImage}</p>
                     </Form.Group>
                     <Form.Group>  
                         <Form.Label># ID::</Form.Label>
@@ -195,7 +202,8 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                                 <Form.Label>Comments:</Form.Label>
                                     <p> {b.timestamp} </p>
                                     <p> {b.ticketPostId} </p>
-                                    <p> {b.userId} </p>
+                                    <p> {b.userFirstName} </p>
+                                    <p> {b.userLastName} </p>
                                     <p> {b.replies} </p>
                                 </Form.Group>
                         )
