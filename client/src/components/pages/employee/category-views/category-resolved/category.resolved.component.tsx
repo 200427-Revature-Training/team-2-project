@@ -5,6 +5,7 @@ import { Replies } from '../../../../../models/Replies';
 import { Form, Modal, Button, ButtonGroup } from 'react-bootstrap';
 import * as employeeRemote from '../../../../../remote/employee.remote';
 
+// Used to switch views between categories
 interface CategoryResolvedComponentProps {
     setView: (str: 'CATEGORY_POST' | 'CATEGORY_PENDING' | 'CATEGORY_ACCEPTED' | 'CATEGORY_RESOLVED' | 'ALL') => void;
 }
@@ -42,42 +43,43 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
     // Modal to see post
     const [modalVisible, setModalVisible] = useState(false);
 
-        // Populate Modal from selected ticket
-        const [ticketById, setTicketById] = useState<Tickets>({
-            ticketId: 0,
-            title: '',
-            datePosted: '',
-            dateResolved: '',
-            userFirstName: '',
-            userLastName: '',
-            img: '',
-            message: '',
-            ticketStatus: 0,
-            adminId: 0
-            });
+    // Populate Modal from selected ticket
+    const [ticketById, setTicketById] = useState<Tickets>({
+        ticketId: 0,
+        title: '',
+        datePosted: '',
+        dateResolved: '',
+        userFirstName: '',
+        userLastName: '',
+        img: '',
+        message: '',
+        ticketStatus: 0,
+        adminId: 0
+    });
 
     useEffect(() => {
         loadPosts();
     }, []);
 
-        /**Load ticket-card data */ 
-        const loadPosts = () => {  
-            employeeRemote.getRepliesById().then(replies => {
-                setAllReplies(replies);
-            });
+    /**Load ticket-card data */ 
+    const loadPosts = () => {  
+        employeeRemote.getRepliesById().then(replies => {
+            setAllReplies(replies);
+        });
     
-            employeeRemote.getTicketByPostCategory().then(tickets => {
+        employeeRemote.getTicketByPostCategory().then(tickets => {
                 setAllTickets(tickets);
-            });
-        };
+        });
+    };
     
-        /**View Ticket Button */
-        const loadModal = (a: any)=> {
-            setTicketById(a); //load modal with ticket data
-            setModalVisible(true); //Open Modal
-        };
+    /**View Ticket Button */
+    const loadModal = (a: any)=> {
+        setTicketById(a); //load modal with ticket data
+        setModalVisible(true); //Open Modal
+    };
     
     return (
+        // Button Group Bar for categories should be universal for each category component
         <div>
             <section>
                 <ButtonGroup aria-label="Basic example">
@@ -87,6 +89,9 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
                     <Button variant="secondary" onClick={() => props.setView('CATEGORY_ACCEPTED')}>Accepted</Button>
                     <Button variant="secondary" onClick={() => props.setView('CATEGORY_RESOLVED')}>Resolved</Button>
                 </ButtonGroup>
+                {/* NOTE: Using regular Table for testing.
+                Replace table to best reflect wireframe table.
+                Data should be populating from global Ticket.ts model as its currently doing so now */}
                 <table>
                     <thead>
                         <tr>
@@ -100,41 +105,42 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
                     <tbody>
                         {testTicketsResolved.map(a => {
                             return (
-                            <tr key={a.ticketId}>
-                                <th scope="row">{a.ticketId}</th>
-                                <td>{a.title}</td>
-                                <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
-                                <td>{typeof a.dateResolved == 'string' ? a.dateResolved : a.dateResolved.toDateString()}</td>
-                                <td>{a.ticketStatus}</td>  
-                                <button className="btn btn-success"
-                                    onClick={() => loadModal(a)}>
-                                    View Ticket/Post
-                                </button>
-                            </tr>
+                                <tr key={a.ticketId}>
+                                    <td>{a.img}</td>
+                                    <th scope="row">{a.ticketId}</th>
+                                    <td>{a.title}</td>
+                                    <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
+                                    <td>{typeof a.dateResolved == 'string' ? a.dateResolved : a.dateResolved.toDateString()}</td>
+                                    <td>{a.ticketStatus}</td>  
+                                    <button className="btn btn-success"
+                                        onClick={() => loadModal(a)}>
+                                        View Ticket/Post
+                                    </button>
+                                </tr>
                             )
                         })}
                     </tbody>
                 </table>
             </section>
             <section>
-            <Modal show={modalVisible} onHide={() => setModalVisible(false)}  >
-                <Modal.Header>
-                    <Modal.Title>
-                        Ticket/Post Entry
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                <Form>
-                    <Form.Group>  
-                        <Form.Label># ID::</Form.Label>
-                            <p> {ticketById.ticketId} </p>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Employee::</Form.Label>
-                                <p> {ticketById.userFirstName} {ticketById.userLastName} </p>
+                <Modal show={modalVisible} onHide={() => setModalVisible(false)}  >
+                    <Modal.Header>
+                        <Modal.Title>
+                            Ticket/Post Entry
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form>
+                            <Form.Group>  
+                                <Form.Label># ID::</Form.Label>
+                                    <p> {ticketById.ticketId} </p>
                             </Form.Group>
                             <Form.Group>
-                            <Form.Label>Title::</Form.Label>
+                                <Form.Label>Employee::</Form.Label>
+                                    <p> {ticketById.userFirstName} {ticketById.userLastName} </p>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Title::</Form.Label>
                                 <p> {ticketById.title} </p>
                             </Form.Group>
                             <Form.Group>
@@ -157,11 +163,11 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
                                     )
                                 })}
                         </Form>
-                     <Modal.Footer>
-                         <Button onClick={() => setModalVisible(false)}>Close</Button>
-                     </Modal.Footer>
-                 </Modal.Body>
-             </Modal>
+                        <Modal.Footer>
+                            <Button onClick={() => setModalVisible(false)}>Close</Button>
+                        </Modal.Footer>
+                    </Modal.Body>
+                </Modal>
             </section>    
         </div>
     )   

@@ -57,38 +57,43 @@ export const NewPostComponent: React.FC = () => {
 
     return(
         <div>
+            {/* This section contains the new post button that will appear on the right side of the
+            page like seen on the wireframe. */}
             <section>
                 <Button onClick={() => loadModal(true)}>
                     New Post
                 </Button>
             </section>
             <section>
-            <Modal show={modalVisible} onHide={() => setModalVisible(false)}  >
-                <Modal.Header>
-                    <Modal.Title>New Post/Ticket</Modal.Title>  
-                </Modal.Header>
-                <Form>
-                    <Form.Group>
-                        <Form.Label>Title</Form.Label>
-                        <Form.Control value={inputTitle} type="text" 
+                {/* This is the new post modal that'll appear when the button is clicked. It's the box
+                on the far right of the employee dashboard wireframe separate from the rest of the page */}
+                <Modal show={modalVisible} onHide={() => setModalVisible(false)}>
+                    <Modal.Header>
+                        <Modal.Title>New Post/Ticket</Modal.Title>  
+                    </Modal.Header>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control value={inputTitle} type="text" 
                         onChange={(e) => setInputTitle(e.target.value)} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Message</Form.Label>
-                        <Form.Control value={inputMessage} type="text" 
-                        onChange={(e) => setInputMessage(e.target.value)} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Ticket?</Form.Label>
-                        <Form.Control value={inputStatusId} onChange={(e) => setInputStatusId(+e.target.value)} 
-                        type="checkbox"  name="status"/>
-                    </Form.Group>
-                </Form>
-                <Modal.Footer>
-                    <Button onClick={() => setModalVisible(false)}>Close</Button>
-                    <Button onClick={() => createPost()}>Submit</Button>                            
-                </Modal.Footer>
-            </Modal>
-        </section>
-    </div>
-    )}
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Message</Form.Label>
+                            <Form.Control value={inputMessage} type="text" 
+                            onChange={(e) => setInputMessage(e.target.value)} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Ticket?</Form.Label>
+                            <Form.Control value={inputStatusId} onChange={(e) => setInputStatusId(+e.target.value)} 
+                            type="checkbox"  name="status"/>
+                        </Form.Group>
+                    </Form>
+                    <Modal.Footer>
+                        <Button onClick={() => setModalVisible(false)}>Close</Button>
+                        <Button onClick={() => createPost()}>Submit</Button>                            
+                    </Modal.Footer>
+                </Modal>
+            </section>
+        </div>
+    )
+}

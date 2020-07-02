@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './history.component.css';
 import { Tickets } from '../../../../models/Tickets';
-// import { HistoryPost } from '../../../../models/employee/HistoryPost';
 import * as employeeRemote from '../../../../remote/employee.remote';
 import { Form, Modal, Button } from 'react-bootstrap';
 
@@ -56,6 +55,8 @@ export const HistoryComponent: React.FC = () => {
     };
 
     return (
+        /* This section will be on the right side of the page right under the new post button
+            as seen on the main section of the employee dashboard wireframe.*/
         <div>
             <section>
                 <table>
@@ -88,6 +89,9 @@ export const HistoryComponent: React.FC = () => {
                 </table>
             </section>
             <section>
+                {/* The modal below appears when the user clicks on the button
+                above to see an individual post from the history post table.
+                It should look more or less the same as the ones on the catgories pages. */}
                 <Modal show={modalVisible} onHide={() => setModalVisible(false)}  >
                     <Modal.Header>
                         <Modal.Title>

@@ -6,7 +6,7 @@ import { CategoryPendingComponent } from '../category-views/category-pending/cat
 import { CategoryAcceptedComponent } from '../category-views/category-accepted/category.accepted.component';
 import { CategoryResolvedComponent } from '../category-views/category-resolved/category.resolved.component';
 
-// take in views
+// Take in views
 export const childViews = {
     all: 'ALL',
     categoryPost: 'CATEGORY_POST',
@@ -15,9 +15,10 @@ export const childViews = {
     categoryResolved: 'CATEGORY_RESOLVED'
 };
 
+// This component just takes in all the category views and loads them here.
 export const CategoriesForumComponent: React.FC = () => {
 
-    // second part for categories
+    // View state is initialized here
     const [view, setView] =
         useState<'CATEGORY_POST' | 'CATEGORY_PENDING' | 'CATEGORY_ACCEPTED' | 'CATEGORY_RESOLVED' | 'ALL'>('ALL');
  

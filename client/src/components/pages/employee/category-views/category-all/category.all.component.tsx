@@ -114,6 +114,7 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
         };
 
     return (
+        // Button Group Bar for categories should be universal for each category component
         <div>
             <section>
                 <ButtonGroup aria-label="Basic example">
@@ -123,6 +124,9 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                     <Button variant="secondary" onClick={() => props.setView('CATEGORY_ACCEPTED')}>Accepted</Button>
                     <Button variant="secondary" onClick={() => props.setView('CATEGORY_RESOLVED')}>Resolved</Button>
                 </ButtonGroup>
+                {/* NOTE: Using regular Table for testing.
+                Replace table to best reflect wireframe table.
+                Data should be populating from global Ticket.ts model as its currently doing so now */}
                 <table>
                     <thead>
                         <tr>
@@ -136,7 +140,8 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                     <tbody>
                         {testTicketsAll.map(a => {
                             return (
-                            <tr key={a.ticketId}>
+                                <tr key={a.ticketId}>
+                                <td>{a.img}</td>
                                 <th scope="row">{a.ticketId}</th>
                                 <td>{a.title}</td>
                                 <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
@@ -161,43 +166,46 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                 </Modal.Header>
                 <Modal.Body>
                 <Form>
+                    <Form.Group>
+                        <p>{ticketById.img}</p>
+                    </Form.Group>
                     <Form.Group>  
                         <Form.Label># ID::</Form.Label>
                             <p> {ticketById.ticketId} </p>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Employee::</Form.Label>
-                                <p> {ticketById.userFirstName} {ticketById.userLastName} </p>
-                            </Form.Group>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Employee::</Form.Label>
+                        <p> {ticketById.userFirstName} {ticketById.userLastName} </p>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Title::</Form.Label>
+                        <p> {ticketById.title} </p>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Content::</Form.Label>
+                        <p> {ticketById.message} </p>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Status::</Form.Label>
+                        <p> {ticketById.ticketStatus} </p>
+                    </Form.Group>
+                    {testRepliesPost.map(b => {
+                        return(
                             <Form.Group>
-                            <Form.Label>Title::</Form.Label>
-                                <p> {ticketById.title} </p>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Content::</Form.Label>
-                                <p> {ticketById.message} </p>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Status::</Form.Label>
-                                <p> {ticketById.ticketStatus} </p>
-                            </Form.Group>
-                                {testRepliesPost.map(b => {
-                                    return(
-                                        <Form.Group>
-                                            <Form.Label>Comments:</Form.Label>
-                                            <p> {b.timestamp} </p>
-                                            <p> {b.ticketPostId} </p>
-                                            <p> {b.userId} </p>
-                                            <p> {b.replies} </p>
-                                        </Form.Group>
-                                    )
-                                })}
-                        </Form>
-                        <Modal.Footer>
-                            <Button onClick={() => setModalVisible(false)}>Close</Button>
-                        </Modal.Footer>
-                    </Modal.Body>
-                </Modal>
+                                <Form.Label>Comments:</Form.Label>
+                                    <p> {b.timestamp} </p>
+                                    <p> {b.ticketPostId} </p>
+                                    <p> {b.userId} </p>
+                                    <p> {b.replies} </p>
+                                </Form.Group>
+                        )
+                    })}
+                </Form>
+                    <Modal.Footer>
+                        <Button onClick={() => setModalVisible(false)}>Close</Button>
+                    </Modal.Footer>
+                </Modal.Body>
+            </Modal>
             </section>    
         </div>
     )   
