@@ -1,13 +1,37 @@
 import { internalAxios, authAxios } from './internal-axios';
-// import { Tickets } from '../models/Tickets';
-import { Posts } from '../models/employee/Posts';
+import { Tickets } from '../models/Tickets';
+import { PostForum } from '../models/employee/PostForum';
 import { Replies } from '../models/Replies';
-import { Categories } from '../models/employee/Categories';
-import { HistoryPost } from '../models/employee/HistoryPost';
 
-// Get all posts table
-export const getAllPosts = async () => {
-    const response = await internalAxios.get<Posts[]>('/employees/posts');
+
+// Get all tickets table
+export const getAllTickets = async () => {
+    const response = await internalAxios.get<Tickets[]>('/employee/tickets');
+    return response.data.map(ticket => {
+        ticket.datePosted = new Date(ticket.datePosted); // Replace string birthdate with Date object
+        ticket.dateResolved = new Date(ticket.dateResolved);
+        console.log(response);
+        return ticket;
+    });
+}
+
+// May be needed for later, leave for now
+// export const getTicketById = async (ticketId: number) => {
+    // const response = await internalAxios.get<Tickets[]>(`/employee/tickets/${ticketId}`)
+export const getTicketById = async () => {
+    const response = await internalAxios.get<Tickets[]>(`/employee/tickets/1`)
+    console.log(response);
+    return response.data.map(ticket => {
+        ticket.datePosted = new Date(ticket.datePosted); // Replace string birthdate with Date object
+        ticket.dateResolved = new Date(ticket.dateResolved);
+        console.log('This is line 25', ticket);
+        return ticket;
+    });
+}
+
+// Get all post history for user logged in
+export const getAllHistoryPosts = async () => {
+    const response = await internalAxios.get<Tickets[]>(`/employee/history`);
     return response.data.map(posts => {
         posts.datePosted = new Date(posts.datePosted); // Replace string birthdate with Date object
         posts.dateResolved = new Date(posts.dateResolved);
@@ -17,8 +41,8 @@ export const getAllPosts = async () => {
 }
 
 // Get all ticket/post replies
-export const getAllReplies = async () => {
-    const response = await internalAxios.get<Replies[]>('/employees/replies');
+export const getRepliesById = async () => {
+    const response = await internalAxios.get<Replies[]>('/employee/replies');
     return response.data.map(replies => {
         replies.timestamp = new Date(replies.timestamp); // Replace string birthdate with Date object
         console.log(response);
@@ -27,31 +51,49 @@ export const getAllReplies = async () => {
 }
 
 // Get ticket by category
-export const getTicketByCategory = async (statusId: number) => {
-    const response = await internalAxios.get<Categories[]>(`/employees/post/${statusId}`);
+export const getTicketByPostCategory = async () => {
+    const response = await internalAxios.get<Tickets[]>(`/employee/post/0`);
     return response.data.map(categories => {
+        categories.datePosted = new Date(categories.datePosted); // Replace string birthdate with Date object
+        categories.dateResolved = new Date(categories.dateResolved);
         return categories;
     });
 }
 
-// // Get post/ticket history
-// export const getTicketHistory = async ()
-
-// Create new post
-export const createPost = async (post: any) => {
-    // let reader = new FileReader();
-    // reader.readAsDataURL(post.img);
-    const response = await internalAxios.post<Posts[]>('/employees/post', post);
-    return response.data.map(post => {
-        post.datePosted = new Date(post.datePosted);
-        post.dateResolved = new Date(post.dateResolved);
-        console.log(response);
-    })
+// Get ticket by category
+export const getTicketByPendingCategory = async () => {
+    const response = await internalAxios.get<Tickets[]>(`/employee/pending/1`);
+    return response.data.map(categories => {
+        categories.datePosted = new Date(categories.datePosted); // Replace string birthdate with Date object
+        categories.dateResolved = new Date(categories.dateResolved);
+        return categories;
+    });
 }
 
-// Need to clarify if this is needed
-// // Change post to ticket
-// export const createTicket = async (ticket: Posts) => {
-//     const response = await internalAxios.patch('/employees/set-ticket', ticket);
-// }
+// Get ticket by category
+export const getTicketByAcceptedCategory = async () => {
+    const response = await internalAxios.get<Tickets[]>(`/employee/accepted/2`);
+    return response.data.map(categories => {
+        categories.datePosted = new Date(categories.datePosted); // Replace string birthdate with Date object
+        categories.dateResolved = new Date(categories.dateResolved);
+        return categories;
+    });
+}
 
+// Get ticket by category
+export const getTicketByResolvedCategory = async () => {
+    const response = await internalAxios.get<Tickets[]>(`/employee/resolved/3`);
+    return response.data.map(categories => {
+        categories.datePosted = new Date(categories.datePosted); // Replace string birthdate with Date object
+        categories.dateResolved = new Date(categories.dateResolved);
+        return categories;
+    });
+}
+
+// Create new post
+export const createPost = async (post: PostForum) => {
+    // let reader = new FileReader();
+    // reader.readAsDataURL(post.img);
+    const response = await internalAxios.post<PostForum[]>('/employee/post', post);
+    return response;
+}

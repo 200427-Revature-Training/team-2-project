@@ -35,22 +35,21 @@ export function savePost(post: PostForum): Promise<PostForum> {
         undefined,
         post.statusId,
         post.userId,
-        post.adminId,
+        null,
         new Date(),
         null,
         post.title,
         post.message
     );
-    if(
-        post.statusId &&
-        post.userId &&
-        post.adminId &&
-        post.title &&
-        post.message
-    ) {
+    // if(
+    //     post.statusId &&
+    //     post.userId &&
+    //     post.title &&
+    //     post.message
+    // ) {
         return employeeDao.savePost(newPostForum);
-    } else {
-        // console.log(newReimbursement);
-        return new Promise((resolve, reject) => reject(422));
-    }
+    // } else {
+    //     // console.log(newReimbursement);
+    //     return new Promise((resolve, reject) => reject(422));
+    // }
 }
