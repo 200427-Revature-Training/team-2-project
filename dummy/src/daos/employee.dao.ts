@@ -16,7 +16,7 @@ export function getAllTicketsPosts(): Promise<Tickets[]> {
 
 // Get posts/tickets request by id
 export function getTicketsPostById(id: number): Promise<Tickets> {
-    const sql = `select * from all_tickets_and_posts where id = $1;`;
+    const sql = `select * from all_tickets_and_posts where card_id = $1;`;
     return db.query<TicketsRow>(sql,[id])
     .then(result => result.rows.map(row => Tickets.from(row))[0]);
 }
@@ -44,7 +44,7 @@ export function getReplies(rid: number): Promise<Replies> {
 
 // Make new Post/Ticket
 export function savePost(post: PostForum): Promise<PostForum> {
-    const sql = `INSERT INTO public.cards (ticket_status, user_id, admin_id, entry_time\
+    const sql = `INSERT INTO public.cards (ticket_status, user_id, admin_id, entry_time, \
         date_resolved, title, message) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
         return db.query<PostForumRow>(sql, [
             post.statusId,

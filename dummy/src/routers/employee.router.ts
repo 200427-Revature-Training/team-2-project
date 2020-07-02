@@ -7,7 +7,7 @@ import { PostForum } from '../models/employees/PostForum';
 
 export const employeeRouter = express.Router();
 
-employeeRouter.get('/posts',  async(request, response, next)=> {
+employeeRouter.get('/tickets',  async(request, response, next)=> {
     let tickets: Tickets[];
 
     try{
@@ -21,7 +21,7 @@ employeeRouter.get('/posts',  async(request, response, next)=> {
     next();
 });
 
-employeeRouter.get('/posts/:id', async(request, response, next)=> {
+employeeRouter.get('/tickets/:id', async(request, response, next)=> {
     const id = parseInt(request.params.id);
     let tickets: Tickets;
 
@@ -102,7 +102,7 @@ employeeRouter.get('/replies/:rid', async(request, response, next)=> {
     next();
 });
 
-employeeRouter.post('', async (request, response, next) => {
+employeeRouter.post('/post', async (request, response, next) => {
     console.log('Request received - processing post');
     const postForumRequest = request.body;
     let newPostForum: PostForum;
