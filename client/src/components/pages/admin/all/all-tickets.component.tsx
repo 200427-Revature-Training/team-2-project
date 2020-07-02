@@ -11,8 +11,8 @@ import anim3 from '../../../../temppics/aa3.png';
 const testPayload = [{ 
     ticketId: 1,
     title: 'title',
-    datePosted: '12-12-12-12-12-12',
-    dateResolved: '12-12-12-12-12-12',
+    datePosted: '12-12-1220',
+    dateResolved: '12-12-1220',
     userFirstName: 'first',
     userLastName: 'last',
     img: <img src={anim0} width="50.5%" alt='0' />, //!implement img storage
@@ -110,7 +110,7 @@ export const AllTicketsComponent: React.FC = ()=> {
                                     </tr>
                                     <tr className="bottom">
                                         <td className="first">Description:</td>
-                                        <td className="second">| {u.title}</td>
+                                        <td className="second long">| {u.title}</td>
                                         <td className="first"></td>
                                         <td className="second">| {u.userLastName}</td>
                                         <td className="first"></td>
