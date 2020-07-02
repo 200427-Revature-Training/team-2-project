@@ -40,7 +40,7 @@ public class CardController {
 	//GET a list of postickets by its user_id and returns it as an array of JSON objects.
 	@GetMapping("/employee/history/{id}")
 	public List<Card> getCardByUid(@PathVariable int id) {
-		System.out.println(id);
+		id = 1; //enable this line to replace any received information with hardcoded value
 		return cardService.getCardsByUser_id(id); //path variable is used as an arg for method in cardService
 	}
 	
@@ -84,7 +84,7 @@ public class CardController {
 	}
 	
 	//GET all cards with a ticket_status whose id# is equal to the one received in the path variable
-	@GetMapping("/employees/post/{statusId}")
+	@GetMapping("/employee/post/{statusId}")
 	public List<Card> getCardsByTicketStatus(@PathVariable int statusId) {
 		return cardService.getCardsByTicketStatus(statusId); //path variable is used as an arg for method in cardService
 	}
@@ -94,7 +94,7 @@ public class CardController {
 /* START PATCH METHOD */
 	
 	//take in a posticket object, then PATCH the database entry for the posticket with that card_id.
-	@PatchMapping("/managers/approvals")
+	@PatchMapping("/administrator/approvals")
 	public Card updateTicket(@RequestBody Card card) {
 		return cardService.updateTicket(card); //take received data as new card, then pass it as args to CardService
 	}
