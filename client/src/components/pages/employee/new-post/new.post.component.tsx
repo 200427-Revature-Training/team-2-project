@@ -90,6 +90,10 @@ export const NewPostComponent: React.FC = () => {
                     </Form>
                     <Modal.Footer>
                         <Button onClick={() => setModalVisible(false)}>Close</Button>
+                        {/* Note that the submit button won't do anything at this point unless it's hooked up
+                        to the dummy server. If it is, nothing new will appear on the page but the new post
+                        will populate the card table in the database. You can use the close button above if
+                        you need to exit the modal for now. */}
                         <Button onClick={() => createPost()}>Submit</Button>                            
                     </Modal.Footer>
                 </Modal>
