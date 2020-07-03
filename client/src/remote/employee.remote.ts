@@ -62,7 +62,7 @@ export const getTicketByPostCategory = async () => {
 
 // Get ticket by category
 export const getTicketByPendingCategory = async () => {
-    const response = await internalAxios.get<Tickets[]>(`/employee/pending/1`);
+    const response = await internalAxios.get<Tickets[]>(`/employee/post/1`);
     return response.data.map(categories => {
         categories.datePosted = new Date(categories.datePosted); // Replace string birthdate with Date object
         categories.dateResolved = new Date(categories.dateResolved);
@@ -72,7 +72,7 @@ export const getTicketByPendingCategory = async () => {
 
 // Get ticket by category
 export const getTicketByAcceptedCategory = async () => {
-    const response = await internalAxios.get<Tickets[]>(`/employee/accepted/2`);
+    const response = await internalAxios.get<Tickets[]>(`/employee/post/2`);
     return response.data.map(categories => {
         categories.datePosted = new Date(categories.datePosted); // Replace string birthdate with Date object
         categories.dateResolved = new Date(categories.dateResolved);
@@ -82,7 +82,7 @@ export const getTicketByAcceptedCategory = async () => {
 
 // Get ticket by category
 export const getTicketByResolvedCategory = async () => {
-    const response = await internalAxios.get<Tickets[]>(`/employee/resolved/3`);
+    const response = await internalAxios.get<Tickets[]>(`/employee/post/3`);
     return response.data.map(categories => {
         categories.datePosted = new Date(categories.datePosted); // Replace string birthdate with Date object
         categories.dateResolved = new Date(categories.dateResolved);

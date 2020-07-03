@@ -18,17 +18,20 @@ const testTicketsResolved: Tickets[] = [{
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'first',
     userLastName: 'last',
-    img: undefined, //!implement img storage
-    message: 'message',
+    userImage: 'animage',
+    message: 'Flavortown',
     ticketStatus: 3,
-    adminId: 1
+    adminFirstName: 'Guy',
+    adminLastName: 'Feiri'
 }];
 
 const testRepliesPost : Replies[] = [{
-    rid: 1,
-    ticketPostId: 1,
+    rid: 4,
+    ticketPostId: 4,
     timestamp: 'a date',
-    userId: 1,
+    userFirstName: 'some guy',
+    userLastName: 'anotherguy',
+    userImage: 'animage',
     replies: 'jdfalk;sjdfkal;sfdjl;ksdafj;lksad'
 }];
 
@@ -51,10 +54,11 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
         dateResolved: '',
         userFirstName: '',
         userLastName: '',
-        img: '',
+        userImage: '',
         message: '',
         ticketStatus: 0,
-        adminId: 0
+        adminFirstName: '',
+        adminLastName: ''
     });
 
     useEffect(() => {
@@ -106,7 +110,7 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
                         {testTicketsResolved.map(a => {
                             return (
                                 <tr key={a.ticketId}>
-                                    <td>{a.img}</td>
+                                    <td>{a.userImage}</td>
                                     <th scope="row">{a.ticketId}</th>
                                     <td>{a.title}</td>
                                     <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
@@ -157,7 +161,8 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
                                             <Form.Label>Comments:</Form.Label>
                                             <p> {b.timestamp} </p>
                                             <p> {b.ticketPostId} </p>
-                                            <p> {b.userId} </p>
+                                            <p> {b.userFirstName} </p>
+                                            <p> {b.userLastName} </p>
                                             <p> {b.replies} </p>
                                         </Form.Group>
                                     )

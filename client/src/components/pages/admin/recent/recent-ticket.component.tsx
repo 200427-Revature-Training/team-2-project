@@ -71,7 +71,7 @@ export const RecentTicketsComponent: React.FC = ()=> {
             setAllReplies(replies);
         });
 
-        adminRemote.getAllTickets().then(tickets => {
+        adminRemote.getRecentTickets().then(tickets => {
             setAllTickets(tickets);
         });
     };
@@ -154,7 +154,8 @@ export const RecentTicketsComponent: React.FC = ()=> {
                                             <Form.Label>Comments:</Form.Label>
                                             <p> {b.timestamp} </p>
                                             <p> {b.ticketPostId} </p>
-                                            <p> {b.userId} </p>
+                                            <p> {b.userFirstName} </p>
+                                            <p> {b.userLastName} </p>
                                             <p> {b.replies} </p>
                                             </Form.Group>
                                         )
