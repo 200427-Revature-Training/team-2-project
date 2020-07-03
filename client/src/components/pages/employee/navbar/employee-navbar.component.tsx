@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 import './employee-navbar.component.css';
-import { Tickets } from '../../models/Tickets';
-import * as adminRemote from '../../remote/admin.remote';
-import anim0 from '../../temppics/aa0.png';
+import { Tickets } from '../../../../models/Tickets';
+import * as adminRemote from '../../../../remote/admin.remote';
+import anim0 from '../../../../temppics/aa0.png';
 
 
 const testPayload = [{
