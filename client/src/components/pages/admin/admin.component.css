@@ -3,7 +3,25 @@ p {
     background-color: #EEE;
 }
 
+.primary {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 71.5%;
+}
+
 .nav {
-    position: relative;
-    float: right;
+    margin: 0 auto;
+    width: 18%;
+    background-color: #EEE;
+}
+
+.main {
+    width: 80%;
+    float: inline-end;
+}
+
+.border-box {
+    width: 70%;
 }

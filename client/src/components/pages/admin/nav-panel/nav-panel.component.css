@@ -1,0 +1,15 @@
+.button {
+    vertical-align: middle;
+    text-align: center;
+    width: fit-content;
+    background-color: green;
+    color: white;
+    padding: .1rem .45rem .2rem .45rem;
+    border-radius: .28rem;
+    margin-right: 0.5rem;
+}
+
+.centerize {
+    width: 100%;
+    padding: 15% 34%;
+}

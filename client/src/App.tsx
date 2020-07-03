@@ -1,8 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import './App.css';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import EmployeeNavbarComponent from './components/main/employee-navbar.component';
-import AdminNavbarComponent from './components/main/admin-navbar.component';
+import EmployeeNavbarComponent from './components/pages/employee/navbar/employee-navbar.component';
+import AdminNavbarComponent from './components/pages/admin/navbar/admin-navbar.component';
 import { AdminComponent } from './components/pages/admin/admin.component';
 import { EmployeeComponent } from './components/pages/employee/employee.component';
 
