@@ -163,12 +163,12 @@ export const RecentTicketsComponent: React.FC = ()=> {
                             {/* get ticket id for update request */}
                             <Form.Group> 
                                 <Form.Label> Select this ticket:</Form.Label>
-                                <input value={inputTicketID} onChange={(e) => setInputTicketID(+e.target.value)} type="radio"/>
+                                <input id="select-this-ticket" value={inputTicketID} onChange={(e) => setInputTicketID(+e.target.value)} type="radio"/>
                             </Form.Group>
                             {/* change ticket status for update request */}
                             <Form.Group>
                                 <Form.Label> Accept:</Form.Label>
-                                <input value="3" onChange={(e) => setInputStatusID(+e.target.value) }  type="radio"  name="status"/>
+                                <input id="accept" value="3" onChange={(e) => setInputStatusID(+e.target.value) }  type="radio"  name="status"/>
                             </Form.Group>
                         </Form>
                     </Modal.Body>
