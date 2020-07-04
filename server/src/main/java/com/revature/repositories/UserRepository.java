@@ -106,10 +106,9 @@ public class UserRepository {
 		Session session = em.unwrap(Session.class);
 		User user = session.createQuery("from User where username = :username", User.class) //HQL to select the user matching provided username.
 				.setParameter("username", username) //username parameter is set to the value provided in the arg.
-					.getSingleResult(); //converts the result into a single User object.
-				session.getTransaction();
-				System.out.println(user);
-				return user;
+				.getSingleResult(); //converts the result into a single User object.
+		session.getTransaction();
+		return user;
 		
 	}
 }

@@ -23,6 +23,7 @@ public class User {
 	private String userpass;
 	private String firstname;
 	private String lastname;
+	
 	@Column(unique = true) //sets unique constraint on the column "email"
 	private String email;
 	private float rating_sigma = 0;
