@@ -54,7 +54,7 @@ public class CardController {
 	@GetMapping("/employee/history/{id}")
 	public List<ReactCard> getCardByUid(@PathVariable int id) {
 		System.out.println("get card by userid request received");
-//		id = 1; //enable this line to replace any received information with hardcoded value
+		id = 1; //enable this line to replace any received information with hardcoded value
 		System.out.println("id set to 1");
 		return cardService.getCardsByUserId(id); //path variable is used as an arg for method in cardService
 	}
