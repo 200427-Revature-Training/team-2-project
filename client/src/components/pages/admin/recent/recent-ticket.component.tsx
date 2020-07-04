@@ -9,14 +9,69 @@ import { Modal, Button, Form } from 'react-bootstrap';
 //Test Object if server not working
 const testPayload = [{ 
     ticketId: 1,
+    title: 'this is a title',
+    datePosted: '12-12-12-12-12-12',
+    dateResolved: '12-12-12-12-12-12',
+    userFirstName: 'first',
+    userLastName: 'last',
+    img: 'image.png', //!implement img storage
+    message: 'this is a message',
+    ticketStatus: 1,
+    adminId: 1
+}, { 
+    ticketId: 2,
     title: 'title',
     datePosted: '12-12-12-12-12-12',
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'first',
     userLastName: 'last',
     img: 'image.png', //!implement img storage
-    message: 'message',
-    ticketStatus: 1,
+    message: 'this is a message that does not contain nuts of any kind. It is gluten-free, and dairy-free. It\'s even free of any fat or protein.',
+    ticketStatus: 2,
+    adminId: 1
+}, { 
+    ticketId: 3,
+    title: 'title',
+    datePosted: '12-12-12-12-12-12',
+    dateResolved: '12-12-12-12-12-12',
+    userFirstName: 'first',
+    userLastName: 'last',
+    img: 'image.png', //!implement img storage
+    message: 'this is a message that does not contain nuts of any kind. It is gluten-free, and dairy-free. It\'s no fun at all. But it does contain one goodie. It has the monkey attack code',
+    ticketStatus: 2,
+    adminId: 1
+}, { 
+    ticketId: 4,
+    title: 'Cowcow',
+    datePosted: '12-12-12-12-12-12',
+    dateResolved: '12-12-12-12-12-12',
+    userFirstName: 'first',
+    userLastName: 'last',
+    img: 'image.png', //!implement img storage
+    message: 'this is a message that does not contain nuts of any kind. It is gluten-free, and dairy-free. It\'s no fun at all. But it does have 3 fingers and seven toes',
+    ticketStatus: 2,
+    adminId: 1
+}, { 
+    ticketId: 5,
+    title: 'title',
+    datePosted: '12-12-12-12-12-12',
+    dateResolved: '12-12-12-12-12-12',
+    userFirstName: 'first',
+    userLastName: 'last',
+    img: 'image.png', //!implement img storage
+    message: 'this is a message that does not contain nuts of any kind. It is gluten-free, and dairy-free. It\'s no fun at all.',
+    ticketStatus: 2,
+    adminId: 1
+}, { 
+    ticketId: 6,
+    title: 'title',
+    datePosted: '12-12-12-12-12-12',
+    dateResolved: '12-12-12-12-12-12',
+    userFirstName: 'first',
+    userLastName: 'last',
+    img: 'image.png', //!implement img storage
+    message: 'this is a message that does not contain nuts of any kind. It is gluten-free, and dairy-free. It\'s no fun at all.',
+    ticketStatus: 2,
     adminId: 1
 }];
 
@@ -90,35 +145,53 @@ export const RecentTicketsComponent: React.FC = ()=> {
             Replace table with Ticket/Cards aligning horizontally as shown in wireframes. 
             Data should be populating from global Ticket.ts model as its currently doing so now */}
             <header>
-                <h2 id="accounts-header" className="dark">Recent Tickets HERE</h2>
+                <h2 id="accounts-header" className="dark">Recent Tickets</h2>
             </header>
-            <table className="table table-striped">
-                <thead className="thead-dark">
-                    <tr>
-                        <th scope="col"># ID: </th>
-                        <th scope="col">Post: </th>
-                        <th scope="col">Request Date: </th>
-                        <th scope="col">Status: </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {allTickets.map(a => {
-                        return (
-                            <tr key={a.ticketId}>
-                                <th scope="row">{a.ticketId}</th>
-                                <td>{a.title}</td>
-                                {/* <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td> */}
-                                <td>{a.ticketStatus}</td>
+            {/* {allTickets.map(a => {
+                return (
+                    <div className='recentCard'>
+                        <div className='recentTop'>
+                            <p>ID: {allRecentTickets.ticketId}</p>
+                            <p>{allRecentTickets.title}</p>
+                            <p>{allRecentTickets.message}</p>
+                        </div>
+                        <div className='recentBottom'>
+                            <p>Pending</p>
 
-                                <button className="btn btn-success"
-                                    onClick={() => loadModal(a)}>
-                                    View Ticket
-                                </button>
-                                </tr>
-                            )
-                        })}
-                </tbody>
-            </table>
+                            <button className="btn btn-success"
+                                onClick={() => loadModal(a)}>
+                                View Ticket
+                            </button>
+                        </div>
+                    </div>
+                    )
+                })} */}
+
+
+                {testPayload.map(a => {
+                    return (
+                        <div className='recentContainer'>
+                            <div className='allRecent'>
+                                <div className='recentCard'>
+                                    <div className='recentTop'>
+                                        <p className='colorize'>ID: {a.ticketId}</p>
+                                        <p className='boldIt'>{a.title}</p>
+                                        <p>{a.message}</p>
+                                    </div>
+                                    <div className='recentBottom'>
+                                        <p>Pending</p>
+
+                                        <button className="btn btn-primary"
+                                            onClick={() => loadModal(a)}>
+                                            Accept
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    )
+                })}
             </section>
                 
 
@@ -168,7 +241,7 @@ export const RecentTicketsComponent: React.FC = ()=> {
                             {/* change ticket status for update request */}
                             <Form.Group>
                                 <Form.Label> Accept:</Form.Label>
-                                <input value="3" onChange={(e) => setInputStatusID(+e.target.value) }  type="radio"  name="status"/>
+                                <input value="2" onChange={(e) => setInputStatusID(+e.target.value) }  type="radio"  name="status"/>
                             </Form.Group>
                         </Form>
                     </Modal.Body>

@@ -82,7 +82,7 @@ export const AllTicketsComponent: React.FC = ()=> {
     };
 
     return(
-        <div>
+        <div className='fullTable'>
 
             <section>
                  {/* NOTE: Using BootStrap Table for testing.
