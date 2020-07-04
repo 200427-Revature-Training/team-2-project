@@ -36,13 +36,13 @@ export const CategoriesForumComponent: React.FC = () => {
     }
 
     return (
-        <div>
+        <div className='marginLeft'>
             <header>
                 <h2 id="accounts-header" className="dark">
                     Employee Dashboard
                 </h2>
             </header>
-            <main>
+            <main className='posts'>
                 {getCurrentView()}
             </main>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './category.all.component.css';
+import '../category-views.component.css';
 import { Tickets } from '../../../../../models/Tickets';
 import { Replies } from '../../../../../models/Replies';
 import { Form, Modal, Button, ButtonGroup } from 'react-bootstrap';
@@ -147,7 +148,7 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                     <tbody>
                         {testTicketsAll.map(a => {
                             return (
-                                <tr key={a.ticketId}>
+                                <tr className='tableCSS' key={a.ticketId}>
                                 <td>{a.userImage}</td>
                                 <th scope="row">{a.ticketId}</th>
                                 <td>{a.title}</td>
