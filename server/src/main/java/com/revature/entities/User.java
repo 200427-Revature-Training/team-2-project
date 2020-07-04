@@ -1,4 +1,4 @@
-package com.revature.models;
+package com.revature.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -74,6 +74,13 @@ public class User {
 	}
 	public void setHash(String hash) {
 		this.hash = hash;
+	}
+	
+	
+
+
+	public int getUser_type() {
+		return user_type;
 	}
 
 

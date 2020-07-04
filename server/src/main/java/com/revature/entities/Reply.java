@@ -1,4 +1,4 @@
-package com.revature.models;
+package com.revature.entities;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -21,7 +21,7 @@ public class Reply {
 	private int tpid;
 	private int user_id;
 	private String replies;
-	private String entry_time;
+	private Timestamp entry_time;
 	
 	
 	/* Primary Constructor */
@@ -34,7 +34,7 @@ public class Reply {
 		//not sure why this constructor this method for the timestamp when the other classes don't, but I'll leave it unless it causes problems.
 		Timestamp ts=new Timestamp(System.currentTimeMillis());
 		Date date=ts;
-        this.entry_time=date.toString();//Example:2017-11-02 02:36:57.204 
+        this.entry_time=ts;//Example:2017-11-02 02:36:57.204 
         }
 
 	/* Default Constructor */
@@ -46,10 +46,6 @@ public class Reply {
 	
 	/* Getters and Setters */
 	//All have default behavior, unused setters haven't been created.
-	public int getPost_id() {
-		return tpid;
-	}
-
 	
 	public int getRid() {
 		return rid;
@@ -66,7 +62,7 @@ public class Reply {
 	}
 	
 	
-	public String getEntry_time() {
+	public Timestamp getEntry_time() {
 		return entry_time;
 	}
 	
