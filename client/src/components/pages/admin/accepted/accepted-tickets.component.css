@@ -1,0 +1,86 @@
+.acceptedContainer {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+    height: 9rem;
+}
+
+.allAccepted {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+    height: 9rem;
+}
+
+.App {
+    text-align: left;
+}
+
+.border-box {
+    height: 5rem;
+}
+
+.acceptedCard {
+    height: 8rem;
+    margin: 0 2rem 1rem 0;
+    width: 18rem;
+    background-color: #fff;
+    box-shadow: 4px 4px 4px #ddd;
+    border-radius: 8px;
+}
+
+.acceptedContainer:nth-child(n + 6) {
+    display: none;
+}
+
+.acceptedCard p {
+    margin: .1rem;
+    padding: .6rem 0 1rem 1rem;
+    background-color: #fff;
+}
+
+.acceptedTop {
+    height: 4.5rem;
+    display: flex;
+    overflow: hidden;
+}
+
+.resize {
+    width: 7rem;
+    margin-top: .8em;
+    margin-left: .8em;
+}
+
+.boldIt {
+    font-weight: bold;
+    width: 15em;
+    margin-top: .8em;
+    margin-right: .4em;
+}
+
+.date {
+    margin: 1rem auto;
+}
+
+.acceptedBottom {
+    margin: .5rem .1 .1 .1;
+    border-top: 1px solid #bbb;
+    display: flex;
+    flex-wrap: nowrap;
+    vertical-align: middle;
+}
+
+.acceptedBottom p {
+    padding-top: .7rem;
+    color: #0000ff;
+    font-weight: 600;
+    text-shadow: 0 0 .1px #000;
+}
+
+.acceptedBottom .btn {
+    height: 90%;
+    margin: auto;
+    vertical-align: baseline;
+}

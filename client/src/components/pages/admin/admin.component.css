@@ -3,16 +3,22 @@ p {
     background-color: #EEE;
 }
 
+h2 {
+    text-align: left;
+}
+
 .primary {
     margin: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 71.5%;
+    width: 90%;
+    background-color: #eee;
 }
 
 .nav {
     margin: 0 auto;
+    text-align: center;
     width: 18%;
     background-color: #EEE;
 }

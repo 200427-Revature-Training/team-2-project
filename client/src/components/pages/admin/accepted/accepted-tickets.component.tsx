@@ -5,17 +5,65 @@ import { Tickets } from '../../../../models/Tickets'; //Global Model
 import { UpdateTickets } from '../../../../models/admin/UpdateTickets';
 import { Replies } from '../../../../models/Replies'; //Global Model
 import { Modal, Button, Form } from 'react-bootstrap';
+import anim0 from '../../../../temppics/aa0.png';
+import anim1 from '../../../../temppics/aa1.png';
+import anim2 from '../../../../temppics/aa2.png';
+import anim3 from '../../../../temppics/aa3.png';
 
 //Test Object if server not working
 const testPayload = [{ 
     ticketId: 1,
     title: 'title',
-    datePosted: '12-12-12-12-12-12',
-    dateResolved: '12-12-12-12-12-12',
+    datePosted: '12-12-12',
+    dateResolved: '12-12-12',
     userFirstName: 'first',
     userLastName: 'last',
-    img: 'image.png', //!implement img storage
+    img: <img src={anim2} width="50.5%" alt='0' />, //!implement img storage
     message: 'message',
+    ticketStatus: 1,
+    adminId: 1
+}, {
+    ticketId: 2,
+    title: 'titleistitle',
+    datePosted: '12-48-65',
+    dateResolved: '12-56-09',
+    userFirstName: 'Charlie',
+    userLastName: 'Adminman',
+    img: <img src={anim1} width="50.5%" alt='0' />, //!implement img storage
+    message: 'message',
+    ticketStatus: 1,
+    adminId: 1
+}, {
+    ticketId: 3,
+    title: 'This is the title of a ticket',
+    datePosted: '1-2-2004',
+    dateResolved: '12-15-2021',
+    userFirstName: 'Anna',
+    userLastName: 'Hardy',
+    img: <img src={anim2} width="50.5%" alt='0' />, //!implement img storage
+    message: 'Hello World',
+    ticketStatus: 1,
+    adminId: 1
+}, {
+    ticketId: 4,
+    title: 'This is the title of a ticket that has carried on for far too long.',
+    datePosted: '1-2-2225',
+    dateResolved: '12-15-1985',
+    userFirstName: 'Zorp',
+    userLastName: 'Bardeny',
+    img: <img src={anim3} width="50.5%" alt='0' />, //!implement img storage
+    message: 'This might be a message.',
+    ticketStatus: 1,
+    adminId: 1
+}, {
+    ticketId: 5,
+    title: 'The wind is blowing the wifi away.',
+    datePosted: '5-23-2020',
+    dateResolved: '',
+    userFirstName: 'the',
+    userLastName: 'boss',
+    img: <img src={anim1} width="50.5%" alt='0' />, //!implement img storage
+    message: 'Wind blows away my wifi when I leave the building.',
     ticketStatus: 1,
     adminId: 1
 }];
@@ -96,9 +144,9 @@ export const AcceptedTicketsComponent: React.FC = ()=> {
                 ticket-cards will need to be styled slightly smaller with less data as shown in "AdminDashoard2.png"
                 Data should be populating from global Ticket.ts model as its currently doing so now */}
                 <header>
-                    <h2 id="accounts-header" className="dark">ACCEPTED Tickets HERE</h2>
+                    <h2 id="accounts-header" className="dark">Accepted Tickets</h2>
                 </header>
-                <table className="table table-striped">
+                {/* <table className="table table-striped">
                     <thead className="thead-dark">
                         <tr>
                             <th scope="col"># ID: </th>
@@ -110,23 +158,57 @@ export const AcceptedTicketsComponent: React.FC = ()=> {
                     <tbody>
                         {testPayload.map(a => {
                             return (
-                            <tr key={a.ticketId}>
-                                <th scope="row">{a.ticketId}</th>
-                                <td>{a.title}</td>
-                                {/* <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td> */}
-                                <td>{a.ticketStatus}</td>
-                                    
-                                <button className="btn btn-success"
-                                    onClick={() => loadModal(a)}>
-                                    View Ticket
+                                <tr key={a.ticketId}>
+                                    <th scope="row">{a.ticketId}</th>
+                                    <td>{a.title}</td> */}
+                {/* <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td> */}
+                {/* <td>{a.ticketStatus}</td>
+
+                                    <button className="btn btn-success"
+                                        onClick={() => loadModal(a)}>
+                                        View Ticket
                                 </button>
-                            </tr>
+                                </tr>
                             )
-                        })}
-                    </tbody>
-                </table>
+                        })} */}
+                {/* </tbody>
+                </table> */}
+                {testPayload.map(a => {
+                    return (
+                        <div className='acceptedContainer'>
+                            <div className='allAccepted'>
+                                <div className='acceptedCard'>
+                                    <div className='acceptedTop'>
+                                        <div className='resize'>{a.img}</div>
+                                        <div className='boldIt'>{a.title}</div>
+                                    </div>
+                                    <div className='acceptedBottom'>
+                                        <button className="btn btn-primary"
+                                            onClick={() => loadModal(a)}>
+                                            Resolve
+                                        </button>
+                                        <div className='date'>
+                                            {a.datePosted}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    )
+                })}
             </section>
-                
+                {/* <tr key={a.ticketId}>
+                        <th scope="row">{a.ticketId}</th>
+                        <td>{a.title}</td>
+                        { }/* <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td> */}
+                        {/* <td>{a.ticketStatus}</td>
+                            
+                        <button className="btn btn-success"
+                            onClick={() => loadModal(a)}>
+                            View Ticket
+                        </button>
+                    </tr> */}
 
             <section>
              {/* Note: using react-bootstrap modal for testing.
@@ -173,7 +255,7 @@ export const AcceptedTicketsComponent: React.FC = ()=> {
                             </Form.Group>
                             {/* change ticket status for update request */}
                             <Form.Group>  
-                                <Form.Label> Accept:</Form.Label>
+                                <Form.Label> Resolved:</Form.Label>
                                 <input value="3" onChange={(e) => setInputStatusID(+e.target.value) }  type="radio"  name="status"/>
                             </Form.Group>
                         </Form>
