@@ -59,12 +59,10 @@ public class CardController {
 	}
 	
 	//GET a list of postickets by its user_id and returns it as an array of JSON objects.
-	@GetMapping("/employee/history/")
+	@GetMapping("/employee/history")
 	public List<ReactCard> getCardByUid() {
 		System.out.println("get card by userid request received");
-		int id = 1; //enable this line to replace any received information with hardcoded value
-		System.out.println("id set to 1");
-		return cardService.getCardsByUserId(id); //path variable is used as an arg for method in cardService
+		return cardService.getCardsByUserId(1); //path variable is used as an arg for method in cardService
 	}
 	
 	//GET all postickets and return them as an array of JSON objects.
