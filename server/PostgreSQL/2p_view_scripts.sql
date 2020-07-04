@@ -47,17 +47,6 @@ CREATE TABLE user_types (
 	user_type_id int PRIMARY KEY UNIQUE NOT NULL,
 	user_type_name varchar(8) UNIQUE NOT NULL
 	);
-	
-alter table users add user_type_id int;
-
-update users
-   set user_type_id = user_types.user_type_id
-from user_types
-where a.user_type = b.tractfips;
-
-ALTER TABLE users
-DROP COLUMN user_type_id int
-REFERENCES user_types(user_type_id);
 
 INSERT INTO user_types(user_type_id, user_type_name)
 VALUES
