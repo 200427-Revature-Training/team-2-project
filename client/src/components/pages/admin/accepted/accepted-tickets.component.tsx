@@ -20,7 +20,6 @@ const testPayload = [{
     adminId: 1
 }];
 
-
 export const AcceptedTicketsComponent: React.FC = ()=> {
 
 

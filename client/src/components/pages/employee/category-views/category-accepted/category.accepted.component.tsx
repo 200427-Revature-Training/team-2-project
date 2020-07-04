@@ -6,7 +6,7 @@ import { Form, Modal, Button, ButtonGroup } from 'react-bootstrap';
 import * as employeeRemote from '../../../../../remote/employee.remote';
 
 // Used to switch views between categories
-interface CategoryAcceptedComponentProps {
+export interface CategoryAcceptedComponentProps {
     setView: (str: 'CATEGORY_POST' | 'CATEGORY_PENDING' | 'CATEGORY_ACCEPTED' | 'CATEGORY_RESOLVED' | 'ALL') => void;
 }
 

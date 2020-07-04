@@ -74,17 +74,17 @@ export const NewPostComponent: React.FC = () => {
                     <Form>
                         <Form.Group>
                             <Form.Label>Title</Form.Label>
-                            <Form.Control value={inputTitle} type="text" 
+                            <Form.Control id="title" value={inputTitle} type="text" 
                         onChange={(e) => setInputTitle(e.target.value)} />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Message</Form.Label>
-                            <Form.Control value={inputMessage} type="text" 
+                            <Form.Control id="message" value={inputMessage} type="text" 
                             onChange={(e) => setInputMessage(e.target.value)} />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Ticket?</Form.Label>
-                            <Form.Control value={inputStatusId} onChange={(e) => setInputStatusId(+e.target.value)} 
+                            <Form.Control id="ticket-status" value={inputStatusId} onChange={(e) => setInputStatusId(+e.target.value)} 
                             type="checkbox"  name="status"/>
                         </Form.Group>
                     </Form>

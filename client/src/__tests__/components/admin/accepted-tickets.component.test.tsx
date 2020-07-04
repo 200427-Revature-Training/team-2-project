@@ -41,34 +41,34 @@ describe('AcceptedTicketsComponent', () => {
         expect(input.prop('value')).toBe('3');
     });
 
-    // // May need to revise
-    // test('opens modal', () => {
-    //     const wrapper = shallow(<AcceptedTicketsComponent />);
-    //     const button = wrapper.find('#view');
-    //     button.simulate('click');
+    // May need to revise
+    test('opens modal', () => {
+        const wrapper = shallow(<AcceptedTicketsComponent />);
+        const button = wrapper.find('#view');
+        button.simulate('click');
         
-    //     console.log(button.debug());
-    //     expect(button.prop('disabled')).toBeFalsy();
-    // })
+        console.log(button.debug());
+        expect(button.prop('disabled')).toBeFalsy();
+    })
 
-    // // May need to revise
-    // test('should close the modal', () => {
-    //     const wrapper = shallow(<AcceptedTicketsComponent />);
-    //     const button = wrapper.find('#close-modal');
-    //     button.simulate('click');
+    // May need to revise
+    test('should close the modal', () => {
+        const wrapper = shallow(<AcceptedTicketsComponent />);
+        const button = wrapper.find('#close-modal');
+        button.simulate('click');
         
-    //     console.log(button.debug());
-    //     expect(button.prop('disabled')).toBeFalsy();
-    // });
+        console.log(button.debug());
+        expect(button.prop('disabled')).toBeFalsy();
+    });
 
-    // // May need to revise
-    // test('should update the ticket status', () => {
-    //     const wrapper = shallow(<AcceptedTicketsComponent />);
-    //     const button = wrapper.find('#update-ticket').first()
-    //     button.simulate('click');
+    // May need to revise
+    test('should update the ticket status', () => {
+        const wrapper = shallow(<AcceptedTicketsComponent />);
+        const button = wrapper.find('#update-ticket').first()
+        button.simulate('click');
         
-    //     console.log(button.debug());
-    //     expect(button.prop('disabled')).toBeFalsy();
-    // });
+        console.log(button.debug());
+        expect(button.prop('disabled')).toBeFalsy();
+    });
 }); 
 

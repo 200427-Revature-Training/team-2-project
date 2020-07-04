@@ -7,4 +7,4 @@ describe('admin.component.tsx', () => {
     const wrapper = shallow(<AdminComponent />);
     expect(wrapper).toBeDefined();
   });
-})
+});

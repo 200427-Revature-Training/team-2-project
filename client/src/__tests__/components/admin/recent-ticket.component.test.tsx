@@ -40,5 +40,4 @@ describe('RecentTicketsComponent', () => {
         console.log(input.props());
         expect(input.prop('value')).toBe('3');
     });
-
 }); 
