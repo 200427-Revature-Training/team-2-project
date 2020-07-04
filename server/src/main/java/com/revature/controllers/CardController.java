@@ -54,27 +54,33 @@ public class CardController {
 	@GetMapping("/employee/history/{id}")
 	public List<ReactCard> getCardByUid(@PathVariable int id) {
 		System.out.println("get card by userid request received");
-//		id = 1; //enable this line to replace any received information with hardcoded value
 		System.out.println("id set to 1");
 		return cardService.getCardsByUserId(id); //path variable is used as an arg for method in cardService
 	}
 	
+	//GET a list of postickets by its user_id and returns it as an array of JSON objects.
+	@GetMapping("/employee/history")
+	public List<ReactCard> getCardByUid() {
+		System.out.println("get card by userid request received");
+		return cardService.getCardsByUserId(1); //path variable is used as an arg for method in cardService
+	}
+	
 	//GET all postickets and return them as an array of JSON objects.
-	@GetMapping("/administrators/all")
+	@GetMapping("/administrator/all")
 	public List<ReactCard> getAllCardsa() {
 		System.out.println("get all cards (admin) request received");
 			return cardService.getAllReactCards();
 	}
 	
 	//GET all cards with a "pending" ticket status (ticket_status=1) and returns them as an array of JSON objects.
-	@GetMapping("/administrators/recent")
+	@GetMapping("/administrator/recent")
 	public List<ReactCard> getPendingCards() {
 		System.out.println("get pending cards request received");
 		return cardService.getCardsByTicketStatus(1);
 	}	
 	
 	//GET all cards with an "accepted" ticket status (ticket_status=2) and returns them as an array of JSON objects.
-	@GetMapping("/administrators/accepted")
+	@GetMapping("/administrator/accepted")
 	public List<ReactCard> getAcceptedCards() {
 		System.out.println("get accepted cards request received");
 		return cardService.getCardsByTicketStatus(2);
