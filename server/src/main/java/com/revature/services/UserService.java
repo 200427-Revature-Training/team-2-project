@@ -41,11 +41,15 @@ public class UserService {
 	//This service method retrieves the User for the given username to compare the provided login details to the ones in the database
 	public User login(User user) {
 		User fulluser = userRepository.getUserByUsername(user.getUsername()); //calls a repository method to retrieve User object for given username, because we need the id for login.
-		if (fulluser==null) {throw new HttpClientErrorException(HttpStatus.NOT_FOUND); //throws 404 status if no user with given username is in database.
+		if (fulluser==null) {
+			throw new HttpClientErrorException(HttpStatus.NOT_FOUND); //throws 404 status if no user with given username is in database.
 		} else {
 			return userRepository.login(fulluser.getUid(), user.getUserpass()); //if User object is found, sends retrieved id and provided pass to login method.
 		}
 	}
+	
+
+	
 	
 	
 	//passthrough service for unused "get all users" function.
