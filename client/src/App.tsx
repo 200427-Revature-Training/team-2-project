@@ -1,7 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import './App.css';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import NavbarComponent from './components/main/navbar.component';
+import EmployeeNavbarComponent from './components/pages/employee/navbar/employee-navbar.component';
+import AdminNavbarComponent from './components/pages/admin/navbar/admin-navbar.component';
 import { AdminComponent } from './components/pages/admin/admin.component';
 import { EmployeeComponent } from './components/pages/employee/employee.component';
 
@@ -25,17 +26,18 @@ function App() {
               </Route>
               
               <div> 
-              <NavbarComponent />
 
             <Route path="/template">
             { isEmployee ? (<TestComponent />) : (<Redirect to="/"/>)} {/* Lazy load */} 
             </Route>
 
             <Route path="/administrator">
+              <AdminNavbarComponent />
               <AdminComponent />
             </Route>
 
             <Route path="/employee">
+              <EmployeeNavbarComponent />
               <EmployeeComponent />
             </Route>
 

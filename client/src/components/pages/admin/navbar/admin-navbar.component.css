@@ -1,0 +1,57 @@
+a:visited, a:link {
+    color: inherit;
+}
+
+.infoStrip {
+    background-color: #eeeeee;
+    height: 2rem;
+}
+
+.navbar {
+    margin-top: 0;
+    background-color: #888;
+    color: #FFF;
+}
+
+.breakout {
+    position: relative;
+    float: right;
+    text-align: center;
+    margin-right: 15%;
+    margin-top: -1.69rem;
+    color: #333;
+    vertical-align: middle;
+}
+
+.breakout .button {
+    vertical-align: middle;
+    text-align: center;
+    background-color: sienna;
+    color: white;
+    padding: .1rem .45rem .2rem .45rem;
+    border-radius: .28rem;
+    margin-right: 0.5rem;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+    text-align: center;
+    margin-top: -1.35rem;
+}
+
+.top {
+    vertical-align: middle;
+    padding-top: .6rem;
+}
+
+.imgTD {
+    vertical-align: middle;
+}
+
+.bottom {
+    vertical-align: baseline;
+}

@@ -1,0 +1,77 @@
+.recentContainer {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+    height: 16rem;
+}
+
+.allRecent {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.App {
+    text-align: left;
+}
+
+button {
+    background-color: blueviolet;
+    color: #fff;
+    border-color: blueviolet;  
+}
+
+.recentCard {
+    height: 15.4rem;
+    margin: 0 2rem 1rem 0;
+    width: 18rem;
+    background-color: #fff;
+    box-shadow: 4px 4px 4px #ddd;
+    border-radius: 8px;
+}
+
+.recentContainer:nth-child(n + 6) {
+    display: none;
+}
+
+.recentCard p {
+    margin: .1rem;
+    padding: .6rem 0 1rem 1rem;
+    background-color: #fff;
+}
+
+.recentTop {
+    height: 12rem;
+    overflow: hidden;
+}
+
+.colorize {
+    color: blue;
+}
+
+.boldIt {
+    font-weight: bold;
+}
+
+.recentBottom {
+    margin: .5rem .1 .1 .1;
+    border-top: 1px solid #bbb;
+    display: flex;
+    flex-wrap: nowrap;
+    vertical-align: middle;
+}
+
+.recentBottom p {
+    padding-top: .7rem;
+    color: #ffcc00;
+    font-weight: 600;
+    text-shadow: 0 0 .1px #000;
+}
+
+.recentBottom .btn {
+    height: 90%;
+    margin: auto;
+    vertical-align: baseline;
+}

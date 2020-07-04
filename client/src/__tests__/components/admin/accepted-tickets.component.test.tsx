@@ -42,14 +42,14 @@ describe('AcceptedTicketsComponent', () => {
     });
 
     // May need to revise
-    test('opens modal', () => {
-        const wrapper = shallow(<AcceptedTicketsComponent />);
-        const button = wrapper.find('#view');
-        button.simulate('click');
+    // test('opens modal', () => {
+    //     const wrapper = shallow(<AcceptedTicketsComponent />);
+    //     const button = wrapper.find('#view');
+    //     button.simulate('click');
         
-        console.log(button.debug());
-        expect(button.prop('disabled')).toBeFalsy();
-    })
+    //     console.log(button.debug());
+    //     expect(button.prop('disabled')).toBeFalsy();
+    // })
 
     // May need to revise
     test('should close the modal', () => {

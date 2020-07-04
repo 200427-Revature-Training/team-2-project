@@ -26,12 +26,12 @@ const mockfn = jest.fn();
 
 describe('category.accepted', () => {
 
-    //     beforeEach(() => {
-    //     jest.clearAllMocks();
-    // })
+        beforeEach(() => {
+        jest.clearAllMocks();
+    })
     
-    // test('should render', () => {
-    //     const wrapper = mount(<CategoryAcceptedComponent {...commonProps} />);
-    //     expect(wrapper).toBeDefined();
-    // });
+    test('should render', () => {
+        const wrapper = mount(<CategoryAcceptedComponent {...commonProps} />);
+        expect(wrapper).toBeDefined();
+    });
 })
