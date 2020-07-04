@@ -60,21 +60,21 @@ public class CardController {
 	}
 	
 	//GET all postickets and return them as an array of JSON objects.
-	@GetMapping("/administrators/all")
+	@GetMapping("/administrator/all")
 	public List<ReactCard> getAllCardsa() {
 		System.out.println("get all cards (admin) request received");
 			return cardService.getAllReactCards();
 	}
 	
 	//GET all cards with a "pending" ticket status (ticket_status=1) and returns them as an array of JSON objects.
-	@GetMapping("/administrators/recent")
+	@GetMapping("/administrator/recent")
 	public List<ReactCard> getPendingCards() {
 		System.out.println("get pending cards request received");
 		return cardService.getCardsByTicketStatus(1);
 	}	
 	
 	//GET all cards with an "accepted" ticket status (ticket_status=2) and returns them as an array of JSON objects.
-	@GetMapping("/administrators/accepted")
+	@GetMapping("/administrator/accepted")
 	public List<ReactCard> getAcceptedCards() {
 		System.out.println("get accepted cards request received");
 		return cardService.getCardsByTicketStatus(2);
