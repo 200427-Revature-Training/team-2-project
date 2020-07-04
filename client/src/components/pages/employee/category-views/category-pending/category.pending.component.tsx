@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './category.pending.component.css';
+import '../category-views.component.css';
 import { Tickets } from '../../../../../models/Tickets';
 import { Replies } from '../../../../../models/Replies';
 import { Form, Modal, Button, ButtonGroup } from 'react-bootstrap';
