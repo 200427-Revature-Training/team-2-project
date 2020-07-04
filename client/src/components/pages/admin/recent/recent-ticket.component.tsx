@@ -268,11 +268,7 @@ export const RecentTicketsComponent: React.FC = ()=> {
                             {/* change ticket status for update request */}
                             <Form.Group>
                                 <Form.Label> Accept:</Form.Label>
-<<<<<<< HEAD
-                                <input id="accept" value="3" onChange={(e) => setInputStatusID(+e.target.value) }  type="radio"  name="status"/>
-=======
-                                <input value="2" onChange={(e) => setInputStatusID(+e.target.value) }  type="radio"  name="status"/>
->>>>>>> 14c19858c8559fb4a8aa2690287dd3e23cdb8c64
+                                <input id="accept" value="2" onChange={(e) => setInputStatusID(+e.target.value) }  type="radio"  name="status"/>
                             </Form.Group>
                         </Form>
                     </Modal.Body>

@@ -35,9 +35,9 @@ describe('RecentTicketsComponent', () => {
     test('should accept the ticket', () => {
         const wrapper = shallow(<RecentTicketsComponent />);
         const input = wrapper.find('#accept');
-        input.simulate('change', {target: {value: '3'}});
+        input.simulate('change', {target: {value: '2'}});
 
         console.log(input.props());
-        expect(input.prop('value')).toBe('3');
+        expect(input.prop('value')).toBe('2');
     });
 }); 
