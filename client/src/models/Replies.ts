@@ -5,6 +5,6 @@ export interface Replies {
     timestamp: Date | string;
     userFirstName: string;
     userLastName: string;
-    userImage: string;
+    userImage: JSX.Element;
     replies: string;
 };

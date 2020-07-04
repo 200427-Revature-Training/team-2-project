@@ -1,5 +1,4 @@
 .rightBar {
-    position: relative;
-    float: right;
-    margin: -13rem 15% 3rem 0;
+    margin-top: 1rem;
+    margin-right: 15%;
 }

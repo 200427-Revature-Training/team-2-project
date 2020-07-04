@@ -5,6 +5,10 @@ import { Tickets } from '../../../../../models/Tickets';
 import { Replies } from '../../../../../models/Replies';
 import { Form, Modal, Button, ButtonGroup } from 'react-bootstrap';
 import * as employeeRemote from '../../../../../remote/employee.remote';
+import anim0 from '../../../../../temppics/aa0.png';
+import anim1 from '../../../../../temppics/aa1.png';
+import anim2 from '../../../../../temppics/aa2.png';
+import anim3 from '../../../../../temppics/aa3.png';
 
 // Used to switch views between categories
 interface CategoryResolvedComponentProps {
@@ -19,7 +23,7 @@ const testTicketsResolved: Tickets[] = [{
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'first',
     userLastName: 'last',
-    userImage: 'animage',
+    userImage: <img src={anim3} width="20%" alt='0' />,
     message: 'Flavortown',
     ticketStatus: 3,
     adminFirstName: 'Guy',
@@ -32,7 +36,7 @@ const testRepliesPost : Replies[] = [{
     timestamp: 'a date',
     userFirstName: 'some guy',
     userLastName: 'anotherguy',
-    userImage: 'animage',
+    userImage: <img src={anim3} width="20%" alt='0' />,
     replies: 'jdfalk;sjdfkal;sfdjl;ksdafj;lksad'
 }];
 
@@ -55,7 +59,7 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
         dateResolved: '',
         userFirstName: '',
         userLastName: '',
-        userImage: '',
+        userImage: <img src={anim3} width="20%" alt='0' />,
         message: '',
         ticketStatus: 0,
         adminFirstName: '',

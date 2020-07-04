@@ -8,14 +8,12 @@ export const EmployeeComponent:React.FC = () => {
 
     return (
         <div>
+            <section className='rightColumn'>
+                <NewPostComponent />
+                <HistoryComponent />
+            </section>
             <section>
                 <CategoriesForumComponent />
-            </section>
-            <section>
-                <NewPostComponent />
-            </section>
-            <section>
-                <HistoryComponent />
             </section>
         </div>
     )

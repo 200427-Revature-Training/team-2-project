@@ -4,7 +4,7 @@ export interface Tickets {
     ticketStatus: number;
     userFirstName: string,
     userLastName: string,
-    userImage: string; //!implement img storage
+    userImage: JSX.Element; //!implement img storage
     adminFirstName: string;
     adminLastName: string;
     datePosted: Date | string;
