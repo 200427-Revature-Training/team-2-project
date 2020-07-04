@@ -1,27 +1,47 @@
-SELECT cards.card_id AS ticketId,
-	cards.ticket_status AS ticketStatus,
-	users.firstname AS userFirstName,
-	users.lastname AS userLastName,
-	users.user_img AS userImage,
-	users.firstname AS adminFirstName,
-	users.lastname AS adminLastName,
-	cards.entry_time AS datePosted,
-	cards.date_resolved AS dateResolved,
-	cards.title AS title,
-	cards.message AS message
-FROM cards c
-LEFT JOIN users
-ON 
+CREATE VIEW react_ticket AS
+	SELECT cards.card_id AS ticket_id,
+		cards.ticket_status AS ticket_status,
+		u1.firstname AS user_first_name,
+		u1.lastname AS user_last_name,
+		u1.username AS user_name,
+		u1.user_img AS user_image,
+		u2.firstname AS admin_first_name,
+		u2.lastname AS admin_last_name,
+		cards.entry_time AS date_posted,
+		cards.date_resolved AS date_resolved,
+		cards.title AS title,
+		cards.message AS message
+	FROM cards
+	LEFT JOIN users u1
+	ON u1.uid = cards.user_id
+	LEFT JOIN users u2
+	ON u2.uid = cards.admin_id
+	ORDER BY cards.entry_time DESC;
 
-CREATE VIEW reactuser AS
-SELECT users.user_img AS userImage,
-	users.username AS username,
-	user_types.user_type_name AS userRole
+CREATE VIEW react_user AS
+	SELECT users.username AS user_name,
+		users.firstname AS first_name,
+		users.lastname AS last_name,
+		user_roles.user_role_name AS user_role,
+		users.user_img AS userImage
 	FROM users
-	LEFT JOIN user_types
-	ON user_type_id = user_type;
+	LEFT JOIN user_roles
+	ON user_role_id = user_type;
 	
-CREATE 
+CREATE VIEW react_reply AS
+	SELECT replies.rid AS rid,
+		replies.tpid AS ticket_post_id,
+		replies.entry_time AS timestamp,
+		users.firstname AS user_first_name,
+		users.lastname AS user_last_name,
+		users.username AS user_name,
+		users.user_img AS user_image,
+		replies.replies AS replies
+	FROM replies
+	LEFT JOIN users
+	ON users.uid = replies.user_id 
+	ORDER BY replies.entry_time DESC;
+	
 
 CREATE TABLE user_types (
 	user_type_id int PRIMARY KEY UNIQUE NOT NULL,

@@ -90,11 +90,14 @@ public class UserService {
 		System.out.println(dbuser);
 		ReactUserModel ruser = new ReactUserModel();
 		ruser.setUserImage(dbuser.getImg());
-		ruser.setUsername(dbuser.getUsername());
+		ruser.setUserName(dbuser.getUsername());
+		ruser.setFirstName(dbuser.getFirstname());
+		ruser.setLastName(dbuser.getLastname());
 		
 		if (dbuser.getUser_type() == 1) {
 			ruser.setUserRole("Admin");
-		} else {
+		}
+		if (dbuser.getUser_type() == 2) {
 			ruser.setUserRole("Employee");
 		}
 		

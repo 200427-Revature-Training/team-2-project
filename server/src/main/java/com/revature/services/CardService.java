@@ -142,7 +142,11 @@ public class CardService {
 
 	public List<ReactCard> getCardsByUserId(int id) {
 		System.out.println("get cards by user id request received by service");
-		return reactCardRepository.getReactCardsByUserId(id);
+		User user = userRepository.getUserById(id)
+				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
+
+		
+		return reactCardRepository.getReactCardsByUserName(user.getUsername());
 	}
 
 	

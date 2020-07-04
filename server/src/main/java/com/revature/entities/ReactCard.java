@@ -24,6 +24,9 @@ public class ReactCard {
 	@Column(name="user_last_name")
 	private String userLastName;
 	
+	@Column
+	private String userName;
+	
 	@Column(name="user_image")
 	private String userImage;
 	

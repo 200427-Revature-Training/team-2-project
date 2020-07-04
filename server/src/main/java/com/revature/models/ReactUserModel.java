@@ -2,20 +2,32 @@ package com.revature.models;
 
 public class ReactUserModel {
 
-	private String userImage;
-	private String username;
+	private String userName;
+	private String firstName;
+	private String lastName;
 	private String userRole;
-	public String getUserImage() {
-		return userImage;
+	private String userImage;
+	private AuthenticationResponse jwt;
+	
+	
+	
+	public String getUserName() {
+		return userName;
 	}
-	public void setUserImage(String userImage) {
-		this.userImage = userImage;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-	public String getUsername() {
-		return username;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getUserRole() {
 		return userRole;
@@ -23,13 +35,27 @@ public class ReactUserModel {
 	public void setUserRole(String userRole) {
 		this.userRole = userRole;
 	}
+	public String getUserImage() {
+		return userImage;
+	}
+	public void setUserImage(String userImage) {
+		this.userImage = userImage;
+	}
+	public AuthenticationResponse getJwt() {
+		return jwt;
+	}
+	public void setJwt(AuthenticationResponse jwt) {
+		this.jwt = jwt;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((userImage == null) ? 0 : userImage.hashCode());
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 	@Override
@@ -41,32 +67,47 @@ public class ReactUserModel {
 		if (getClass() != obj.getClass())
 			return false;
 		ReactUserModel other = (ReactUserModel) obj;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
 		if (userImage == null) {
 			if (other.userImage != null)
 				return false;
 		} else if (!userImage.equals(other.userImage))
+			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
 			return false;
 		if (userRole == null) {
 			if (other.userRole != null)
 				return false;
 		} else if (!userRole.equals(other.userRole))
 			return false;
-		if (username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!username.equals(other.username))
-			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "ReactUserModel [userImage=" + userImage + ", username=" + username + ", userRole=" + userRole + "]";
+		return "ReactUserModel [userName=" + userName + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", userRole=" + userRole + ", userImage=" + userImage + ", jwt=" + jwt + "]";
 	}
-	public ReactUserModel(String userImage, String username, String userRole) {
+	public ReactUserModel(String userName, String firstName, String lastName, String userRole, String userImage,
+			AuthenticationResponse jwt) {
 		super();
-		this.userImage = userImage;
-		this.username = username;
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.userRole = userRole;
+		this.userImage = userImage;
+		this.jwt = jwt;
 	}
 	public ReactUserModel() {
 		super();

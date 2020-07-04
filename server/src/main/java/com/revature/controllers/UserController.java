@@ -45,17 +45,30 @@ public class UserController {
 	//GET login credentials. Currently returns a user.
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody User user) throws Exception {
+		
+		
+		
+		
 		try {
-			User auth = userService.login(user); //creates User object from user data sent in request body and passes it to userService as args.
+			userService.login(user); //creates User object from user data sent in request body and passes it to userService as args.
 		}catch (Exception e) {
 			throw new Exception("Incorrect username or password", e);
 		}
 		
+		User login = userService.login(user);
+		ReactUserModel returnuser = userService.convertUser(login);
+		
 		//create token through JwtUtil
 		final String jwt = jwtTokenUtil.generateToken(user);
+		
+		
 
 		//get token response. send back status200
-		return ResponseEntity.ok(new AuthenticationResponse(jwt));
+		AuthenticationResponse auth = new AuthenticationResponse(jwt);
+		
+		returnuser.setJwt(auth);
+		
+		return ResponseEntity.ok(returnuser);
 	}
 	
 	

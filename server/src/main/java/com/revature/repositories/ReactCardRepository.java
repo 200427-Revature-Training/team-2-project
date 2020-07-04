@@ -66,11 +66,11 @@ public class ReactCardRepository {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<ReactCard> getReactCardsByUserId(int userId) {
+	public List<ReactCard> getReactCardsByUserName(String userName) {
 		Session session = em.unwrap(Session.class);
-		System.out.println(userId);
-		List<ReactCard> rcards = session.createQuery("from ReactCard where userId = :uid", ReactCard.class) //HQL to select the rcards matching provided username.
-				.setParameter("uid", userId) //username parameter is set to the value provided in the arg.
+		System.out.println(userName);
+		List<ReactCard> rcards = session.createQuery("from ReactCard where userName = :userName", ReactCard.class) //HQL to select the rcards matching provided username.
+				.setParameter("userName", userName) //username parameter is set to the value provided in the arg.
 					.getResultList(); //converts the result into a list of ReactCard objects.
 				session.getTransaction();
 				System.out.println(rcards);
