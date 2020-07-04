@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.models.User;
+import com.revature.entities.User;
+import com.revature.models.ReactUserModel;
 import com.revature.services.UserService;
 
 @RestController
@@ -20,26 +21,36 @@ public class UserController {
 
 	//GET the user with the uid matching the provided path variable.
 	@GetMapping("/id/{id}")
-	public User getUserById(@PathVariable int id) {
-		return userService.getUserById(id); //path variable exracted as an int
+	public ReactUserModel getUserById(@PathVariable int id) {
+		System.out.println("get user by id request received by controller");
+		System.out.println(id);
+		User dbuser = userService.getUserById(id); //path variable exracted as an int
+		System.out.println("dbuser assigned at controller");
+		return userService.convertUser(dbuser);
 	}
 	
 	//GET login credentials. Currently returns a user.
-	@GetMapping("/login")
-	public User login(@RequestBody User user) {
-		return userService.login(user); //creates User object from user data sent in request body and passes it to userService as args.
+	@PostMapping("/login")
+	public ReactUserModel login(@RequestBody User user) {
+		System.out.println("login request received by controller");
+		User dbuser = userService.login(user); //creates User object from user data sent in request body and passes it to userService as args.
+		System.out.println("controller received dbuser");
+		return userService.convertUser(dbuser);
 	}
 
 	//POST - receive a user in the request body and save it to the database.
 	@PostMapping("")
-	public User saveUser(@RequestBody User user) {
-		return userService.save(user);
+	public ReactUserModel saveUser(@RequestBody User user) {
+		System.out.println("user registration request received by controller");
+		User dbuser = userService.save(user);
+		System.out.println("dbuser received by controller");
+		return userService.convertUser(dbuser);
 	}
 	
 	//receive updated user data and PUT it into database. I've disabled the endpoint as this function isn't utilized.
 //	@PutMapping("")
-//	public User updateUser(@RequestBody User user) {
-//		return userService.update(user);
+//	public ReactUser updateUser(@RequestBody ReactUser ruser) {
+//		return userService.update(ruser);
 //	}
 
 }
