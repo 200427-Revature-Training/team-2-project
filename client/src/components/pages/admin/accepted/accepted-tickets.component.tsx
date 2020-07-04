@@ -146,6 +146,33 @@ export const AcceptedTicketsComponent: React.FC = ()=> {
                 <header>
                     <h2 id="accounts-header" className="dark">Accepted Tickets</h2>
                 </header>
+                {/* <table className="table table-striped">
+                    <thead className="thead-dark">
+                        <tr>
+                            <th scope="col"># ID: </th>
+                            <th scope="col">Post: </th>
+                            <th scope="col">Request Date: </th>
+                            <th scope="col">Status: </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {testPayload.map(a => {
+                            return (
+                                <tr key={a.ticketId}>
+                                    <th scope="row">{a.ticketId}</th>
+                                    <td>{a.title}</td> */}
+                {/* <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td> */}
+                {/* <td>{a.ticketStatus}</td>
+
+                                    <button className="btn btn-success"
+                                        onClick={() => loadModal(a)}>
+                                        View Ticket
+                                </button>
+                                </tr>
+                            )
+                        })} */}
+                {/* </tbody>
+                </table> */}
                 {testPayload.map(a => {
                     return (
                         <div className='acceptedContainer'>
