@@ -128,6 +128,7 @@ public class CardController {
 	@PatchMapping("/administrator/approvals")
 	public ReactTicketModel updateTicket(@RequestBody TicketUpdate ticket) {
 		System.out.println("approved ticket request (admin) received");
+		System.out.println(ticket);
 		Card dbcard = cardService.updateTicket(ticket); //take received data as new card, then pass it as args to CardService
 		System.out.println("dbcard received by controller");
 		System.out.println(dbcard);
