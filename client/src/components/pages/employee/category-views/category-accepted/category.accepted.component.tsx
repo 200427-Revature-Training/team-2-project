@@ -23,7 +23,7 @@ const testTicketsAccepted: Tickets[] = [{
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'first',
     userLastName: 'last',
-    userImage: <img src={anim2} width="20%" alt='0' />,
+    userImage: 'image.png',
     message: 'message',
     ticketStatus: 2,
     adminFirstName: 'Steve',
@@ -36,7 +36,7 @@ const testRepliesAccepted : Replies[] = [{
     timestamp: 'a date',
     userFirstName: 'Bobby',
     userLastName: 'Hill',
-    userImage: <img src={anim2} width="20%" alt='0' />,
+    userImage: 'image.png',
     replies: 'jdfalk;sjdfkal;sfdjl;ksdafj;lksad'
 }];
 
@@ -59,7 +59,7 @@ export const CategoryAcceptedComponent: React.FC<CategoryAcceptedComponentProps>
         dateResolved: '',
         userFirstName: '',
         userLastName: '',
-        userImage: <img src={anim1} width="20%" alt='0' />,
+        userImage: '',
         message: '',
         ticketStatus: 0,
         adminFirstName: '',

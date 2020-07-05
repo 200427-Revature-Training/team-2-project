@@ -23,7 +23,7 @@ const testTicketsPending: Tickets[] = [{
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'first',
     userLastName: 'last',
-    userImage: <img src={anim1} width="20%" alt='0' />,
+    userImage: 'image.png',
     message: 'message',
     ticketStatus: 1,
     adminFirstName: 'Dad',
@@ -36,7 +36,7 @@ const testRepliesPending : Replies[] = [{
     timestamp: 'a date',
     userFirstName: 'some guy',
     userLastName: 'anotherguy',
-    userImage: <img src={anim1} width="20%" alt='0' />,
+    userImage: 'image.png',
     replies: 'jdfalk;sjdfkal;sfdjl;ksdafj;lksad'
 }];
 
@@ -60,7 +60,7 @@ export const CategoryPendingComponent: React.FC<CategoryPendingComponentProps> =
         dateResolved: '',
         userFirstName: '',
         userLastName: '',
-        userImage: <img src={anim1} width="20%" alt='0' />,
+        userImage: 'image.png',
         message: '',
         ticketStatus: 0,
         adminFirstName: '',

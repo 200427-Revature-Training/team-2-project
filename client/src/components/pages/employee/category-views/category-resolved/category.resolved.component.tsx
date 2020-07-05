@@ -23,7 +23,7 @@ const testTicketsResolved: Tickets[] = [{
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'first',
     userLastName: 'last',
-    userImage: <img src={anim3} width="20%" alt='0' />,
+    userImage: 'image.png',
     message: 'Flavortown',
     ticketStatus: 3,
     adminFirstName: 'Guy',
@@ -36,7 +36,7 @@ const testRepliesPost : Replies[] = [{
     timestamp: 'a date',
     userFirstName: 'some guy',
     userLastName: 'anotherguy',
-    userImage: <img src={anim3} width="20%" alt='0' />,
+    userImage: 'image.png',
     replies: 'jdfalk;sjdfkal;sfdjl;ksdafj;lksad'
 }];
 
@@ -59,7 +59,7 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
         dateResolved: '',
         userFirstName: '',
         userLastName: '',
-        userImage: <img src={anim3} width="20%" alt='0' />,
+        userImage: 'image.png',
         message: '',
         ticketStatus: 0,
         adminFirstName: '',

@@ -24,7 +24,7 @@ const testTicketsPost: Tickets[] = [{
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'first',
     userLastName: 'last',
-    userImage: <img src={anim2} width="20%" alt='0' />,
+    userImage: 'image.png',
     message: 'message',
     ticketStatus: 0,
     adminFirstName: 'Mom',
@@ -37,7 +37,7 @@ const testRepliesPost : Replies[] = [{
     timestamp: 'a date',
     userFirstName: 'some guy',
     userLastName: 'anotherguy',
-    userImage: <img src={anim2} width="20%" alt='0' />,
+    userImage: 'image.png',
     replies: 'jdfalk;sjdfkal;sfdjl;ksdafj;lksad'
 }];
 
@@ -60,7 +60,7 @@ export const CategoryPostComponent: React.FC<CategoryPostComponentProps> = (prop
         dateResolved: '',
         userFirstName: '',
         userLastName: '',
-        userImage: <img src={anim2} width="20%" alt='0' />,
+        userImage: 'image.png',
         message: '',
         ticketStatus: 0,
         adminFirstName: '',
