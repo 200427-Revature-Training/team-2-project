@@ -7,4 +7,4 @@ describe('App.tsx', () => {
     const wrapper = shallow(<App />);
     expect(wrapper).toBeDefined();
   });
-})
+});

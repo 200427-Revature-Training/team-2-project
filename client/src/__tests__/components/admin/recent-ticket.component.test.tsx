@@ -40,4 +40,33 @@ describe('RecentTicketsComponent', () => {
         console.log(input.props());
         expect(input.prop('value')).toBe('2');
     });
+
+        // May need to revise
+        test('should close the modal', () => {
+            const wrapper = shallow(<RecentTicketsComponent />);
+            const button = wrapper.find('#close');
+            console.log(button.debug());
+            button.simulate('click');
+            
+            expect(button.prop('disabled')).toBeFalsy();
+        });
+    
+        // May need to revise
+        test('should update', () => {
+            const wrapper = shallow(<RecentTicketsComponent />);
+            const button = wrapper.find('#update').first()
+            console.log(button.debug());
+            button.simulate('click');
+            
+            expect(button.prop('disabled')).toBeFalsy();
+        });
+
+        // test('should open modal', () => {
+        //     const wrapper = shallow(<RecentTicketsComponent />);
+        //     const button = wrapper.find('#open').first();
+        //     console.log(button.debug());
+        //     button.simulate('click');
+            
+        //     expect(button.prop('disabled')).toBeFalsy();
+        // });
 }); 

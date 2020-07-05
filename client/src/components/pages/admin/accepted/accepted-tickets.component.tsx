@@ -182,7 +182,7 @@ export const AcceptedTicketsComponent: React.FC = ()=> {
                                         <div className='boldIt'>{a.title}</div>
                                     </div>
                                     <div className='acceptedBottom'>
-                                        <button className="btn btn-primary"
+                                        <button id="view" className="btn btn-primary"
                                             onClick={() => loadModal(a)}>
                                             Resolve
                                         </button>

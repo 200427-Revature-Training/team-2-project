@@ -208,7 +208,7 @@ export const RecentTicketsComponent: React.FC = ()=> {
                                     <div className='recentBottom'>
                                         <p>Pending</p>
 
-                                        <button className="btn btn-primary"
+                                        <button id="open" className="btn btn-primary"
                                             onClick={() => loadModal(a)}>
                                             Accept
                                         </button>
@@ -273,8 +273,8 @@ export const RecentTicketsComponent: React.FC = ()=> {
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={() => setModalVisible(false)}>Close</Button>
-                        <Button onClick={() => updateTicket()}>Update</Button>                            
+                        <Button id="close" onClick={() => setModalVisible(false)}>Close</Button>
+                        <Button id="update" onClick={() => updateTicket()}>Update</Button>                            
                     </Modal.Footer>
                 </Modal>
             </section>
