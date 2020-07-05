@@ -201,9 +201,14 @@ export const RecentTicketsComponent: React.FC = ()=> {
                             <div className='allRecent'>
                                 <div className='recentCard'>
                                     <div className='recentTop'>
-                                        <p className='colorize'>ID: {a.ticketId}</p>
-                                        <p className='boldIt'>{a.title}</p>
-                                        <p>{a.message}</p>
+                                        <p className='colorize'>
+                                            ID: {a.ticketId}
+                                            <span className='bold'>
+                                                <span className='line'> | </span>
+                                                {a.title}
+                                            </span></p>
+                                        {/* <p className='boldIt'>{a.title}</p> */}
+                                        <p className="message">{a.message}</p>
                                     </div>
                                     <div className='recentBottom'>
                                         <p>Pending</p>
