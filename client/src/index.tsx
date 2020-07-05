@@ -4,6 +4,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import './fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHome, faChartLine, faCalendar, faBusinessTime, faCog } from '@fortawesome/free-solid-svg-icons';
+
+library.add(
+  faHome,
+  faChartLine,
+  faCalendar,
+  faBusinessTime,
+  faCog
+);
 
 ReactDOM.render(
   <React.StrictMode>

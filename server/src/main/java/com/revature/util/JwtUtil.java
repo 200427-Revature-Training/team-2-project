@@ -7,7 +7,7 @@ import java.util.function.Function;
 
 import org.springframework.stereotype.Service;
 
-import com.revature.models.User;
+import com.revature.entities.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

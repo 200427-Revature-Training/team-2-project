@@ -11,7 +11,7 @@ import anim2 from '../../../../../temppics/aa2.png';
 import anim3 from '../../../../../temppics/aa3.png';
 
 // Used to switch views between categories
-interface CategoryAcceptedComponentProps {
+export interface CategoryAcceptedComponentProps {
     setView: (str: 'CATEGORY_POST' | 'CATEGORY_PENDING' | 'CATEGORY_ACCEPTED' | 'CATEGORY_RESOLVED' | 'ALL') => void;
 }
 
