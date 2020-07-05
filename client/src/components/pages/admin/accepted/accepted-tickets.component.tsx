@@ -68,7 +68,6 @@ const testPayload = [{
     adminId: 1
 }];
 
-
 export const AcceptedTicketsComponent: React.FC = ()=> {
 
 
@@ -173,17 +172,18 @@ export const AcceptedTicketsComponent: React.FC = ()=> {
                         })} */}
                 {/* </tbody>
                 </table> */}
-                {testPayload.map(a => {
+                {allTickets.map(a => {
                     return (
                         <div className='acceptedContainer'>
                             <div className='allAccepted'>
                                 <div className='acceptedCard'>
                                     <div className='acceptedTop'>
-                                        <div className='resize'>{a.img}</div>
+                                        <div className='resize'><img src={a.userImage} width="50.5%" alt='0' /></div>
+                                        {/* <div className='resize'>{a.img}</div> */}
                                         <div className='boldIt'>{a.title}</div>
                                     </div>
                                     <div className='acceptedBottom'>
-                                        <button className="btn btn-primary"
+                                        <button id="view" className="btn btn-primary"
                                             onClick={() => loadModal(a)}>
                                             Resolve
                                         </button>
@@ -251,18 +251,18 @@ export const AcceptedTicketsComponent: React.FC = ()=> {
                             {/* get ticket id for update request */}
                             <Form.Group> 
                                 <Form.Label> Select this ticket:</Form.Label>
-                                    <input value={inputTicketID} onChange={(e) => setInputTicketID(+e.target.value)} type="radio"/>
+                                    <input id="select-this-ticket" value={inputTicketID} onChange={(e) => setInputTicketID(+e.target.value)} type="radio"/>
                             </Form.Group>
                             {/* change ticket status for update request */}
                             <Form.Group>  
                                 <Form.Label> Resolved:</Form.Label>
-                                <input value="3" onChange={(e) => setInputStatusID(+e.target.value) }  type="radio"  name="status"/>
+                                <input id="accept" value="3" onChange={(e) => setInputStatusID(+e.target.value) }  type="radio"  name="status"/>
                             </Form.Group>
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={() => setModalVisible(false)}>Close</Button>
-                        <Button onClick={() => updateTicket()}>Update</Button>                            
+                        <Button id="close-modal" onClick={() => setModalVisible(false)}>Close</Button>
+                        <Button id="update-ticket" onClick={() => updateTicket()}>Update</Button>                            
                     </Modal.Footer>
                 </Modal>
             </section>

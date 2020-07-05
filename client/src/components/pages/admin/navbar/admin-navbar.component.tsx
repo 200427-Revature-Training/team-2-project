@@ -13,7 +13,7 @@ const testPayload = [{
     dateResolved: '12-12-1220',
     userFirstName: 'Andrew',
     userLastName: 'Adminguy',
-    img: <img src={anim0} width="50.5%" alt='0' />, //!implement img storage
+    userImage: anim0, //!implement img storage
     message: 'message',
     ticketStatus: 1,
     adminId: 1
@@ -63,7 +63,7 @@ const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
                     {testPayload.map(u => {
                         return (
                             <tr key={u.ticketId}>
-                                <td className="imgTD">{u.img}</td>
+                                <td className="imgTD"><img src={u.userImage} width="50.5%" alt='0' /></td>
                                 <tr>
                                     <td className='top'>{u.userFirstName}&nbsp;{u.userLastName}</td>
                                 </tr>
