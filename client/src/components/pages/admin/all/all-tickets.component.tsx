@@ -98,6 +98,7 @@ export const AllTicketsComponent: React.FC = ()=> {
                             return (
                                 <tr key={u.ticketId}>
                                     <td className="imgTD">{<img src={u.userImage} width="50.5%" alt='0' />}</td>
+                                    {/* <td className="imgTD">{u.img}</td> */}
                                     <tr className="top">
                                         <td className="first">ID Ticket:</td>
                                         <td className="second">| {u.ticketId}</td>

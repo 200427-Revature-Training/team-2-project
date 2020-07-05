@@ -29,6 +29,7 @@ svg {
     background-color: white;
     padding: 2rem;
     margin: .5rem auto;
+    margin-left: 0;
 }
 
 .links {
