@@ -55,18 +55,21 @@ public class CardService {
 	}
 	
 	//Logic for creating new cards
-	public Card saveNew(ReactTicketModel post) {
+//	public ReactCard saveNew(ReactTicketModel post) {
+	public ReactCard saveNew(Card card) {
 		System.out.println("card service received request to save new post");
-		System.out.println(post);
+//		System.out.println(post);
+		System.out.println(card);
 		
-		Card card = new Card();
-		System.out.println("new card instantiated");
-		card.setticketStatus(post.getTicketStatus());
-		card.setUser_id((userRepository.getUserByUsername(post.getUserName())).getUid());
-		card.setdatePosted(post.getDatePosted());
-		card.setTitle(post.getTitle());
-		card.setMessage(post.getMessage());
-		System.out.println("post's values transfered to new card");
+//		Card card = new Card();
+//		System.out.println("new card instantiated");
+//		card.setticketStatus(post.getTicketStatus());
+//		card.setUser_id((userRepository.getUserByUsername(post.getUserName())).getUid());
+//		card.setdatePosted(post.getDatePosted());
+//		card.setTitle(post.getTitle());
+//		card.setMessage(post.getMessage());
+//		System.out.println("post's values transfered to new card");
+//		System.out.println(card);
 		
 		//If a Date wasn't sent from the server, it will add the current Date here, otherwise it will use the existing Date
 		Date ts=new Date(System.currentTimeMillis());
@@ -85,7 +88,7 @@ public class CardService {
 		//Once those two fields have been checked, the card is ready to send to the repository
 		cardRepository.save(card);
 		System.out.println("card repository told to save card");
-		return cardRepository.getCardById(card.getticketId())
+		return reactCardRepository.getReactCardById(card.getticketId())
 				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
 	}
 

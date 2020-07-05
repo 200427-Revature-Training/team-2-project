@@ -92,6 +92,7 @@ export const getTicketByResolvedCategory = async () => {
 
 // Create new post
 export const createPost = async (post: PostForum) => {
+    console.log(post);
     // let reader = new FileReader();
     // reader.readAsDataURL(post.img);
     const response = await internalAxios.post<PostForum[]>('/employee/post', post);
