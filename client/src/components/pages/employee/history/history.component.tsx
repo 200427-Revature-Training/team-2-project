@@ -63,11 +63,10 @@ export const HistoryComponent: React.FC = () => {
     return (
         /* This section will be on the right side of the page right under the new post button
             as seen on the main section of the employee dashboard wireframe.*/
-        <div className='rightUnderBar'>
-            <section>
-                <table className='historyTable'>
+        <div className='historyTable'>
+            <section className='rightUnderBar'>
+                <table>
                     {<thead>
-                        <h2>Your Posts / Tickets</h2>
                         {/* <tr>
                             <th scope="col"># ID: </th>
                             <th scope="col">Post: </th>
@@ -82,7 +81,7 @@ export const HistoryComponent: React.FC = () => {
                             <div>    
                                 <tr key={a.ticketId}>
                                     <th scope="row">{a.ticketId}</th>
-                                    <td>Title: {a.title}</td>
+                                    <td className='padBottom'>Title: {a.title}</td>
                                 </tr>
                                 <tr>
                                     <td>Date Posted:</td>

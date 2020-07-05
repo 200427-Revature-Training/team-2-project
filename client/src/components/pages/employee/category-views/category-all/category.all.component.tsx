@@ -17,20 +17,20 @@ interface CategoryAllComponentProps {
 const testTicketsAll: Tickets[] = [
     { 
         ticketId: 1,
-        title: 'title',
+        title: 'Hello there, did you have a great day?',
         datePosted: '12-12-12-12-12-12',
         dateResolved: '12-12-12-12-12-12',
         userFirstName: 'first',
         userLastName: 'last',
         userImage: <img src={anim0} width="20%" alt='0' />,
-        message: 'message',
+        message: 'This is a message. There are many more like it. And then there\'s a whole bunch more that are not like it. It gets dicey. We should read all the messages.',
         ticketStatus: 0,
         adminFirstName: 'Mom',
         adminLastName: 'Mom'
     },
     {
         ticketId: 2,
-        title: 'title',
+        title: 'Is this the real life?',
         datePosted: '12-12-12-12-12-12',
         dateResolved: '12-12-12-12-12-12',
         userFirstName: 'first',
@@ -43,7 +43,7 @@ const testTicketsAll: Tickets[] = [
     },
     {
         ticketId: 3,
-        title: 'title',
+        title: 'Look ma, I gave it a title!',
         datePosted: '12-12-12-12-12-12',
         dateResolved: '12-12-12-12-12-12',
         userFirstName: 'first',
@@ -56,7 +56,7 @@ const testTicketsAll: Tickets[] = [
     },
     {
     ticketId: 4,
-    title: 'title',
+    title: 'This is the last time I give anything a title, ever!',
     datePosted: '12-12-12-12-12-12',
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'first',
@@ -129,13 +129,15 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
         // Button Group Bar for categories should be universal for each category component
         <div>
             <section>
-                <ButtonGroup aria-label="Basic example">
-                    <Button variant="secondary" onClick={() => props.setView('ALL')}>All</Button>
-                    <Button variant="secondary" onClick={() => props.setView('CATEGORY_POST')}>Post</Button>
-                    <Button variant="secondary" onClick={() => props.setView('CATEGORY_PENDING')}>Pending</Button>
-                    <Button variant="secondary" onClick={() => props.setView('CATEGORY_ACCEPTED')}>Accepted</Button>
-                    <Button variant="secondary" onClick={() => props.setView('CATEGORY_RESOLVED')}>Resolved</Button>
-                </ButtonGroup>
+                <div className='viewButtons'>
+                    <ButtonGroup aria-label="Basic example">
+                        <Button variant="light" onClick={() => props.setView('ALL')}>All</Button>
+                        <Button variant="light" onClick={() => props.setView('CATEGORY_POST')}>Post</Button>
+                        <Button variant="light" onClick={() => props.setView('CATEGORY_PENDING')}>Pending</Button>
+                        <Button variant="light" onClick={() => props.setView('CATEGORY_ACCEPTED')}>Accepted</Button>
+                        <Button variant="light" onClick={() => props.setView('CATEGORY_RESOLVED')}>Resolved</Button>
+                    </ButtonGroup>
+                </div>
                 {/* NOTE: Using regular Table for testing.
                 Replace table to best reflect wireframe table.
                 Data should be populating from global Ticket.ts model as its currently doing so now */}
@@ -155,18 +157,22 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                                 <div className='allContainers'>
                                     <div className='allAccepted'>
                                         <div className='allAcceptedCard'>
-                                            <div className='acceptedTop'>
+                                            <div className='allTop'>
                                                 <div className='resize'>{a.userImage}</div>
                                                 <div className='topOfCard'>Posted By: {a.userFirstName} {a.userLastName}</div>
                                                 <div className='topOfCard'>{a.datePosted}</div>
                                             </div>
                                             <div className='middleOfCard'>{a.title}</div>
+                                            {/* <div className='middleOfCardText'>{a.message}</div> */}
                                             <div className='allBottom'>
-                                                <button className="btn btn-primary"
+                                                {/* <button className="btn btn-primary resolveSpace"
                                                     onClick={() => loadModal(a)}>
                                                     Resolve
-                                        </button>
-                                                
+                                                </button> */}
+                                                <button className="btn btn-success"
+                                                    onClick={() => loadModal(a)}>
+                                                    View Ticket/Post
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
