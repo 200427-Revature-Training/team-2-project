@@ -72,7 +72,7 @@ export const HistoryComponent: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {testPayload.map(a => {
+                        {historyPost.map(a => {
                             return (
                             <tr key={a.ticketId}>
                                 <th scope="row">{a.ticketId}</th>

@@ -71,7 +71,7 @@ public class UserController {
 		//get token response. send back status200
 		AuthenticationResponse auth = new AuthenticationResponse(jwt);
 		
-		returnuser.setJwt(auth);
+		returnuser.setJwt(auth.getJwt());
 		
 		return ResponseEntity.ok(returnuser);
 	}
@@ -81,9 +81,11 @@ public class UserController {
 	//POST - receive a user in the request body and save it to the database.
 	@PostMapping("")
 	public ReactUserModel saveUser(@RequestBody User user) {
+		System.out.println(user);
 		System.out.println("user registration request received by controller");
 		User dbuser = userService.save(user);
 		System.out.println("dbuser received by controller");
+		System.out.println(dbuser);
 		return userService.convertUser(dbuser);
 	}
 	

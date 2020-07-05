@@ -31,8 +31,10 @@ public class ReplyController {
 	@GetMapping("/employee/replies")
 	public List<ReactReply> getAllReplies() {
 		System.out.println("get all replies (employee) request received");
-			return replyService.getAllReplies(); //no logic here, just a call to service when the request is received.
-
+			List<ReactReply> rreplies = replyService.getAllReplies(); //no logic here, just a call to service when the request is received.
+			System.out.println(rreplies);
+			return rreplies;
+			
 	}
 	
 	//GET all replies from database and returns them as an array of JSON objects.

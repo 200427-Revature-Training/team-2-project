@@ -29,7 +29,7 @@ const testTicketsResolved: Tickets[] = [{
 const testRepliesPost : Replies[] = [{
     rid: 4,
     ticketPostId: 4,
-    timestamp: 'a date',
+    date: 'a date',
     userFirstName: 'some guy',
     userLastName: 'anotherguy',
     userImage: 'animage',
@@ -108,10 +108,11 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
                         </tr>
                     </thead>
                     <tbody>
-                        {testTicketsResolved.map(a => {
+                        {allTickets.map(a => {
                             return (
                                 <tr key={a.ticketId}>
-                                    <td>{a.userImage}</td>
+                                    {/* <td>{a.userImage}</td>*/}
+                                    <td>{<img src={a.userImage} width="50.5%" alt='0' />}</td>
                                     <th scope="row">{a.ticketId}</th>
                                     <td>{a.title}</td>
                                     <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
@@ -160,7 +161,7 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
                                     return(
                                         <Form.Group>
                                             <Form.Label>Comments:</Form.Label>
-                                            <p> {b.timestamp} </p>
+                                            <p> {b.date} </p>
                                             <p> {b.ticketPostId} </p>
                                             <p> {b.userFirstName} </p>
                                             <p> {b.userLastName} </p>

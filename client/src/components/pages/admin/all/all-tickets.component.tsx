@@ -15,7 +15,7 @@ const testPayload = [{
     dateResolved: '12-12-1220',
     userFirstName: 'first',
     userLastName: 'last',
-    img: <img src={anim0} width="50.5%" alt='0' />, //!implement img storage
+    userImage: <img src={anim0} width="50.5%" alt='0' />, //!implement img storage
     message: 'message',
     ticketStatus: 1,
     adminId: 1
@@ -26,7 +26,7 @@ const testPayload = [{
     dateResolved: '12-56-09',
     userFirstName: 'Charlie',
     userLastName: 'Adminman',
-    img: <img src={anim1} width="50.5%" alt='0' />, //!implement img storage
+    userImage: <img src={anim1} width="50.5%" alt='0' />, //!implement img storage
     message: 'message',
     ticketStatus: 1,
     adminId: 1
@@ -37,7 +37,7 @@ const testPayload = [{
     dateResolved: '12-15-2021',
     userFirstName: 'Anna',
     userLastName: 'Hardy',
-    img: <img src={anim2} width="50.5%" alt='0' />, //!implement img storage
+    userImage: <img src={anim2} width="50.5%" alt='0' />, //!implement img storage
     message: 'Hello World',
     ticketStatus: 1,
     adminId: 1
@@ -48,7 +48,7 @@ const testPayload = [{
     dateResolved: '12-15-1985',
     userFirstName: 'Zorp',
     userLastName: 'Bardeny',
-    img: <img src={anim3} width="50.5%" alt='0' />, //!implement img storage
+    userImage: <img src={anim3} width="50.5%" alt='0' />, //!implement img storage
     message: 'This might be a message.',
     ticketStatus: 1,
     adminId: 1
@@ -98,7 +98,7 @@ export const AllTicketsComponent: React.FC = ()=> {
                             return (
                                 <tr key={u.ticketId}>
                                     <td className="imgTD">{<img src={u.userImage} width="50.5%" alt='0' />}</td>
-                                    {/* <td className="imgTD">{u.img}</td> */}
+                                    {/* <td className="imgTD">{u.userImage}</td> */}
                                     <tr className="top">
                                         <td className="first">ID Ticket:</td>
                                         <td className="second">| {u.ticketId}</td>

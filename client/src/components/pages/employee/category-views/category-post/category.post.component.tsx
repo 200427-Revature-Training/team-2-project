@@ -30,7 +30,7 @@ const testTicketsPost: Tickets[] = [{
 const testRepliesPost : Replies[] = [{
     rid: 1,
     ticketPostId: 1,
-    timestamp: 'a date',
+    date: 'a date',
     userFirstName: 'some guy',
     userLastName: 'anotherguy',
     userImage: 'animage',
@@ -109,10 +109,11 @@ export const CategoryPostComponent: React.FC<CategoryPostComponentProps> = (prop
                         </tr>
                     </thead>
                     <tbody>
-                        {testTicketsPost.map(a => {
+                        {allTickets.map(a => {
                             return (
                             <tr key={a.ticketId}>
-                                <td>{a.userImage}</td>
+                                {/* <td>{a.userImage}</td>*/}
+                                <td>{<img src={a.userImage} width="50.5%" alt='0' />}</td>
                                 <th scope="row">{a.ticketId}</th>
                                 <td>{a.title}</td>
                                 <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
@@ -161,7 +162,7 @@ export const CategoryPostComponent: React.FC<CategoryPostComponentProps> = (prop
                                 return(
                                     <Form.Group>
                                         <Form.Label>Comments:</Form.Label>
-                                        <p> {b.timestamp} </p>
+                                        <p> {b.date} </p>
                                         <p> {b.ticketPostId} </p>
                                         <p> {b.userFirstName} </p>
                                         <p> {b.userLastName} </p>

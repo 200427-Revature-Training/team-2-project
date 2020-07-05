@@ -44,7 +44,7 @@ export const getAllHistoryPosts = async () => {
 export const getRepliesById = async () => {
     const response = await internalAxios.get<Replies[]>('/employee/replies');
     return response.data.map(replies => {
-        replies.timestamp = new Date(replies.timestamp); // Replace string birthdate with Date object
+        // replies.timestamp = new Date(replies.timestamp); // Replace string birthdate with Date object
         console.log(response);
         return replies;
     });

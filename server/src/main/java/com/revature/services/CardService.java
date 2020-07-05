@@ -61,9 +61,9 @@ public class CardService {
 		
 		Card card = new Card();
 		System.out.println("new card instantiated");
-		card.setTicket_status(post.getTicketStatus());
+		card.setticketStatus(post.getTicketStatus());
 		card.setUser_id((userRepository.getUserByUsername(post.getUserName())).getUid());
-		card.setEntry_time(post.getDatePosted());
+		card.setdatePosted(post.getDatePosted());
 		card.setTitle(post.getTitle());
 		card.setMessage(post.getMessage());
 		System.out.println("post's values transfered to new card");
@@ -71,8 +71,8 @@ public class CardService {
 		//If a Date wasn't sent from the server, it will add the current Date here, otherwise it will use the existing Date
 		Date ts=new Date(System.currentTimeMillis());
 		System.out.println("Date generated");
-		if (card.getEntry_time() == null) {
-			card.setEntry_time(ts);
+		if (card.getdatePosted() == null) {
+			card.setdatePosted(ts);
 			System.out.println("Date generator invoked");
 		}
 		System.out.println("Date checked");
@@ -85,7 +85,7 @@ public class CardService {
 		//Once those two fields have been checked, the card is ready to send to the repository
 		cardRepository.save(card);
 		System.out.println("card repository told to save card");
-		return cardRepository.getCardById(card.getCard_id())
+		return cardRepository.getCardById(card.getticketId())
 				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
 	}
 
@@ -119,10 +119,10 @@ public class CardService {
 		//If so, it feeds the getter for the received data's card field into the setter for the database card's field.
 
 		if(ticket.getDateResolved() != null) {
-			fullcard.setDate_resolved(ticket.getDateResolved());			
+			fullcard.setdateResolved(ticket.getDateResolved());			
 		}
 		if (ticket.getTicketStatus() != 0) {
-			fullcard.setTicket_status(ticket.getTicketStatus());			
+			fullcard.setticketStatus(ticket.getTicketStatus());			
 		}
 		System.out.println("ticket values checked and fullcard edited if necessary");
 
@@ -146,7 +146,7 @@ public class CardService {
 				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
 
 		
-		return reactCardRepository.getReactCardsByUserName(user.getUsername());
+		return reactCardRepository.getReactCardsByUserName(user.getuserName());
 	}
 
 	
@@ -164,15 +164,15 @@ public class CardService {
 		
 		ReactTicketModel rcard = new ReactTicketModel();
 		System.out.println("react ticket instantiated");
-		rcard.setTicketId(card.getCard_id());
-		rcard.setTicketStatus(card.getTicket_status());
-		rcard.setUserFirstName(user.getFirstname());
-		rcard.setUserLastName(user.getLastname());
+		rcard.setTicketId(card.getticketId());
+		rcard.setTicketStatus(card.getticketStatus());
+		rcard.setUserFirstName(user.getfirstName());
+		rcard.setUserLastName(user.getlastName());
 		rcard.setUserImage(user.getImg());
-		rcard.setAdminFirstName(admin.getFirstname());
-		rcard.setAdminLastName(admin.getLastname());
-		rcard.setDatePosted(card.getEntry_time());
-		rcard.setDateResolved(card.getDate_resolved());
+		rcard.setAdminFirstName(admin.getfirstName());
+		rcard.setAdminLastName(admin.getlastName());
+		rcard.setDatePosted(card.getdatePosted());
+		rcard.setDateResolved(card.getdateResolved());
 		rcard.setTitle(card.getTitle());
 		rcard.setMessage(card.getMessage());
 		System.out.println("reassignments complete");

@@ -58,9 +58,9 @@ public class ReplyService {
 		
 		rreply.setRid(reply.getRid());
 		rreply.setTicketPostId(reply.getCard_id());
-		rreply.setTimestamp(reply.getEntry_time());
-		rreply.setUserFirstName(user.getFirstname());
-		rreply.setUserLastName(user.getLastname());
+		rreply.setTimestamp(reply.gettimestamp());
+		rreply.setUserFirstName(user.getfirstName());
+		rreply.setUserLastName(user.getlastName());
 		rreply.setUserImage(user.getImg());
 		rreply.setReplies(reply.getReplies());
 		

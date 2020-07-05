@@ -252,8 +252,8 @@ export const RecentTicketsComponent: React.FC = ()=> {
                                     return(
                                         <Form.Group>
                                             <Form.Label>Comments:</Form.Label>
-                                            <p> {b.timestamp} </p>
-                                            <p> {b.ticketPostId} </p>
+                                            <p> {b.date} </p>
+                                            {/* <p> {b.ticketPostId} </p> */}
                                             <p> {b.userFirstName} </p>
                                             <p> {b.userLastName} </p>
                                             <p> {b.replies} </p>

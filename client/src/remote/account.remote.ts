@@ -4,7 +4,7 @@ import { Authorize } from '../../src/models/login/Authorize';
 
 // Login:request token & user payload
 export const createUser = async (login: Authorize) => {
-    const response = await internalAxios.post('/user/login', login); //Comeback to this
+    const response = await internalAxios.post('/user', login); //Comeback to this
     return response; //console.log(response);
 }
 

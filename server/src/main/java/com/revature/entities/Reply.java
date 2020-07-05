@@ -1,8 +1,8 @@
 package com.revature.entities;
 
-import java.sql.Timestamp;
-import java.util.Date;
+import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,24 +17,33 @@ import javax.persistence.Table;
 public class Reply {
 	@Id//id is set to be the primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//auto-generated
+	@Column(name="rid")
 	private int rid;
-	private int tpid;
+	
+	@Column(name="tpid")
+	private int ticketPostId;
+	
+	@Column(name="user_id")
 	private int user_id;
+	
+	@Column(name="replies")
 	private String replies;
-	private Timestamp entry_time;
+	
+	@Column(name="entry_time")
+	private Date timestamp;
 	
 	
 	/* Primary Constructor */
-	public Reply(int rid, int tpid, int user_id,String replies) {
+	public Reply(int rid, int ticketPostId, int user_id,String replies) {
 		super();
-		this.tpid = tpid;
+		this.ticketPostId = ticketPostId;
 		this.rid=rid;
 		this.user_id=user_id;
 		this.replies=replies;
-		//not sure why this constructor this method for the timestamp when the other classes don't, but I'll leave it unless it causes problems.
-		Timestamp ts=new Timestamp(System.currentTimeMillis());
+		//not sure why this constructor this method for the Date when the other classes don't, but I'll leave it unless it causes problems.
+		Date ts=new Date(System.currentTimeMillis());
 		Date date=ts;
-        this.entry_time=ts;//Example:2017-11-02 02:36:57.204 
+        this.timestamp=ts;//Example:2017-11-02 02:36:57.204 
         }
 
 	/* Default Constructor */
@@ -53,7 +62,7 @@ public class Reply {
 	
 	
 	public int getCard_id() {
-		return tpid;
+		return ticketPostId;
 	}
 	
 	
@@ -62,8 +71,8 @@ public class Reply {
 	}
 	
 	
-	public Timestamp getEntry_time() {
-		return entry_time;
+	public Date gettimestamp() {
+		return timestamp;
 	}
 	
 	
@@ -79,7 +88,7 @@ public class Reply {
 	/* ToString Method */
 	@Override
 	public String toString() {
-		return "Reply [rid=" + rid + ", tpid=" + tpid + ", user_id=" + user_id + ", replies=" + replies + "]";
+		return "Reply [rid=" + rid + ", ticketPostId=" + ticketPostId + ", user_id=" + user_id + ", replies=" + replies + "]";
 	}
 	
 }

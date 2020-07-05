@@ -18,11 +18,18 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//auto-generated
 	private int uid;
 	private int user_type;
-	@Column(unique = true) //sets unique constraint on the column "username"
-	private String username;
-	private String userpass;
-	private String firstname;
-	private String lastname;
+	
+	@Column(name="username", unique = true) //sets unique constraint on the column "userName"
+	private String userName;
+	
+	@Column(name="userpass")
+	private String userPassword;
+	
+	@Column(name="firstname")
+	private String firstName;
+	
+	@Column(name="lastname")
+	private String lastName;
 	
 	@Column(unique = true) //sets unique constraint on the column "email"
 	private String email;
@@ -34,16 +41,16 @@ public class User {
 	
 	
 	/* Primary Constructor */
-	public User(int uid, int user_type, String username,String firstname,String lastname, String userpass, String email) {
+	public User(int uid, int user_type, String userName,String firstName,String lastName, String userPassword, String email) {
 		super();
 		this.uid=uid;
 		this.user_type = user_type;
-		this.username = username;
-		this.firstname= firstname;
-		this.lastname=lastname;
-		this.userpass = userpass;
+		this.userName = userName;
+		this.firstName= firstName;
+		this.lastName=lastName;
+		this.userPassword = userPassword;
 		this.salt=BCrypt.gensalt();
-		this.hash=BCrypt.hashpw(userpass, salt);
+		this.hash=BCrypt.hashpw(userPassword, salt);
 		this.email = email;
 	}
 	
@@ -100,35 +107,35 @@ public class User {
 	}
 
 	
-	public String getUsername() {
-		return username;
+	public String getuserName() {
+		return userName;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setuserName(String userName) {
+		this.userName = userName;
 	}
 	
 	
-	public String getFirstname() {
-		return firstname;
+	public String getfirstName() {
+		return firstName;
 	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setfirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	
-	public String getLastname() {
-		return lastname;
+	public String getlastName() {
+		return lastName;
 	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setlastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	
-	public String getUserpass() {
-		return userpass;
+	public String getuserPassword() {
+		return userPassword;
 	}
-	public void setUserpass(String userpass) {
-		this.userpass = userpass;
+	public void setuserPassword(String userPassword) {
+		this.userPassword = userPassword;
 	}
 	
 	
@@ -167,8 +174,8 @@ public class User {
 	/* ToString Method */
 	@Override
 	public String toString() {//omitted the user_img string
-		return "User [uid=" + uid + ", user_type=" + user_type + ", username=" + username + ", userpass=" + userpass
-				+ ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
+		return "User [uid=" + uid + ", user_type=" + user_type + ", userName=" + userName + ", userPassword=" + userPassword
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", rating_sigma=" + rating_sigma + ", times_rated=" + times_rated + "]";
 	}
 

@@ -2,7 +2,7 @@
 export interface Replies {
     rid: number;
     ticketPostId: number;
-    timestamp: Date | string;
+    date: Date | string;
     userFirstName: string;
     userLastName: string;
     userImage: string;

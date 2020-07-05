@@ -7,7 +7,7 @@ public class ReactUserModel {
 	private String lastName;
 	private String userRole;
 	private String userImage;
-	private AuthenticationResponse jwt;
+	private String jwt;
 	
 	
 	
@@ -41,10 +41,10 @@ public class ReactUserModel {
 	public void setUserImage(String userImage) {
 		this.userImage = userImage;
 	}
-	public AuthenticationResponse getJwt() {
+	public String getJwt() {
 		return jwt;
 	}
-	public void setJwt(AuthenticationResponse jwt) {
+	public void setJwt(String jwt) {
 		this.jwt = jwt;
 	}
 	@Override
@@ -100,7 +100,7 @@ public class ReactUserModel {
 				+ ", userRole=" + userRole + ", userImage=" + userImage + ", jwt=" + jwt + "]";
 	}
 	public ReactUserModel(String userName, String firstName, String lastName, String userRole, String userImage,
-			AuthenticationResponse jwt) {
+			String jwt) {
 		super();
 		this.userName = userName;
 		this.firstName = firstName;

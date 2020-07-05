@@ -82,7 +82,7 @@ public class UserRepository {
 			String salt=auth.getSalt();
 			String hash=BCrypt.hashpw(userpass, salt);
 			String passCheck= hash+salt;
-			String passVer= BCrypt.hashpw(auth.getUserpass(),salt)+salt;
+			String passVer= BCrypt.hashpw(auth.getuserPassword(),salt)+salt;
 			System.out.println("login request complete. resolving");
 			if(passVer.equals(passCheck)) { //compares the hashpw on the db with the one provided.
 				return auth; //returns User object from db if they're the same.

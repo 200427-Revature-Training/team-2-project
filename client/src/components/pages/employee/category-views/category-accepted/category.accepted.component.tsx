@@ -29,7 +29,7 @@ const testTicketsAccepted: Tickets[] = [{
 const testRepliesAccepted : Replies[] = [{
     rid: 3,
     ticketPostId: 3,
-    timestamp: 'a date',
+    date: 'a date',
     userFirstName: 'Bobby',
     userLastName: 'Hill',
     userImage: 'thatsmypursidontknowyou.png',
@@ -111,7 +111,8 @@ export const CategoryAcceptedComponent: React.FC<CategoryAcceptedComponentProps>
                         {allTickets.map(a => {
                             return (
                                 <tr key={a.ticketId}>
-                                <td>{a.userImage}</td>
+                                {/* <td>{a.userImage}</td> */}
+                                <td>{<img src={a.userImage} width="50.5%" alt='0' />}</td>
                                 <th scope="row">{a.ticketId}</th>
                                 <td>{a.title}</td>
                                 <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
@@ -160,7 +161,7 @@ export const CategoryAcceptedComponent: React.FC<CategoryAcceptedComponentProps>
                                     return(
                                         <Form.Group>
                                             <Form.Label>Comments:</Form.Label>
-                                            <p> {b.timestamp} </p>
+                                            <p> {b.date} </p>
                                             <p> {b.ticketPostId} </p>
                                             <p> {b.userFirstName} </p>
                                             <p> {b.userLastName} </p>

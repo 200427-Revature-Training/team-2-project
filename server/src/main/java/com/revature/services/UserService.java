@@ -30,6 +30,7 @@ public class UserService {
 		user.setHash(BCrypt.hashpw(user.getHash(), user.getSalt()));
 		System.out.println("hash and salt set");
 //		user.setUserpass(null); //enable this line to make server throw out the password before saving the user to the database.
+		user.setUser_type(0);
 		User dbuser = userRepository.save(user);
 		System.out.println("user saved in repository");
 		System.out.println(dbuser);
@@ -64,14 +65,14 @@ public class UserService {
 	//This service method retrieves the User for the given username to compare the provided login details to the ones in the database
 	public User login(User user) {
 		System.out.println("user service attempting to log user in");
-		User fulluser = userRepository.getUserByUsername(user.getUsername()); //calls a repository method to retrieve User object for given username, because we need the id for login.
+		User fulluser = userRepository.getUserByUsername(user.getuserName()); //calls a repository method to retrieve User object for given username, because we need the id for login.
 		System.out.println("fulluser received by service");
 		if (fulluser==null) {
 			System.out.println("received fulluser is null");
 			throw new HttpClientErrorException(HttpStatus.NOT_FOUND); //throws 404 status if no user with given username is in database.
 		} else {
 			System.out.println(fulluser);
-			User loginuser = userRepository.login(fulluser.getUid(), user.getUserpass()); //if User object is found, sends retrieved id and provided pass to login method.
+			User loginuser = userRepository.login(fulluser.getUid(), user.getuserPassword()); //if User object is found, sends retrieved id and provided pass to login method.
 			System.out.println("user repository login complete");
 			User dbuser = userRepository.getUserById(loginuser.getUid())
 					.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
@@ -90,14 +91,14 @@ public class UserService {
 		System.out.println(dbuser);
 		ReactUserModel ruser = new ReactUserModel();
 		ruser.setUserImage(dbuser.getImg());
-		ruser.setUserName(dbuser.getUsername());
-		ruser.setFirstName(dbuser.getFirstname());
-		ruser.setLastName(dbuser.getLastname());
+		ruser.setUserName(dbuser.getuserName());
+		ruser.setFirstName(dbuser.getfirstName());
+		ruser.setLastName(dbuser.getlastName());
 		
 		if (dbuser.getUser_type() == 1) {
 			ruser.setUserRole("Admin");
 		}
-		if (dbuser.getUser_type() == 2) {
+		if (dbuser.getUser_type() == 0) {
 			ruser.setUserRole("Employee");
 		}
 		
