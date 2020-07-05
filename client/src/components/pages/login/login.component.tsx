@@ -84,7 +84,7 @@ export const LoginComponent:React.FC = ()=>{
         localStorage.setItem('userImage', userImage);
         localStorage.setItem('accessToken', accessToken);
 
-        if (localStorage.getItem('userRole') === 'EmployeeUser'){
+        if (localStorage.getItem('userRole') === 'Employee'){
             history.push('/employee');
         }else{
             history.push('/administrator');
