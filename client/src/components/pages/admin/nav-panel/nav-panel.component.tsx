@@ -1,5 +1,7 @@
 import React from 'react';
 import './nav-panel.component.css';
+import { faHome, faChartLine, faCalendar, faBusinessTime, faCog } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //NavPanel Here
 export const NavPanelComponent: React.FC = () => {
@@ -12,6 +14,28 @@ export const NavPanelComponent: React.FC = () => {
                     New Ticket
                 </div>
             </a>
+            <div className='button-dashboard'>
+                <FontAwesomeIcon icon={faHome} />
+                Dashboard
+            </div>
+            <div>
+                <p className="links">
+                <FontAwesomeIcon icon={faCalendar} />
+                    Calendar
+                </p>
+                <p className="links">
+                    <FontAwesomeIcon icon={faBusinessTime} />
+                    Timeline
+                </p>
+                <p className="links">
+                    <FontAwesomeIcon icon={faChartLine} />
+                    Activity Log
+                </p>
+                <p className="links">
+                    <FontAwesomeIcon icon={faCog} />
+                    Settings
+                </p>  
+            </div>
         </div>
                 
         
