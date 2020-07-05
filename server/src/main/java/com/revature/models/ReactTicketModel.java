@@ -1,6 +1,6 @@
 package com.revature.models;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class ReactTicketModel {
 	private int ticketId;
@@ -11,8 +11,8 @@ public class ReactTicketModel {
 	private String userImage;
 	private String adminFirstName;
 	private String adminLastName;
-	private Timestamp datePosted;
-	private Timestamp dateResolved;
+	private Date datePosted;
+	private Date dateResolved;
 	private String title;
 	private String message;
 	public int getTicketId() {
@@ -63,16 +63,16 @@ public class ReactTicketModel {
 	public void setAdminLastName(String adminLastName) {
 		this.adminLastName = adminLastName;
 	}
-	public Timestamp getDatePosted() {
+	public Date getDatePosted() {
 		return datePosted;
 	}
-	public void setDatePosted(Timestamp datePosted) {
+	public void setDatePosted(Date datePosted) {
 		this.datePosted = datePosted;
 	}
-	public Timestamp getDateResolved() {
+	public Date getDateResolved() {
 		return dateResolved;
 	}
-	public void setDateResolved(Timestamp dateResolved) {
+	public void setDateResolved(Date dateResolved) {
 		this.dateResolved = dateResolved;
 	}
 	public String getTitle() {

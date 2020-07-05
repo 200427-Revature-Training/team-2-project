@@ -1,6 +1,6 @@
 package com.revature.entities;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,10 +37,10 @@ public class ReactCard {
 	private String adminLastName;
 	
 	@Column(name="date_posted")
-	private Timestamp datePosted;
+	private Date datePosted;
 	
 	@Column(name="date_resolved")
-	private Timestamp dateResolved;
+	private Date dateResolved;
 	
 	@Column(name="title")
 	private String title;
@@ -50,7 +50,7 @@ public class ReactCard {
 	
 	
 	public ReactCard(int ticketId, int ticketStatus, String userFirstName, String userLastName, String userImage,
-			String adminFirstName, String adminLastName, Timestamp datePosted, Timestamp dateResolved, String title,
+			String adminFirstName, String adminLastName, Date datePosted, Date dateResolved, String title,
 			String message) {
 		super();
 		this.ticketId = ticketId;
@@ -113,16 +113,16 @@ public class ReactCard {
 	public void setAdminLastName(String adminLastName) {
 		this.adminLastName = adminLastName;
 	}
-	public Timestamp getDatePosted() {
+	public Date getDatePosted() {
 		return datePosted;
 	}
-	public void setDatePosted(Timestamp datePosted) {
+	public void setDatePosted(Date datePosted) {
 		this.datePosted = datePosted;
 	}
-	public Timestamp getDateResolved() {
+	public Date getDateResolved() {
 		return dateResolved;
 	}
-	public void setDateResolved(Timestamp dateResolved) {
+	public void setDateResolved(Date dateResolved) {
 		this.dateResolved = dateResolved;
 	}
 	public String getTitle() {

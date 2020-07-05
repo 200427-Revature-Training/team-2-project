@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import * as usersRemote from '../../../remote/test.remote';
-import { User } from '../../../models/test-models/User';
+import { createToken } from '../../../remote/test.remote';
+import { Users } from '../../../models/Users';
 import './login.component.css';
 import { useHistory } from 'react-router';
 import Form from 'react-bootstrap/Form';
@@ -17,7 +17,7 @@ export const LoginComponent:React.FC = ()=>{
 
     const history = useHistory(); // Access history for Login redirect
 
-    const [reimbursements, setReimbursements] = useState<User[]>([]); /**SET PAGE DATA HERE */
+    const [reimbursements, setReimbursements] = useState<Users[]>([]); /**SET PAGE DATA HERE */
 
     const [inputUsertName, setInputUsertName] = useState('');
     const [inputPassword, setinputPassword] = useState('');
@@ -49,7 +49,7 @@ export const LoginComponent:React.FC = ()=>{
         history.push('/employee');
 
       console.log('Sending authentication request: ', payload);
-      const response = await usersRemote.createToken(payload); //SEnd POST
+      const response = await createToken(payload); //SEnd POST
         // setInputUsertName(''); //clear fields
         // setinputPassword('');
         const userName = response.data.userName;
@@ -64,10 +64,10 @@ export const LoginComponent:React.FC = ()=>{
 
     const loadCredentails = () => {
 
-       usersRemote.getAllUserTable().then(user => { 
-        setReimbursements(user);
-        console.log('Recieved authentication request: ', user);
-        });
+    //    usersRemote.getAllUserTable().then(user => { 
+    //     setReimbursements(user);
+    //     console.log('Recieved authentication request: ', user);
+    //     });
     };
 
     const registerSubmit = () => {

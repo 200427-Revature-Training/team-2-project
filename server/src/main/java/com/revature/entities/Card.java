@@ -1,6 +1,6 @@
 package com.revature.entities;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,8 +19,8 @@ public class Card {
 	private int ticket_status;
 	private String title;
 	private String message;
-	private Timestamp entry_time;
-	private Timestamp date_resolved; 
+	private Date entry_time;
+	private Date date_resolved; 
 	private int user_id;
 	private int admin_id;
 	
@@ -34,7 +34,7 @@ public class Card {
 		this.title = title;
 		this.message = message;
 		this.user_id=user_id;
-        this.entry_time=new Timestamp(System.currentTimeMillis()); //generates a current timestamp to use as new card's entry_time
+        this.entry_time=new Date(System.currentTimeMillis()); //generates a current Date to use as new card's entry_time
 		
 	}
 	
@@ -48,7 +48,7 @@ public class Card {
 		this.message = message;
 		this.user_id=user_id;
 		this.admin_id=admin_id;
-		this.date_resolved=new Timestamp(System.currentTimeMillis());	
+		this.date_resolved=new Date(System.currentTimeMillis());	
 	}
 
 	
@@ -61,7 +61,7 @@ public class Card {
 		this.message = message;
 		this.user_id=user_id;
 		this.admin_id=1; //sets admin_id to one because db won't accept zero. 
-		this.entry_time=new Timestamp(System.currentTimeMillis());
+		this.entry_time=new Date(System.currentTimeMillis());
 	}
 	
 	
@@ -106,18 +106,18 @@ public class Card {
 	}
 	
 	
-	public Timestamp getEntry_time() {
+	public Date getEntry_time() {
 		return entry_time;
 	}
-	public void setEntry_time(Timestamp entry_time) {
+	public void setEntry_time(Date entry_time) {
 		this.entry_time = entry_time;
 	}
 	
 	
-	public Timestamp getDate_resolved() {
+	public Date getDate_resolved() {
 		return date_resolved;
 	}
-	public void setDate_resolved(Timestamp date_resolved) {
+	public void setDate_resolved(Date date_resolved) {
 		this.date_resolved = date_resolved;
 	}
 	

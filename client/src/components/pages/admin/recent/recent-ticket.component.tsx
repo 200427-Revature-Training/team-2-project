@@ -195,7 +195,7 @@ export const RecentTicketsComponent: React.FC = ()=> {
                 })} */}
 
 
-                {testPayload.map(a => {
+                {allTickets.map(a => {
                     return (
                         <div className='recentContainer'>
                             <div className='allRecent'>
