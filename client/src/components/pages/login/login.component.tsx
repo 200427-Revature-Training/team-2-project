@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import * as accountRemote from '../../../remote/account.remote';
 import { User } from '../../../models/test-models/User';
 import './login.component.css';
@@ -17,8 +18,10 @@ export const LoginComponent:React.FC = ()=>{
 
     const history = useHistory(); // Access history for Login redirect
 
+
     const [inputLoginUsertName, setLoginUsertName] = useState('');
     const [inputLoginPassword, setLoginPassword] = useState('');
+
     
     const [inputRegisterFirstName, setRegisterFirstName] = useState ('');
     const [inputRegisterLastName, setRegisterLastName] = useState ('');
@@ -47,6 +50,7 @@ export const LoginComponent:React.FC = ()=>{
             userPassword: inputRegisterPassword
         };
 
+
         const response = await accountRemote.createUser(payload); //SEnd POST
         setLoginUsertName(''); //clear fields
         setLoginPassword('');
@@ -66,6 +70,7 @@ export const LoginComponent:React.FC = ()=>{
         history.push('/employee');
         setLoginUsertName(''); //clear fields
         setLoginPassword('');
+
         const userName = response.data.userName;
         const firstName = response.data.firstName;
         const lastName = response.data.lastName;
@@ -85,11 +90,14 @@ export const LoginComponent:React.FC = ()=>{
 
     // const loadCredentails = () => {
 
+
     //    usersRemote.getAllUserTable().then(user => { 
     //     setReimbursements(user);
     //     console.log('Recieved authentication request: ', user);
     //     });
+
     // };
+
 
     const registerSubmit = () => {
         if (inputRegisterFirstName && inputRegisterLastName && inputRegisterEmail && inputRegisterUsername && inputRegisterPassword) {

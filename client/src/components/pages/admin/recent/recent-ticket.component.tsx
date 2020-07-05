@@ -195,7 +195,7 @@ export const RecentTicketsComponent: React.FC = ()=> {
                 })} */}
 
 
-                {testPayload.map(a => {
+                {allTickets.map(a => {
                     return (
                         <div className='recentContainer'>
                             <div className='allRecent'>
@@ -208,7 +208,7 @@ export const RecentTicketsComponent: React.FC = ()=> {
                                     <div className='recentBottom'>
                                         <p>Pending</p>
 
-                                        <button className="btn btn-primary"
+                                        <button id="open" className="btn btn-primary"
                                             onClick={() => loadModal(a)}>
                                             Accept
                                         </button>
@@ -263,18 +263,18 @@ export const RecentTicketsComponent: React.FC = ()=> {
                             {/* get ticket id for update request */}
                             <Form.Group> 
                                 <Form.Label> Select this ticket:</Form.Label>
-                                <input value={inputTicketID} onChange={(e) => setInputTicketID(+e.target.value)} type="radio"/>
+                                <input id="select-this-ticket" value={inputTicketID} onChange={(e) => setInputTicketID(+e.target.value)} type="radio"/>
                             </Form.Group>
                             {/* change ticket status for update request */}
                             <Form.Group>
                                 <Form.Label> Accept:</Form.Label>
-                                <input value="2" onChange={(e) => setInputStatusID(+e.target.value) }  type="radio"  name="status"/>
+                                <input id="accept" value="2" onChange={(e) => setInputStatusID(+e.target.value) }  type="radio"  name="status"/>
                             </Form.Group>
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={() => setModalVisible(false)}>Close</Button>
-                        <Button onClick={() => updateTicket()}>Update</Button>                            
+                        <Button id="close" onClick={() => setModalVisible(false)}>Close</Button>
+                        <Button id="update" onClick={() => updateTicket()}>Update</Button>                            
                     </Modal.Footer>
                 </Modal>
             </section>
