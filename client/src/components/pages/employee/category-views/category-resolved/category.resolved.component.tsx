@@ -120,13 +120,18 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
                             <div className='allAccepted'>
                                 <div className='allAcceptedCard'>
                                     <div className='allTop'>
-                                        {/* <div className='resize'>{a.userImage}</div>*/}
-                                        <div>{<img src={a.userImage} width="50.5%" alt='0' />}</div>
-                                        <div className='topOfCard'>Posted By: {a.userFirstName} {a.userLastName}</div>
-                                        <div className='topOfCard'>{a.datePosted}</div>
-                                    </div>
-                                    <div className='middleOfCard'>{a.title}</div>
-                                    <div className='allBottom'>
+                                        <div className='resize'>{<img src={a.userImage} width="20%" alt='0' />}</div>
+                                            {/* <div className='resize'>{a.userImage}</div> */}
+                                            <div className='topOfCard'>Posted By: {a.userFirstName} {a.userLastName}</div>
+                                            <div className='topOfCard'>{a.datePosted}</div>
+                                        </div>
+                                        <div className='middleOfCard'>{a.title}</div>
+                                        <div className='middleOfCardText'>{a.message}</div>
+                                        <div className='allBottom'>
+                                        {/* <button className="btn btn-primary resolveSpace"
+                                            onClick={() => loadModal(a)}>
+                                            Resolve
+                                        </button> */}
                                         <button className="btn btn-success"
                                             onClick={() => loadModal(a)}>
                                             View Ticket/Post
