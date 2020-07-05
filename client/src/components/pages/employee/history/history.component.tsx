@@ -78,33 +78,33 @@ export const HistoryComponent: React.FC = () => {
                     <tbody>
                         {historyPost.map(a => {
                             return (
-                            <div>    
+                              <div className="padBottom">
                                 <tr key={a.ticketId}>
-                                    <th scope="row">{a.ticketId}</th>
-                                    <td className='padBottom'>Title: {a.title}</td>
+                                  <th scope="row">{a.ticketId}</th>
+                                  <td>Title: {a.title}</td>
                                 </tr>
                                 <tr>
-                                    <td>Date Posted:</td>
-                                    <td>Date Resolved:</td>
+                                  <td>Date Posted:</td>
+                                  <td>Date Resolved:</td>
                                 </tr>
                                 <tr>
-                                    {/* <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
+                                  {/* <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
                                     <td>{typeof a.dateResolved == 'string' ? a.dateResolved : a.dateResolved.toDateString()}</td> */}
 
-                                    <td>{a.datePosted}</td>
-                                    <td>{a.dateResolved}</td>
-                                    
-                                    
+                                  <td>{a.datePosted}</td>
+                                  <td>{a.dateResolved}</td>
                                 </tr>
-                                <tr> 
-                                    <td>{a.ticketStatus}</td>
-                                    <button className="btn btn-success"
-                                        onClick={() => loadModal(a)}>
-                                        View Past Ticket/Post
-                                    </button>
+                                <tr>
+                                  <td>{a.ticketStatus}</td>
+                                  <button
+                                    className="btn btn-success"
+                                    onClick={() => loadModal(a)}
+                                  >
+                                    View Past Ticket/Post
+                                  </button>
                                 </tr>
-                            </div>
-                            )
+                              </div>
+                            );
                         })}
                     </tbody>
                 </table>

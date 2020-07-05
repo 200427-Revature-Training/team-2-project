@@ -56,50 +56,63 @@ export const NewPostComponent: React.FC = () => {
         });
     }
 
-    return(
-        <div>
-            {/* This section contains the new post button that will appear on the right side of the
+    return (
+      <div>
+        {/* This section contains the new post button that will appear on the right side of the
             page like seen on the wireframe. */}
-            <section className='rightBar'>
-                <h2>Your Posts / Tickets</h2>
-                <Button className='floatRight' onClick={() => loadModal(true)}>
-                    New Post
-                </Button>
-            </section>
-            <section>
-                {/* This is the new post modal that'll appear when the button is clicked. It's the box
+        <section className="rightBar">
+          <h2>Your Posts / Tickets</h2>
+          <Button className="floatRight" onClick={() => loadModal(true)}>
+            New Post
+          </Button>
+        </section>
+        <section>
+          {/* This is the new post modal that'll appear when the button is clicked. It's the box
                 on the far right of the employee dashboard wireframe separate from the rest of the page */}
-                <Modal show={modalVisible} onHide={() => setModalVisible(false)}>
-                    <Modal.Header>
-                        <Modal.Title>New Post/Ticket</Modal.Title>  
-                    </Modal.Header>
-                    <Form>
-                        <Form.Group>
-                            <Form.Label>Title</Form.Label>
-                            <Form.Control id="title" value={inputTitle} type="text" 
-                        onChange={(e) => setInputTitle(e.target.value)} />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Message</Form.Label>
-                            <Form.Control id="message" value={inputMessage} type="text" 
-                            onChange={(e) => setInputMessage(e.target.value)} />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Ticket?</Form.Label>
-                            <Form.Control id="ticket-status" value="1" onChange={(e) => setTicketStatus(+e.target.value)} 
-                            type="checkbox"  name="status"/>
-                        </Form.Group>
-                    </Form>
-                    <Modal.Footer>
-                        <Button onClick={() => setModalVisible(false)}>Close</Button>
-                        {/* Note that the submit button won't do anything at this point unless it's hooked up
+          <Modal show={modalVisible} onHide={() => setModalVisible(false)}>
+            <Modal.Header>
+              <Modal.Title>New Post/Ticket</Modal.Title>
+            </Modal.Header>
+            <Form className='modalMargin'>
+              <Form.Group>
+                <Form.Label>Title</Form.Label>
+                <Form.Control
+                  id="title"
+                  value={inputTitle}
+                  type="text"
+                  onChange={(e) => setInputTitle(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Message</Form.Label>
+                <Form.Control
+                  id="message"
+                  value={inputMessage}
+                  type="text"
+                  onChange={(e) => setInputMessage(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Ticket?</Form.Label>
+                <Form.Control
+                  id="ticket-status"
+                  value="1"
+                  onChange={(e) => setTicketStatus(+e.target.value)}
+                  type="checkbox"
+                  name="status"
+                />
+              </Form.Group>
+            </Form>
+            <Modal.Footer>
+              <Button onClick={() => setModalVisible(false)}>Close</Button>
+              {/* Note that the submit button won't do anything at this point unless it's hooked up
                         to the dummy server. If it is, nothing new will appear on the page but the new post
                         will populate the card table in the database. You can use the close button above if
                         you need to exit the modal for now. */}
-                        <Button onClick={() => createPost()}>Submit</Button>                            
-                    </Modal.Footer>
-                </Modal>
-            </section>
-        </div>
-    )
+              <Button onClick={() => createPost()}>Submit</Button>
+            </Modal.Footer>
+          </Modal>
+        </section>
+      </div>
+    );
 }

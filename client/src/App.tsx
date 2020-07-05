@@ -19,36 +19,42 @@ function App() {
 
   return (
     <BrowserRouter>
+<<<<<<< HEAD
     <div className="App">
     <main>
         {/*<p>User Role: { isEmployee ? 'Employee' : 'OTHER' }</p>  Test for auth token Validation */} 
+=======
+      <div className="App">
 
-        <Suspense fallback={<div>Loading...</div>}> {/* lazy loading loadbar  */}
+          {/*<p>User Role: { isEmployee ? 'Employee' : 'OTHER' }</p>  Test for auth token Validation */} 
+          <main>
+            <Suspense fallback={<div>Loading...</div>}> {/* lazy loading loadbar  */}
+>>>>>>> 8f3cabef30066034e9adde7e22599de91c569fa5
 
-          <Route exact path="/">
-            <LoginComponent />
-          </Route>
-          <Switch>
-              <div> 
-            {/* <Route path="/template"> */}
-            {/* { isEmployee ? (<TestComponent />) : (<Redirect to="/"/>)} Lazy load  */}
-            {/* </Route> */}
-
-            <Route path="/administrator">
-              <AdminNavbarComponent />
-              { isAdmin ? (<AdminComponent />) : (<Redirect to="/"/>)}
+            <Route exact path="/">
+              <LoginComponent />
             </Route>
+            <Switch>
+                <div> 
+              {/* <Route path="/template"> */}
+              {/* { isEmployee ? (<TestComponent />) : (<Redirect to="/"/>)} Lazy load  */}
+              {/* </Route> */}
 
-            <Route path="/employee">
-              <EmployeeNavbarComponent />
-              { isEmployee ? (<EmployeeComponent />) : (<Redirect to="/"/>)}
-              
-            </Route>
-            </div>
-          </Switch>
-          </Suspense>
-        </main>
-    </div>
+              <Route path="/administrator">
+                <AdminNavbarComponent />
+                { isAdmin ? (<AdminComponent />) : (<Redirect to="/"/>)}
+              </Route>
+
+              <Route path="/employee">
+                <EmployeeNavbarComponent />
+                { isEmployee ? (<EmployeeComponent />) : (<Redirect to="/"/>)}
+                
+              </Route>
+              </div>
+            </Switch>
+            </Suspense>
+          </main>
+      </div>
     </BrowserRouter>
   );
 }
