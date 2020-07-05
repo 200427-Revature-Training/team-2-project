@@ -27,7 +27,7 @@ export const NewPostComponent: React.FC = () => {
         // let SetDate = new Date(); /**SET DATE HERE */
         const payload = { 
             // ticketStatus: setTicketStatus,
-            ticketStatus: 0,
+            ticketStatus: inputTicketStatus,
             userName: "admin",
             datePosted: inputDatePosted,
             title: inputTitle,
@@ -86,7 +86,7 @@ export const NewPostComponent: React.FC = () => {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Ticket?</Form.Label>
-                            <Form.Control id="ticket-status" value={inputTicketStatus} onChange={(e) => setTicketStatus(+e.target.value)} 
+                            <Form.Control id="ticket-status" value="1" onChange={(e) => setTicketStatus(+e.target.value)} 
                             type="checkbox"  name="status"/>
                         </Form.Group>
                     </Form>

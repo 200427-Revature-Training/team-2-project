@@ -84,6 +84,10 @@ public class CardService {
 			card.setAdmin_id(1);
 			System.out.println("nonzero admin ID invoked");
 		}
+		
+		if (card.getUser_id() == 0) {
+			card.setUser_id(1);
+		}
 		System.out.println("admin id checked");
 		//Once those two fields have been checked, the card is ready to send to the repository
 		cardRepository.save(card);
