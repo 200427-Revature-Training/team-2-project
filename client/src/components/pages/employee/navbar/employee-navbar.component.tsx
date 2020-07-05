@@ -4,6 +4,8 @@ import './employee-navbar.component.css';
 import { Tickets } from '../../../../models/Tickets';
 import * as adminRemote from '../../../../remote/admin.remote';
 import anim0 from '../../../../temppics/aa0.png';
+import { Users } from '../../../../models/Users';
+import * as accountRemote from '../../../../remote/account.remote';
 
 
 const testPayload = [{
@@ -26,10 +28,16 @@ const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
     };
 
     const [adminInfo, setAdminInfo] = useState<Tickets[]>([]);
+    /**Test */
+    // const [getbyId, setGetbyId] = useState<Users>();
+    // const [holdId, setHoldId] = useState<Users>();
+    
 
     useEffect(() => {
         loadTables(); //Refresh page   
     }, [])
+
+    
 
     /**Load ticket-card data */
     const loadTables = () => {
@@ -37,6 +45,15 @@ const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
             setAdminInfo(tickets);
         });
     };
+
+
+    /**Test */
+    // const GetByIdTables = async () => {
+    //     const id = localStorage.getItem('userId');
+    //     const response = await accountRemote.getbyId(id);
+    //         setGetbyId(response);
+    //     });
+    // }
 
     
     return (
@@ -66,6 +83,7 @@ const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
                                 <td className="imgTD">{u.img}</td>
                                 <tr>
                                     <td className='top'>{u.userFirstName}&nbsp;{u.userLastName}</td>
+                                    {/* <td className='top'>{localStorage.getItem('firstName')}&nbsp;{localStorage.getItem('firstName')}</td> */}
                                 </tr>
                                 <tr>
                                     <td className='bottom'>Employee</td>
