@@ -59,7 +59,7 @@ export const HistoryComponent: React.FC = () => {
     return (
         /* This section will be on the right side of the page right under the new post button
             as seen on the main section of the employee dashboard wireframe.*/
-        <div>
+        <div className='rightUnderBar'>
             <section>
                 <table>
                     <thead>

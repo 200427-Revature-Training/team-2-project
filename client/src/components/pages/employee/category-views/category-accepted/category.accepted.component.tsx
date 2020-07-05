@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './category.accepted.component.css';
+import '../category-views.component.css';
 import { Tickets } from '../../../../../models/Tickets';
 import { Replies } from '../../../../../models/Replies';
 import { Form, Modal, Button, ButtonGroup } from 'react-bootstrap';
 import * as employeeRemote from '../../../../../remote/employee.remote';
 
 // Used to switch views between categories
-interface CategoryAcceptedComponentProps {
+export interface CategoryAcceptedComponentProps {
     setView: (str: 'CATEGORY_POST' | 'CATEGORY_PENDING' | 'CATEGORY_ACCEPTED' | 'CATEGORY_RESOLVED' | 'ALL') => void;
 }
 
