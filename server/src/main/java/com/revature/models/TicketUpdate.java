@@ -1,18 +1,19 @@
 package com.revature.models;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+import java.sql.Date;
 
 public class TicketUpdate {
 	private int ticketId;
 	private String title;
-	private Timestamp dateResolved;
+	private Date dateResolved;
 	private String userFirstName;
 	private String userLastName;
 	private String message;
 	private int ticketStatus;
 	private String adminUsername;
 		
-	public TicketUpdate(int ticketId, String title, Timestamp dateResolved, String userFirstName, String userLastName,
+	public TicketUpdate(int ticketId, String title, Date dateResolved, String userFirstName, String userLastName,
 			String message, int ticketStatus, String adminUsername) {
 		super();
 		this.ticketId = ticketId;
@@ -44,10 +45,10 @@ public class TicketUpdate {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Timestamp getDateResolved() {
+	public Date getDateResolved() {
 		return dateResolved;
 	}
-	public void setDateResolved(Timestamp dateResolved) {
+	public void setDateResolved(Date dateResolved) {
 		this.dateResolved = dateResolved;
 	}
 	public String getUserFirstName() {
