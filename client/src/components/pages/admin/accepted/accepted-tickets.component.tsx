@@ -173,13 +173,13 @@ export const AcceptedTicketsComponent: React.FC = ()=> {
                         })} */}
                 {/* </tbody>
                 </table> */}
-                {testPayload.map(a => {
+                {allTickets.map(a => {
                     return (
                         <div className='acceptedContainer'>
                             <div className='allAccepted'>
                                 <div className='acceptedCard'>
                                     <div className='acceptedTop'>
-                                        <div className='resize'>{a.img}</div>
+                                        <div className='resize'><img src={a.userImage} width="50.5%" alt='0' /></div>
                                         <div className='boldIt'>{a.title}</div>
                                     </div>
                                     <div className='acceptedBottom'>

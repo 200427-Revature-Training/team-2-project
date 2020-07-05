@@ -1,6 +1,6 @@
 package com.revature.services;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,14 +68,14 @@ public class CardService {
 		card.setMessage(post.getMessage());
 		System.out.println("post's values transfered to new card");
 		
-		//If a timestamp wasn't sent from the server, it will add the current timestamp here, otherwise it will use the existing timestamp
-		Timestamp ts=new Timestamp(System.currentTimeMillis());
-		System.out.println("timestamp generated");
+		//If a Date wasn't sent from the server, it will add the current Date here, otherwise it will use the existing Date
+		Date ts=new Date(System.currentTimeMillis());
+		System.out.println("Date generated");
 		if (card.getEntry_time() == null) {
 			card.setEntry_time(ts);
-			System.out.println("timestamp generator invoked");
+			System.out.println("Date generator invoked");
 		}
-		System.out.println("timestamp checked");
+		System.out.println("Date checked");
 		//The database won't accept an admin ID for a user that doesn't exist, so if we catch an admin_id of 0 here we change it to a 1
 		if (card.getAdmin_id() == 0) {
 			card.setAdmin_id(1);
