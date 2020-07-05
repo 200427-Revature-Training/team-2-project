@@ -1,5 +1,78 @@
-.tableCSS {
+/* .tableCSS {
     margin: 0 0 1rem 0;
     border: 1px solid #ccc;
     border-radius: 8px;
+} */
+
+.allContainers {
+    overflow: hidden;
+}
+
+.allAcceptedCard {
+    height: fit-content;
+    margin: 0 2rem rem 0;
+    width: 53rem;
+    background-color: #fff;
+    box-shadow: 4px 4px 4px #ddd;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.topOfCard {
+    margin-right: 2rem;
+}
+
+.resolveSpace {
+    margin-right: 1rem;
+}
+
+.middleOfCard {
+    height: 3rem;
+    text-align: left;
+    margin-left: 1rem;
+    font-weight: 600;
+    overflow: hidden;
+}
+
+.middleOfCardText {
+    font-weight: 500;
+    text-align: left;
+    margin-left: 1rem;
+    height: 2.9rem;
+    overflow: hidden;
+}
+
+.allBottom {
+    text-align: right;
+    padding: 0 .5rem .5rem 0;
+}
+
+.allImages {
+    margin: 0 -5rem 0 0;
+}
+
+.resize {
+    height: fit-content;
+    margin-top: unset;
+    margin-right: -5rem;
+}
+
+.allTop {
+    height: 2.5rem;
+    display: flex;
+    overflow: hidden;
+}
+
+.viewButtons {
+    width: 53rem;
+    padding: .2rem;
+    margin-bottom: .5rem;
+    border: 1px solid #ddd;
+    box-shadow: 4px 4px 4px #ddd;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.viewButtons button {
+    margin: 0 4rem 0 4rem;
 }

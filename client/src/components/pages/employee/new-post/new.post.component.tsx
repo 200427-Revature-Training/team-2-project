@@ -60,7 +60,8 @@ export const NewPostComponent: React.FC = () => {
             {/* This section contains the new post button that will appear on the right side of the
             page like seen on the wireframe. */}
             <section className='rightBar'>
-                <Button onClick={() => loadModal(true)}>
+                <h2>Your Posts / Tickets</h2>
+                <Button className='floatRight' onClick={() => loadModal(true)}>
                     New Post
                 </Button>
             </section>

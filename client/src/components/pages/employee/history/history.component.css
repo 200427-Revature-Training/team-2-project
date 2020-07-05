@@ -1,5 +1,26 @@
 .rightUnderBar {
+    width: 29rem;
     position: relative;
     float: right;
-    margin: -9rem 15% 0 0;
+    padding: 0 0 .5rem 1rem;
+    border-spacing: 1rem;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 4px 4px 4px #ddd;
+}
+
+.historyTable {
+    margin-bottom: 1rem;
+}
+
+.historyTable td {
+    padding-right: 3rem;
+}
+
+.padBottom {
+    padding-bottom: 1rem;
+}
+
+.historyTable .padBottom {
+    padding-right: 1rem;
 }

@@ -1,0 +1,10 @@
+.rightColumn {
+    position: relative;
+    float: right;
+    margin: 2rem 15% 3rem 0;
+}
+
+.bgColor {
+    /* background-color: #29353e; */
+    background-color: white;
+}
