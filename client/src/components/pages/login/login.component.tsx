@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { createToken } from '../../../remote/test.remote';
-import { Users } from '../../../models/Users';
+
+import * as accountRemote from '../../../remote/account.remote';
+import { User } from '../../../models/test-models/User';
 import './login.component.css';
 import { useHistory } from 'react-router';
 import Form from 'react-bootstrap/Form';
@@ -17,16 +18,16 @@ export const LoginComponent:React.FC = ()=>{
 
     const history = useHistory(); // Access history for Login redirect
 
-    const [reimbursements, setReimbursements] = useState<Users[]>([]); /**SET PAGE DATA HERE */
 
-    const [inputUsertName, setInputUsertName] = useState('');
-    const [inputPassword, setinputPassword] = useState('');
+    const [inputLoginUsertName, setLoginUsertName] = useState('');
+    const [inputLoginPassword, setLoginPassword] = useState('');
+
     
-    const [registerUsername, setRegisterUsername] = useState('');
-    const [registerPassword, setRegisterPassword] = useState('');
-    const [registerFirstName, setRegisterFirstName] = useState ('');
-    const [registerLastName, setRegisterLastName] = useState ('');
-    const [registerEmail, setRegisterEmail] = useState ('');
+    const [inputRegisterFirstName, setRegisterFirstName] = useState ('');
+    const [inputRegisterLastName, setRegisterLastName] = useState ('');
+    const [inputRegisterEmail, setRegisterEmail] = useState ('');
+    const [inputRegisterUsername, setRegisterUsername] = useState('');
+    const [inputRegisterPassword, setRegisterPassword] = useState('');
     
     const [showRegister, setShowRegister] = useState(false);
     const [showAlert, setShowAlert] =useState(false);
@@ -34,51 +35,73 @@ export const LoginComponent:React.FC = ()=>{
 
     const [validated, setValidated] = useState(false);
 
-    useEffect(() => {
-        loadCredentails();
-    }, []);
+    // useEffect(() => {
+    //     loadCredentails();
+    // }, []);
 
 
-    const addUser = async () => {
+    /**Register User */
+    const registerUser = async () => {
         const payload = {
-            userID: undefined,
-            userRole: undefined,
-            userName: inputUsertName,
-            userPassword: inputPassword
+            firstName: inputRegisterFirstName,
+            lastName: inputRegisterLastName,
+            email: inputRegisterEmail,
+            userName: inputRegisterUsername,
+            userPassword: inputRegisterPassword
         };
-        history.push('/employee');
 
-      console.log('Sending authentication request: ', payload);
-      const response = await createToken(payload); //SEnd POST
-        // setInputUsertName(''); //clear fields
-        // setinputPassword('');
-        const userName = response.data.userName;
-        const accessToken = response.data.accessToken;
 
-        localStorage.setItem('userName', userName);
-        localStorage.setItem('accessToken', accessToken);
+        const response = await accountRemote.createUser(payload); //SEnd POST
+        setLoginUsertName(''); //clear fields
+        setLoginPassword('');
 
-        loadCredentails();
+        // loadCredentails();
     };
 
 
-    const loadCredentails = () => {
+    /**Login User */
+    const loginUser = async () => {
+        const payload = {
+            userName: inputLoginUsertName,
+            userPassword: inputLoginPassword
+        };
+
+        const response = await accountRemote.createToken(payload); //SEnd POST
+        history.push('/employee');
+        setLoginUsertName(''); //clear fields
+        setLoginPassword('');
+
+        const userName = response.data.userName;
+        const firstName = response.data.firstName;
+        const lastName = response.data.lastName;
+        const userRole = response.data.userRole;
+        const userImage = response.data.userImage;
+        const accessToken = response.data.jwt;
+
+        localStorage.setItem('userName', userName);
+        localStorage.setItem('firstName', firstName);
+        localStorage.setItem('lastName', lastName);
+        localStorage.setItem('userRole', userRole);
+        localStorage.setItem('userImage', userImage);
+        localStorage.setItem('accessToken', accessToken);
+
+        // loadCredentails();
+    };
+
+    // const loadCredentails = () => {
+
 
     //    usersRemote.getAllUserTable().then(user => { 
     //     setReimbursements(user);
     //     console.log('Recieved authentication request: ', user);
     //     });
-    };
+
+    // };
+
 
     const registerSubmit = () => {
-        if (registerUsername && registerEmail && registerFirstName && registerLastName && registerPassword) {
-            //replace with 
-            console.log(registerUsername);
-            console.log(registerEmail);
-            console.log(registerFirstName);
-            console.log(registerLastName);
-            console.log(registerPassword);
-            addUser();
+        if (inputRegisterFirstName && inputRegisterLastName && inputRegisterEmail && inputRegisterUsername && inputRegisterPassword) {
+            registerUser();
             registerClose();
         } else {
             setShowAlert(true);
@@ -103,15 +126,15 @@ export const LoginComponent:React.FC = ()=>{
             <Form>
             <Form.Group controlId="formUsername">
                 <Form.Label>Username</Form.Label>
-                <Form.Control type="text" placeholder="Username" name="text" value={inputUsertName} onChange={e => setInputUsertName(e.target.value)} />
+                <Form.Control type="text" placeholder="Username" name="text" value={inputLoginUsertName} onChange={e => setLoginUsertName(e.target.value)} />
                 <Form.Text className="text-muted">
                 </Form.Text>
             </Form.Group>
             <Form.Group controlId="formPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" name="password" value={inputPassword} onChange={e => setinputPassword(e.target.value)}/>
+                <Form.Control type="password" placeholder="Password" name="password" value={inputLoginPassword} onChange={e => setLoginPassword(e.target.value)}/>
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={() => addUser()}>Sign In</Button>
+            <Button variant="primary" type="submit" onClick={() => loginUser()}>Sign In</Button>
             </Form>
             <h2>New User?</h2>
             <Button variant="primary" type="submit" onClick={registerShow}>Sign Up</Button>
@@ -126,8 +149,8 @@ export const LoginComponent:React.FC = ()=>{
 
                     {/* "Incomplete Form" Alert */}
                     <Alert show={showAlert} variant="danger">
-                        <Alert.Heading id="registerwarning">Please completely fill Registration form</Alert.Heading>
-                        <p>All fields are required</p>
+                        <Alert.Heading id="registerwarning">Please Complete Registration</Alert.Heading>
+                        <p>All fields are required.</p>
                         <hr />
                         <div className="d-flex justify-content-end">
                         </div>
@@ -137,24 +160,24 @@ export const LoginComponent:React.FC = ()=>{
                     <Form>
                         <Form.Group controlId="formNewUsername">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control type="text" placeholder="Username" name="text" value={registerUsername} onChange={e => setRegisterUsername(e.target.value)} />
+                            <Form.Control type="text" placeholder="Username" name="text" value={inputRegisterUsername} onChange={e => setRegisterUsername(e.target.value)} />
                             <Form.Text className="text-muted">
                             </Form.Text>
                         </Form.Group>
                         <Form.Group controlId="formName">
                             <Form.Label>Name</Form.Label>
                             <Row>
-                            <Col><Form.Control type="text" placeholder="First Name" name="First Name" value={registerFirstName} onChange={e => setRegisterFirstName(e.target.value)}/></Col>
-                            <Col><Form.Control type="text" placeholder="Last Name" name="Last Name" value={registerLastName} onChange={e => setRegisterLastName(e.target.value)}/></Col>
+                            <Col><Form.Control type="text" placeholder="First Name" name="First Name" value={inputRegisterFirstName} onChange={e => setRegisterFirstName(e.target.value)}/></Col>
+                            <Col><Form.Control type="text" placeholder="Last Name" name="Last Name" value={inputRegisterLastName} onChange={e => setRegisterLastName(e.target.value)}/></Col>
                             </Row>
                         </Form.Group>
                         <Form.Group controlId="formEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Email" name="email" value={registerEmail} onChange={e => setRegisterEmail(e.target.value)}/>
+                            <Form.Control type="email" placeholder="Email" name="email" value={inputRegisterEmail} onChange={e => setRegisterEmail(e.target.value)}/>
                         </Form.Group>
                         <Form.Group controlId="formPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" name="password" value={registerPassword} onChange={e => setRegisterPassword(e.target.value)}/>
+                            <Form.Control type="password" placeholder="Password" name="password" value={inputRegisterPassword} onChange={e => setRegisterPassword(e.target.value)}/>
                             </Form.Group>
                     </Form>
                 </Modal.Body>
