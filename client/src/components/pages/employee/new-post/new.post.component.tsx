@@ -11,11 +11,11 @@ export const NewPostComponent: React.FC = () => {
 
      // Post/Ticket Creation Modal
     const [inputTitle, setInputTitle] = useState(''); // Forum post title
-    const [inputUserId, setInputUserId] = useState(1); // Set user id
-    // const [inputUsername, setInputUsername] = useState(0); // Post username, may be needed later
+    // const [inputUserId, setInputUserId] = useState(0); // Set user id
+    const [inputUserName, setInputUserName] = useState(''); // Post username, may be needed later
     const [inputDatePosted, setDatePosted] = useState('');
     const [inputMessage, setInputMessage] = useState(''); // Forum post body
-    const [inputStatusId, setInputStatusId] = useState(0); // Set whether you want to make ticket
+    const [inputTicketStatus, setTicketStatus] = useState(0); // Set whether you want to make ticket
     const [modalVisible, setModalVisible] = useState(false); // Modal view
 
     useEffect(() => {
@@ -24,18 +24,19 @@ export const NewPostComponent: React.FC = () => {
 
     // Creating a new post function that makes the axios call
     const createPost = async () => {
-        let SetDate = new Date(); /**SET DATE HERE */
+        // let SetDate = new Date(); /**SET DATE HERE */
         const payload = { 
-            statusId: inputStatusId,
-            userId: inputUserId,
-            datePosted: SetDate,
+            // ticketStatus: setTicketStatus,
+            ticketStatus: inputTicketStatus,
+            userName: "admin",
+            datePosted: inputDatePosted,
             title: inputTitle,
             message: inputMessage
         };
     
         await employeeRemote.createPost(payload);  /**SEND REQUEST HERE */
-        setInputStatusId(0);
-        setInputUserId(1);
+        setTicketStatus(0);
+        setInputUserName('');
         setDatePosted('');
         setInputTitle('');
         setInputMessage('');
@@ -85,7 +86,7 @@ export const NewPostComponent: React.FC = () => {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Ticket?</Form.Label>
-                            <Form.Control id="ticket-status" value={inputStatusId} onChange={(e) => setInputStatusId(+e.target.value)} 
+                            <Form.Control id="ticket-status" value="1" onChange={(e) => setTicketStatus(+e.target.value)} 
                             type="checkbox"  name="status"/>
                         </Form.Group>
                     </Form>

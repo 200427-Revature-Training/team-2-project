@@ -49,7 +49,7 @@ export const LoginComponent:React.FC = ()=>{
             userPassword: inputRegisterPassword
         };
 
-
+        console.log(payload);
         const response = await accountRemote.createUser(payload); //SEnd POST
         setLoginUsertName(''); //clear fields
         setLoginPassword('');
@@ -64,7 +64,7 @@ export const LoginComponent:React.FC = ()=>{
             userName: inputLoginUsertName,
             userPassword: inputLoginPassword
         };
-        
+     
         const response = await accountRemote.createToken(payload); //SEnd POST
         
         setLoginUsertName(''); //clear fields
@@ -139,8 +139,8 @@ export const LoginComponent:React.FC = ()=>{
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" name="password" value={inputLoginPassword} onChange={e => setLoginPassword(e.target.value)}/>
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={() => loginUser()}>Sign In</Button>
             </Form>
+            <Button variant="primary" type="submit" onClick={() => loginUser()}>Sign In</Button>
             <h2>New User?</h2>
             <Button variant="primary" type="submit" onClick={registerShow}>Sign Up</Button>
 

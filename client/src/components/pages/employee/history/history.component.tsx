@@ -76,7 +76,7 @@ export const HistoryComponent: React.FC = () => {
                         </tr> */}
                     </thead>}
                     <tbody>
-                        {testPayload.map(a => {
+                        {historyPost.map(a => {
                             return (
                             <div>    
                                 <tr key={a.ticketId}>
@@ -88,8 +88,13 @@ export const HistoryComponent: React.FC = () => {
                                     <td>Date Resolved:</td>
                                 </tr>
                                 <tr>
-                                    <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
-                                    <td>{typeof a.dateResolved == 'string' ? a.dateResolved : a.dateResolved.toDateString()}</td>
+                                    {/* <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
+                                    <td>{typeof a.dateResolved == 'string' ? a.dateResolved : a.dateResolved.toDateString()}</td> */}
+
+                                    <td>{a.datePosted}</td>
+                                    <td>{a.dateResolved}</td>
+                                    
+                                    
                                 </tr>
                                 <tr> 
                                     <td>{a.ticketStatus}</td>

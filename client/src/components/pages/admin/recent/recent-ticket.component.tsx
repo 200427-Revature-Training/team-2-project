@@ -252,8 +252,8 @@ export const RecentTicketsComponent: React.FC = ()=> {
                                     return(
                                         <Form.Group>
                                             <Form.Label>Comments:</Form.Label>
-                                            <p> {b.timestamp} </p>
-                                            <p> {b.ticketPostId} </p>
+                                            <p> {b.date} </p>
+                                            {/* <p> {b.ticketPostId} </p> */}
                                             <p> {b.userFirstName} </p>
                                             <p> {b.userLastName} </p>
                                             <p> {b.replies} </p>
@@ -263,7 +263,7 @@ export const RecentTicketsComponent: React.FC = ()=> {
                             {/* get ticket id for update request */}
                             <Form.Group> 
                                 <Form.Label> Select this ticket:</Form.Label>
-                                <input id="select-this-ticket" value={inputTicketID} onChange={(e) => setInputTicketID(+e.target.value)} type="radio"/>
+                                <input id="select-this-ticket" value={allRecentTickets.ticketId} onChange={(e) => setInputTicketID(+e.target.value)} type="radio"/>
                             </Form.Group>
                             {/* change ticket status for update request */}
                             <Form.Group>
