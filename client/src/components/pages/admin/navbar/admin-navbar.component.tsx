@@ -60,12 +60,12 @@ const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
                     <div className="button left">Logout</div>
                 </a>
                 <div className="right">
-                    {testPayload.map(u => {
+                    {/**Remove mapping */} {testPayload.map(u => {
                         return (
                             <tr key={u.ticketId}>
-                                <td className="imgTD"><img src={u.userImage} width="50.5%" alt='0' /></td>
+                                <td className="imgTD"><img src={u.userImage} width="50.5%" alt='0' /></td> {/* <td className="imgTD"><img src={localStorage.getItem('userImage')} width="50.5%" alt='0'</td> */} 
                                 <tr>
-                                    <td className='top'>{u.userFirstName}&nbsp;{u.userLastName}</td>
+                                    <td className='top'>{u.userFirstName}&nbsp;{u.userLastName}</td> {/* <td className='top'>{localStorage.getItem('firstName')}&nbsp;{localStorage.getItem('lastName')}</td> */}
                                 </tr>
                                 <tr>
                                     <td className='bottom'>Web Admin</td>
