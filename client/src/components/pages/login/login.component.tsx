@@ -64,12 +64,6 @@ export const LoginComponent:React.FC = ()=>{
             userName: inputLoginUsertName,
             userPassword: inputLoginPassword
         };
-
-        if (localStorage.getItem('userName') === 'EmployeeUser'){
-            history.push('/employee');
-        }else{
-            history.push('/administrator');
-        }
         
         const response = await accountRemote.createToken(payload); //SEnd POST
         
@@ -90,7 +84,11 @@ export const LoginComponent:React.FC = ()=>{
         localStorage.setItem('userImage', userImage);
         localStorage.setItem('accessToken', accessToken);
 
-        history.push('/employee');
+        if (localStorage.getItem('userRole') === 'EmployeeUser'){
+            history.push('/employee');
+        }else{
+            history.push('/administrator');
+        }
 
         // loadCredentails();
     };

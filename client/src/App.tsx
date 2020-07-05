@@ -22,7 +22,7 @@ function App() {
     <div className="App">
         {/*<p>User Role: { isEmployee ? 'Employee' : 'OTHER' }</p>  Test for auth token Validation */} 
         <main>
-        <Suspense fallback={<div>Loading...</div>}> {/* Loadbar for lazy loading  */}
+        <Suspense fallback={<div>Loading...</div>}> {/* lazy loading loadbar  */}
 
           <Route exact path="/">
             <LoginComponent />
@@ -38,7 +38,7 @@ function App() {
               { isAdmin ? (<AdminComponent />) : (<Redirect to="/"/>)}
             </Route>
 
-            <Route path="/employee"> {/* Change routes url */}
+            <Route path="/employee">
               <EmployeeNavbarComponent />
               { isEmployee ? (<EmployeeComponent />) : (<Redirect to="/"/>)}
               
