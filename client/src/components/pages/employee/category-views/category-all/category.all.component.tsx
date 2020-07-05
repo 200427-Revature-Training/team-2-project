@@ -146,7 +146,7 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                         </tr>
                     </thead>
                     <tbody>
-                        {testTicketsAll.map(a => {
+                        {allTickets.map(a => {
                             return (
                                 <tr className='tableCSS' key={a.ticketId}>
                                 <td>{a.userImage}</td>

@@ -108,7 +108,7 @@ export const CategoryAcceptedComponent: React.FC<CategoryAcceptedComponentProps>
                         </tr>
                     </thead>
                     <tbody>
-                        {testTicketsAccepted.map(a => {
+                        {allTickets.map(a => {
                             return (
                                 <tr key={a.ticketId}>
                                 <td>{a.userImage}</td>
