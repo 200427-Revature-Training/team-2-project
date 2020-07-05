@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import * as accountRemote from '../../../remote/account.remote';
-import { User } from '../../../models/test-models/User';
 import './login.component.css';
 import { useHistory } from 'react-router';
 import Form from 'react-bootstrap/Form';
@@ -65,10 +64,9 @@ export const LoginComponent:React.FC = ()=>{
             userName: inputLoginUsertName,
             userPassword: inputLoginPassword
         };
-        console.log(payload);
-
+     
         const response = await accountRemote.createToken(payload); //SEnd POST
-        history.push('/employee');
+        
         setLoginUsertName(''); //clear fields
         setLoginPassword('');
 
@@ -85,6 +83,12 @@ export const LoginComponent:React.FC = ()=>{
         localStorage.setItem('userRole', userRole);
         localStorage.setItem('userImage', userImage);
         localStorage.setItem('accessToken', accessToken);
+
+        if (localStorage.getItem('userRole') === 'EmployeeUser'){
+            history.push('/employee');
+        }else{
+            history.push('/administrator');
+        }
 
         // loadCredentails();
     };
