@@ -9,6 +9,28 @@
     margin-right: 0.5rem;
 }
 
+.button-dashboard {
+    vertical-align: middle;
+    text-align: center;
+    width: fit-content;
+    background-color: #4349D4;
+    color: white;
+    padding: .6rem 2.45rem .6rem 2.45rem;
+    border-radius: .28rem;
+    margin-top: 2.5rem;
+    /* margin-right: 0.5rem; */
+}
+
+svg {
+    margin-right: 0.5rem;
+}
+
 .centerize {
+    background-color: white;
+    padding: 2rem;
     margin: .5rem auto;
+}
+
+.links {
+    background-color: white;
 }
