@@ -1,5 +1,14 @@
 .rightBar {
-    position: relative;
+    height: fit-content;
+    padding: .3rem .5rem  .5rem;
+    margin: .9rem 0 -1.1rem 0;
+    display: relative;
+    border: 1px solid #ddd;
+    border-radius: 8px 8px 0 0;
+    background-color: #eee;
+}
+
+.floatRight {
     float: right;
-    margin: -13rem 15% 3rem 0;
+    margin-top: -2.8rem;
 }

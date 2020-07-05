@@ -7,15 +7,13 @@ import { NewPostComponent } from '../employee/new-post/new.post.component';
 export const EmployeeComponent:React.FC = () => {
 
     return (
-        <div>
+        <div className='bgColor'>
+            <section className='rightColumn'>
+                <NewPostComponent />
+                <HistoryComponent />
+            </section>
             <section>
                 <CategoriesForumComponent />
-            </section>
-            <section>
-                <NewPostComponent />
-            </section>
-            <section>
-                <HistoryComponent />
             </section>
         </div>
     )

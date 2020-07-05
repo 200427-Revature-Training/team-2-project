@@ -20,8 +20,9 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
+
         {/*<p>User Role: { isEmployee ? 'Employee' : 'OTHER' }</p>  Test for auth token Validation */} 
-        <main>
+
         <Suspense fallback={<div>Loading...</div>}> {/* lazy loading loadbar  */}
 
           <Route exact path="/">

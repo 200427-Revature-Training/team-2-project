@@ -5,6 +5,10 @@ import { Tickets } from '../../../../../models/Tickets';
 import { Replies } from '../../../../../models/Replies';
 import { Form, Modal, Button, ButtonGroup } from 'react-bootstrap';
 import * as employeeRemote from '../../../../../remote/employee.remote';
+import anim0 from '../../../../../temppics/aa0.png';
+import anim1 from '../../../../../temppics/aa1.png';
+import anim2 from '../../../../../temppics/aa2.png';
+import anim3 from '../../../../../temppics/aa3.png';
 
 interface CategoryAllComponentProps {
     setView: (str: 'CATEGORY_POST' | 'CATEGORY_PENDING' | 'CATEGORY_ACCEPTED' | 'CATEGORY_RESOLVED' | 'ALL') => void;
@@ -13,25 +17,25 @@ interface CategoryAllComponentProps {
 const testTicketsAll: Tickets[] = [
     { 
         ticketId: 1,
-        title: 'title',
+        title: 'Hello there, did you have a great day?',
         datePosted: '12-12-12-12-12-12',
         dateResolved: '12-12-12-12-12-12',
         userFirstName: 'first',
         userLastName: 'last',
-        userImage: 'animage',
-        message: 'message',
+        userImage: 'image.png',
+        message: 'This is a message. There are many more like it. And then there\'s a whole bunch more that are not like it. It gets dicey. We should read all the messages.',
         ticketStatus: 0,
         adminFirstName: 'Mom',
         adminLastName: 'Mom'
     },
     {
         ticketId: 2,
-        title: 'title',
+        title: 'Is this the real life?',
         datePosted: '12-12-12-12-12-12',
         dateResolved: '12-12-12-12-12-12',
         userFirstName: 'first',
         userLastName: 'last',
-        userImage: 'animage',
+        userImage: 'image.png',
         message: 'message',
         ticketStatus: 1,
         adminFirstName: 'Dad',
@@ -39,12 +43,12 @@ const testTicketsAll: Tickets[] = [
     },
     {
         ticketId: 3,
-        title: 'title',
+        title: 'Look ma, I gave it a title!',
         datePosted: '12-12-12-12-12-12',
         dateResolved: '12-12-12-12-12-12',
         userFirstName: 'first',
         userLastName: 'last',
-        userImage: 'animage',
+        userImage: 'image.png',
         message: 'message',
         ticketStatus: 2,
         adminFirstName: 'Steve',
@@ -52,12 +56,12 @@ const testTicketsAll: Tickets[] = [
     },
     {
     ticketId: 4,
-    title: 'title',
+    title: 'This is the last time I give anything a title, ever!',
     datePosted: '12-12-12-12-12-12',
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'first',
     userLastName: 'last',
-    userImage: 'animage',
+    userImage: 'image.png',
     message: 'Flavortown',
     ticketStatus: 3,
     adminFirstName: 'Guy',
@@ -70,7 +74,7 @@ const testRepliesPost : Replies[] = [{
     timestamp: 'a date',
     userFirstName: 'some guy',
     userLastName: 'anotherguy',
-    userImage: 'animage',
+    userImage: 'image.png',
     replies: 'jdfalk;sjdfkal;sfdjl;ksdafj;lksad'
 }];
 
@@ -93,7 +97,7 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
         dateResolved: '',
         userFirstName: '',
         userLastName: '',
-        userImage: '',
+        userImage: 'image.png',
         message: '',
         ticketStatus: 0,
         adminFirstName: '',
@@ -125,17 +129,19 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
         // Button Group Bar for categories should be universal for each category component
         <div>
             <section>
-                <ButtonGroup aria-label="Basic example">
-                    <Button variant="secondary" onClick={() => props.setView('ALL')}>All</Button>
-                    <Button variant="secondary" onClick={() => props.setView('CATEGORY_POST')}>Post</Button>
-                    <Button variant="secondary" onClick={() => props.setView('CATEGORY_PENDING')}>Pending</Button>
-                    <Button variant="secondary" onClick={() => props.setView('CATEGORY_ACCEPTED')}>Accepted</Button>
-                    <Button variant="secondary" onClick={() => props.setView('CATEGORY_RESOLVED')}>Resolved</Button>
-                </ButtonGroup>
+                <div className='viewButtons'>
+                    <ButtonGroup aria-label="Basic example">
+                        <Button variant="light" onClick={() => props.setView('ALL')}>All</Button>
+                        <Button variant="light" onClick={() => props.setView('CATEGORY_POST')}>Post</Button>
+                        <Button variant="light" onClick={() => props.setView('CATEGORY_PENDING')}>Pending</Button>
+                        <Button variant="light" onClick={() => props.setView('CATEGORY_ACCEPTED')}>Accepted</Button>
+                        <Button variant="light" onClick={() => props.setView('CATEGORY_RESOLVED')}>Resolved</Button>
+                    </ButtonGroup>
+                </div>
                 {/* NOTE: Using regular Table for testing.
                 Replace table to best reflect wireframe table.
                 Data should be populating from global Ticket.ts model as its currently doing so now */}
-                <table>
+                {/* <table>
                     <thead>
                         <tr>
                             <th scope="col"># ID: </th>
@@ -145,10 +151,33 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                             <th scope="col">Status: </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody> */}
                         {testTicketsAll.map(a => {
                             return (
-                                <tr className='tableCSS' key={a.ticketId}>
+                                <div className='allContainers'>
+                                    <div className='allAccepted'>
+                                        <div className='allAcceptedCard'>
+                                            <div className='allTop'>
+                                                <div className='resize'>{a.userImage}</div>
+                                                <div className='topOfCard'>Posted By: {a.userFirstName} {a.userLastName}</div>
+                                                <div className='topOfCard'>{a.datePosted}</div>
+                                            </div>
+                                            <div className='middleOfCard'>{a.title}</div>
+                                            {/* <div className='middleOfCardText'>{a.message}</div> */}
+                                            <div className='allBottom'>
+                                                {/* <button className="btn btn-primary resolveSpace"
+                                                    onClick={() => loadModal(a)}>
+                                                    Resolve
+                                                </button> */}
+                                                <button className="btn btn-success"
+                                                    onClick={() => loadModal(a)}>
+                                                    View Ticket/Post
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                /* <tr className='tableCSS' key={a.ticketId}>
                                 <td>{a.userImage}</td>
                                 <th scope="row">{a.ticketId}</th>
                                 <td>{a.title}</td>
@@ -159,11 +188,11 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                                     onClick={() => loadModal(a)}>
                                     View Ticket/Post
                                 </button>
-                            </tr>
+                            </tr> */
                             )
                         })}
-                    </tbody>
-                </table>
+                    {/* </tbody>
+                </table> */}
             </section>
             <section>
             <Modal show={modalVisible} onHide={() => setModalVisible(false)}  >

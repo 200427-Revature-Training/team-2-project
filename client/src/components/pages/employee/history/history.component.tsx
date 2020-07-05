@@ -3,6 +3,10 @@ import './history.component.css';
 import { Tickets } from '../../../../models/Tickets';
 import * as employeeRemote from '../../../../remote/employee.remote';
 import { Form, Modal, Button } from 'react-bootstrap';
+import anim0 from '../../../../temppics/aa0.png';
+import anim1 from '../../../../temppics/aa0.png';
+import anim2 from '../../../../temppics/aa0.png';
+import anim3 from '../../../../temppics/aa0.png';
 
 const testPayload: Tickets[]  = [{
     ticketId: 1,
@@ -11,7 +15,7 @@ const testPayload: Tickets[]  = [{
     dateResolved: '12-12-12-12-12-12',
     userFirstName: 'Joe',
     userLastName: 'Smith',
-    userImage: 'image',
+    userImage: 'image.png',
     message: 'asfasd',
     ticketStatus: 2,
     adminFirstName: "Bob",
@@ -32,7 +36,7 @@ export const HistoryComponent: React.FC = () => {
         dateResolved: '',
         userFirstName: '',
         userLastName: '',
-        userImage: '',
+        userImage: 'Image.png',
         message: '',
         ticketStatus: 0,
         adminFirstName: '',
@@ -59,32 +63,42 @@ export const HistoryComponent: React.FC = () => {
     return (
         /* This section will be on the right side of the page right under the new post button
             as seen on the main section of the employee dashboard wireframe.*/
-        <div className='rightUnderBar'>
-            <section>
+        <div className='historyTable'>
+            <section className='rightUnderBar'>
                 <table>
-                    <thead>
-                        <tr>
+                    {<thead>
+                        {/* <tr>
                             <th scope="col"># ID: </th>
                             <th scope="col">Post: </th>
                             <th scope="col">Request Date: </th>
                             <th scope="col">Resolved Date: </th>
                             <th scope="col">Status: </th>
-                        </tr>
-                    </thead>
+                        </tr> */}
+                    </thead>}
                     <tbody>
                         {testPayload.map(a => {
                             return (
-                            <tr key={a.ticketId}>
-                                <th scope="row">{a.ticketId}</th>
-                                <td>{a.title}</td>
-                                <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
-                                <td>{typeof a.dateResolved == 'string' ? a.dateResolved : a.dateResolved.toDateString()}</td>
-                                <td>{a.ticketStatus}</td>  
-                                <button className="btn btn-success"
-                                    onClick={() => loadModal(a)}>
-                                    View Past Ticket/Post
-                                </button>
-                            </tr>
+                            <div>    
+                                <tr key={a.ticketId}>
+                                    <th scope="row">{a.ticketId}</th>
+                                    <td className='padBottom'>Title: {a.title}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date Posted:</td>
+                                    <td>Date Resolved:</td>
+                                </tr>
+                                <tr>
+                                    <td>{typeof a.datePosted == 'string' ? a.datePosted : a.datePosted.toDateString()}</td>
+                                    <td>{typeof a.dateResolved == 'string' ? a.dateResolved : a.dateResolved.toDateString()}</td>
+                                </tr>
+                                <tr> 
+                                    <td>{a.ticketStatus}</td>
+                                    <button className="btn btn-success"
+                                        onClick={() => loadModal(a)}>
+                                        View Past Ticket/Post
+                                    </button>
+                                </tr>
+                            </div>
                             )
                         })}
                     </tbody>
