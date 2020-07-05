@@ -76,7 +76,7 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
             setAllReplies(replies);
         });
     
-        employeeRemote.getTicketByPostCategory().then(tickets => {
+        employeeRemote.getTicketByResolvedCategory().then(tickets => {
                 setAllTickets(tickets);
         });
     };
@@ -114,7 +114,7 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
                         </tr>
                     </thead>
                     <tbody> */}
-                {testTicketsResolved.map(a => {
+                {allTickets.map(a => {
                     return (
                         <div className='allContainers'>
                             <div className='allAccepted'>
@@ -181,7 +181,7 @@ export const CategoryResolvedComponent: React.FC<CategoryResolvedComponentProps>
                                 <Form.Label>Status::</Form.Label>
                                 <p> {ticketById.ticketStatus} </p>
                             </Form.Group>
-                                {testRepliesPost.map(b => {
+                                {allReplies.map(b => {
                                     return(
                                         <Form.Group>
                                             <Form.Label>Comments:</Form.Label>

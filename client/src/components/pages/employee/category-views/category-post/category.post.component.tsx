@@ -115,7 +115,7 @@ export const CategoryPostComponent: React.FC<CategoryPostComponentProps> = (prop
                         </tr>
                     </thead>
                     <tbody> */}
-                    {testTicketsPost.map(a => {
+                    {allTickets.map(a => {
                         return (
                             <div className='allContainers'>
                                 <div className='allAccepted'>
@@ -182,7 +182,7 @@ export const CategoryPostComponent: React.FC<CategoryPostComponentProps> = (prop
                                 <Form.Label>Status::</Form.Label>
                                 <p> {ticketById.ticketStatus} </p>
                             </Form.Group>
-                            {testRepliesPost.map(b => {
+                            {allReplies.map(b => {
                                 return(
                                     <Form.Group>
                                         <Form.Label>Comments:</Form.Label>

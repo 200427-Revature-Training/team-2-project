@@ -114,7 +114,7 @@ export const CategoryAcceptedComponent: React.FC<CategoryAcceptedComponentProps>
                         </tr>
                     </thead>
                     <tbody> */}
-                        {testTicketsAccepted.map(a => {
+                        {allTickets.map(a => {
                             return (
                                 <div className='allContainers'>
                                     <div className='allAccepted'>
@@ -186,7 +186,7 @@ export const CategoryAcceptedComponent: React.FC<CategoryAcceptedComponentProps>
                                 <Form.Label>Status::</Form.Label>
                                 <p> {ticketById.ticketStatus} </p>
                             </Form.Group>
-                                {testRepliesAccepted.map(b => {
+                                {allReplies.map(b => {
                                     return(
                                         <Form.Group>
                                             <Form.Label>Comments:</Form.Label>

@@ -115,7 +115,7 @@ export const CategoryPendingComponent: React.FC<CategoryPendingComponentProps> =
                         </tr>
                     </thead>
                     <tbody> */}
-                    {testTicketsPending.map(a => {
+                    {allTickets.map(a => {
                         return (
                             <div className='allContainers'>
                                 <div className='allAccepted'>
@@ -182,7 +182,7 @@ export const CategoryPendingComponent: React.FC<CategoryPendingComponentProps> =
                                 <Form.Label>Status::</Form.Label>
                                 <p> {ticketById.ticketStatus} </p>
                             </Form.Group>
-                                {testRepliesPending.map(b => {
+                                {allReplies.map(b => {
                                     return(
                                         <Form.Group>
                                             <Form.Label>Comments:</Form.Label>
