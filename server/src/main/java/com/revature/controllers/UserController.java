@@ -21,8 +21,7 @@ import com.revature.util.JwtUtil;
 @RequestMapping("/user")
 @CrossOrigin(origins = "*",
 methods = {RequestMethod.GET, RequestMethod.PUT, 
-			RequestMethod.PATCH, RequestMethod.POST},
-							allowedHeaders = {"Content-Type"})
+		RequestMethod.PATCH, RequestMethod.POST})
 public class UserController {
 
 	@Autowired
@@ -36,7 +35,7 @@ public class UserController {
 	public ReactUserModel getUserById(@PathVariable int id) {
 		System.out.println("get user by id request received by controller");
 		System.out.println(id);
-		User dbuser = userService.getUserById(id); //path variable exracted as an int
+		User dbuser = userService.getUserById(id); //path variable extracted as an int
 		System.out.println("dbuser assigned at controller");
 		return userService.convertUser(dbuser);
 	}

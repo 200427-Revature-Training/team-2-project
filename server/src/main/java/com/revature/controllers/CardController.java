@@ -24,8 +24,7 @@ import com.revature.services.CardService;
 @RequestMapping("")
 @CrossOrigin(origins = "*", 
 methods = {RequestMethod.GET, RequestMethod.PUT,
-			RequestMethod.PATCH, RequestMethod.POST},
-allowedHeaders = {"Content-Type"})
+		RequestMethod.PATCH, RequestMethod.POST})
 
 public class CardController {
 

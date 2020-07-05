@@ -28,7 +28,7 @@ export const getRecentTickets = async () => {
 
 // Get all accepted tickets table
 export const getAcceptedTickets = async () => {
-    const response = await internalAxios.get<Tickets[]>('/administrators/accepted');
+    const response = await internalAxios.get<Tickets[]>('/administrator/accepted');
     return response.data.map(ticket => {
         ticket.datePosted = new Date(ticket.datePosted); // Replace string birthdate with Date object
         ticket.dateResolved = new Date(ticket.dateResolved);
@@ -39,7 +39,7 @@ export const getAcceptedTickets = async () => {
 
 // Get all ticket replies
 export const getRepliesById = async () => {
-    const response = await internalAxios.get<Replies[]>('/administator/replies');
+    const response = await internalAxios.get<Replies[]>('/administrator/replies');
     return response.data.map(replies => {
         replies.timestamp = new Date(replies.timestamp); // Replace string birthdate with Date object
         console.log(response);
