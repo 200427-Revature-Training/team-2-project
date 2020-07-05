@@ -76,3 +76,10 @@
 .viewButtons button {
     margin: 0 5rem 0 5rem;
 }
+
+.downLeft {
+    position: relative;
+    float: left;
+    margin: 1.3rem 0 0 3.5rem;
+    color: #888;
+}

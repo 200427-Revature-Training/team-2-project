@@ -119,10 +119,7 @@ export const CategoryAcceptedComponent: React.FC<CategoryAcceptedComponentProps>
                                 <div className='allContainers'>
                                     <div className='allAccepted'>
                                         <div className='allAcceptedCard'>
-                                            <div className='allTop'>
-
-
-                                                <div className='resize'>{<img src={a.userImage} width="20%" alt='0' />}</div>
+                                            <div className='allTop'><div className='resize'>{<img src={a.userImage} width="20%" alt='0' />}</div>
                                                 {/* <div className='resize'>{a.userImage}</div> */}
                                                 <div className='topOfCard'>Posted By: {a.userFirstName} {a.userLastName}</div>
                                                 <div className='topOfCard'>{a.datePosted}</div>
@@ -134,6 +131,7 @@ export const CategoryAcceptedComponent: React.FC<CategoryAcceptedComponentProps>
                                                     onClick={() => loadModal(a)}>
                                                     Resolve
                                                 </button> */}
+                                                <div className='downLeft'>Save</div>
                                                 <button className="btn btn-success"
                                                     onClick={() => loadModal(a)}>
                                                     View Ticket/Post
