@@ -21,8 +21,7 @@ import com.revature.util.JwtUtil;
 @RequestMapping("/user")
 @CrossOrigin(origins = "*",
 methods = {RequestMethod.GET, RequestMethod.PUT, 
-			RequestMethod.PATCH, RequestMethod.POST},
-							allowedHeaders = {"Content-Type"})
+		RequestMethod.PATCH, RequestMethod.POST})
 public class UserController {
 
 	@Autowired
@@ -36,7 +35,7 @@ public class UserController {
 	public ReactUserModel getUserById(@PathVariable int id) {
 		System.out.println("get user by id request received by controller");
 		System.out.println(id);
-		User dbuser = userService.getUserById(id); //path variable exracted as an int
+		User dbuser = userService.getUserById(id); //path variable extracted as an int
 		System.out.println("dbuser assigned at controller");
 		return userService.convertUser(dbuser);
 	}
@@ -72,7 +71,7 @@ public class UserController {
 		//get token response. send back status200
 		AuthenticationResponse auth = new AuthenticationResponse(jwt);
 		
-		returnuser.setJwt(auth);
+		returnuser.setJwt(auth.getJwt());
 		
 		return ResponseEntity.ok(returnuser);
 	}
@@ -82,9 +81,11 @@ public class UserController {
 	//POST - receive a user in the request body and save it to the database.
 	@PostMapping("")
 	public ReactUserModel saveUser(@RequestBody User user) {
+		System.out.println(user);
 		System.out.println("user registration request received by controller");
 		User dbuser = userService.save(user);
 		System.out.println("dbuser received by controller");
+		System.out.println(dbuser);
 		return userService.convertUser(dbuser);
 	}
 	

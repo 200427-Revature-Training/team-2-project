@@ -71,7 +71,7 @@ const testTicketsAll: Tickets[] = [
 const testRepliesPost : Replies[] = [{
     rid: 1,
     ticketPostId: 1,
-    timestamp: 'a date',
+    date: 'a date',
     userFirstName: 'some guy',
     userLastName: 'anotherguy',
     userImage: 'image.png',
@@ -152,13 +152,16 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                         </tr>
                     </thead>
                     <tbody> */}
-                        {testTicketsAll.map(a => {
+                        {allTickets.map(a => {
                             return (
                                 <div className='allContainers'>
                                     <div className='allAccepted'>
                                         <div className='allAcceptedCard'>
                                             <div className='allTop'>
-                                                <div className='resize'>{a.userImage}</div>
+
+
+                                                <div className='resize'>{<img src={a.userImage} width="50.5%" alt='0' />}</div>
+                                                {/* <div className='resize'>{a.userImage}</div> */}
                                                 <div className='topOfCard'>Posted By: {a.userFirstName} {a.userLastName}</div>
                                                 <div className='topOfCard'>{a.datePosted}</div>
                                             </div>
@@ -204,7 +207,7 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                 <Modal.Body>
                 <Form>
                     <Form.Group>
-                        <p>{ticketById.userImage}</p>
+                        <p>{<td>{<img src={ticketById.userImage} width="50.5%" alt='0' />}</td>}</p>
                     </Form.Group>
                     <Form.Group>  
                         <Form.Label># ID::</Form.Label>
@@ -226,11 +229,11 @@ export const CategoryAllComponent: React.FC<CategoryAllComponentProps> = (props)
                         <Form.Label>Status::</Form.Label>
                         <p> {ticketById.ticketStatus} </p>
                     </Form.Group>
-                    {testRepliesPost.map(b => {
+                    {allReplies.map(b => {
                         return(
                             <Form.Group>
                                 <Form.Label>Comments:</Form.Label>
-                                    <p> {b.timestamp} </p>
+                                    <p> {b.date} </p>
                                     <p> {b.ticketPostId} </p>
                                     <p> {b.userFirstName} </p>
                                     <p> {b.userLastName} </p>

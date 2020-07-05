@@ -41,7 +41,7 @@ export const getAcceptedTickets = async () => {
 export const getRepliesById = async () => {
     const response = await internalAxios.get<Replies[]>('/administrator/replies');
     return response.data.map(replies => {
-        // replies.timestamp = new Date(replies.timestamp); // Replace string birthdate with Date object
+        // replies.date = new Date(replies.date); // Replace string birthdate with Date object
         console.log(response);
         return replies;
     });

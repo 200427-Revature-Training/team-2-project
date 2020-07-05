@@ -1,12 +1,13 @@
 package com.revature.models;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class ReactReplyModel {
 	
 	private int rid;
 	private int ticketPostId;
-	private Timestamp timestamp;
+	private Date timestamp;
 	private String userFirstName;
 	private String userLastName;
 	private String userImage;
@@ -26,11 +27,11 @@ public class ReactReplyModel {
 	public void setTicketPostId(int ticketPostId) {
 		this.ticketPostId = ticketPostId;
 	}
-	public Timestamp getTimestamp() {
+	public Date getTimestamp() {
 		return timestamp;
 	}
-	public void setTimestamp(Timestamp timestamp) {
-		this.timestamp = timestamp;
+	public void setTimestamp(Date date) {
+		this.timestamp = date;
 	}
 	public String getUserFirstName() {
 		return userFirstName;
@@ -62,7 +63,7 @@ public class ReactReplyModel {
 				+ ", userFirstName=" + userFirstName + ", userLastName=" + userLastName + ", userImage=" + userImage
 				+ ", replies=" + replies + "]";
 	}
-	public ReactReplyModel(int rid, int ticketPostId, Timestamp timestamp, String userFirstName, String userLastName,
+	public ReactReplyModel(int rid, int ticketPostId, Date timestamp, String userFirstName, String userLastName,
 			String userImage, String replies) {
 		super();
 		this.rid = rid;

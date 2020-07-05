@@ -1,7 +1,8 @@
 package com.revature.entities;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,19 +14,22 @@ public class ReactReply {
 	@Id//id is set to be the primary key
 	private int rid;
 	private int ticketPostId;
-	private Timestamp timestamp;
+	
+	@Column(name="timestamp")
+	private Date timePosted;
+	
 	private String userFirstName;
 	private String userLastName;
 	private String userImage;
 	private String replies;
 	
 	
-	public ReactReply(int rid, int ticketPostId, Timestamp timestamp, String userFirstName, String userLastName,
+	public ReactReply(int rid, int ticketPostId, Date timePosted, String userFirstName, String userLastName,
 			String userImage, String replies) {
 		super();
 		this.rid = rid;
 		this.ticketPostId = ticketPostId;
-		this.timestamp = timestamp;
+		this.timePosted = timePosted;
 		this.userFirstName = userFirstName;
 		this.userLastName = userLastName;
 		this.userImage = userImage;
@@ -59,13 +63,13 @@ public class ReactReply {
 	}
 
 
-	public Timestamp getTimestamp() {
-		return timestamp;
+	public Date getDate() {
+		return timePosted;
 	}
 
 
-	public void setTimestamp(Timestamp timestamp) {
-		this.timestamp = timestamp;
+	public void setDate(Date timePosted) {
+		this.timePosted = timePosted;
 	}
 
 
@@ -116,7 +120,7 @@ public class ReactReply {
 		result = prime * result + ((replies == null) ? 0 : replies.hashCode());
 		result = prime * result + rid;
 		result = prime * result + ticketPostId;
-		result = prime * result + ((timestamp == null) ? 0 : timestamp.hashCode());
+		result = prime * result + ((timePosted == null) ? 0 : timePosted.hashCode());
 		result = prime * result + ((userFirstName == null) ? 0 : userFirstName.hashCode());
 		result = prime * result + ((userImage == null) ? 0 : userImage.hashCode());
 		result = prime * result + ((userLastName == null) ? 0 : userLastName.hashCode());
@@ -142,10 +146,10 @@ public class ReactReply {
 			return false;
 		if (ticketPostId != other.ticketPostId)
 			return false;
-		if (timestamp == null) {
-			if (other.timestamp != null)
+		if (timePosted == null) {
+			if (other.timePosted != null)
 				return false;
-		} else if (!timestamp.equals(other.timestamp))
+		} else if (!timePosted.equals(other.timePosted))
 			return false;
 		if (userFirstName == null) {
 			if (other.userFirstName != null)
@@ -168,7 +172,7 @@ public class ReactReply {
 
 	@Override
 	public String toString() {
-		return "ReactReplies [rid=" + rid + ", ticketPostId=" + ticketPostId + ", timestamp=" + timestamp
+		return "ReactReplies [rid=" + rid + ", ticketPostId=" + ticketPostId + ", timePosted=" + timePosted
 				+ ", userFirstName=" + userFirstName + ", userLastName=" + userLastName + ", userImage=" + userImage
 				+ ", replies=" + replies + "]";
 	}
