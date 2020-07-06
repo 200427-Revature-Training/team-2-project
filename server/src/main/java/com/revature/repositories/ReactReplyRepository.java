@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.entities.ReactCard;
 import com.revature.entities.ReactReply;
 
 @Repository
@@ -56,7 +55,7 @@ public class ReactReplyRepository {
 	public List<ReactReply> getReactReplyByTId(int ticketPostId) {
 		System.out.println(ticketPostId);
 		Session session = em.unwrap(Session.class);
-		List<ReactReply> rreplies = session.createQuery("from ReactCard where ticketPostId = :ticketPostId", ReactReply.class)
+		List<ReactReply> rreplies = session.createQuery("from ReactReply where ticketPostId = :ticketPostId", ReactReply.class)
 				.setParameter("ticketPostId", ticketPostId) //tpid parameter is set to the value provided in the arg.
 					.getResultList();
 		System.out.println(rreplies);
