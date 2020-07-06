@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,7 +43,12 @@ public class ReplyController {
 	public List<ReactReply> getAllRepliesa() {
 		System.out.println("get all replies (employee) request received");
 			return replyService.getAllReplies(); //no logic here, just a call to service when the request is received.
-
+	}
+	
+	@GetMapping("/administrator/replies/{tid}")
+	public List<ReactReply> getAllRepliesByTId(@PathVariable int tid) {
+		System.out.println("get replies by tid received");
+			return replyService.getReactRepliesByTId(tid); //no logic here, just a call to service when the request is received.
 	}
 
 //	//GET a specific reply by its id. Expects the id to be sent in request body ( "rid": {id} )

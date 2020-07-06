@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.entities.ReactCard;
 import com.revature.entities.ReactReply;
 
 @Repository
@@ -43,9 +44,24 @@ public class ReactReplyRepository {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Optional<ReactReply> getReactReplyById(int id) {
 		System.out.println(id);
+		System.out.println(id);
 		Session session = em.unwrap(Session.class);
 		ReactReply rreply = session.get(ReactReply.class, id); //the id is used as a search index on the table
 		System.out.println(rreply);
 		return Optional.ofNullable(rreply); //returns a ReactReply object if successful and a null if not.
 	}
+	
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<ReactReply> getReactReplyByTId(int ticketPostId) {
+		System.out.println(ticketPostId);
+		Session session = em.unwrap(Session.class);
+		List<ReactReply> rreplies = session.createQuery("from ReactCard where ticketPostId = :ticketPostId", ReactReply.class)
+				.setParameter("ticketPostId", ticketPostId) //tpid parameter is set to the value provided in the arg.
+					.getResultList();
+		System.out.println(rreplies);
+		return rreplies; //returns a ReactReply object if successful and a null if not.
+	
+	}
+	
 }

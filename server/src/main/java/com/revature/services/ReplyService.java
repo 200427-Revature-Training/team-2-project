@@ -40,6 +40,13 @@ public class ReplyService {
 				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
 	}
 	
+	public List<ReactReply> getReactRepliesByTId(int id) {
+		System.out.println("reply service received request to get reply by tid");
+		System.out.println(id);
+		return reactReplyRepository.getReactReplyByTId(id);
+		
+	}
+	
 	public Reply save(Reply reply) {
 		System.out.println("service received request to save reply");
 		System.out.println(reply);
