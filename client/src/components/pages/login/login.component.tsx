@@ -133,7 +133,7 @@ export const LoginComponent:React.FC = ()=>{
         <div>
 
             {/* Main Login Page */}
-            <h1>Welcome to Posticket</h1>
+            <h1>Welcome to Ask IT</h1>
             <h2>Please login</h2>
             <Form>
             <Form.Group controlId="formUsername">
