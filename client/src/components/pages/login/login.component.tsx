@@ -65,6 +65,13 @@ export const LoginComponent:React.FC = ()=>{
             userPassword: inputLoginPassword
         };
      
+        if (localStorage.getItem('userRole') === 'Employee'){
+            history.push('/employee');
+        }else if(localStorage.getItem('userRole') === 'Admin'){
+            history.push('/administrator');
+        }
+
+
         const response = await accountRemote.createToken(payload); //SEnd POST
         
         setLoginUsertName(''); //clear fields
@@ -84,9 +91,9 @@ export const LoginComponent:React.FC = ()=>{
         localStorage.setItem('userImage', userImage);
         localStorage.setItem('accessToken', accessToken);
 
-        if (localStorage.getItem('userRole') === 'EmployeeUser'){
+        if (localStorage.getItem('userRole') === 'Employee'){
             history.push('/employee');
-        }else{
+        }else if(localStorage.getItem('userRole') === 'Admin'){
             history.push('/administrator');
         }
 
