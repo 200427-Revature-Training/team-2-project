@@ -53,11 +53,17 @@
     margin-left: .8em;
 }
 
+#iconAccpeted {
+    margin-top: 0.75rem;
+}
+
 .boldIt {
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-size: 1.25rem;
     width: 15em;
-    margin-top: .8em;
+    margin-top: 1.15rem;
     margin-right: .4em;
+    padding-left: 3rem;
 }
 
 .date {
@@ -70,6 +76,11 @@
     display: flex;
     flex-wrap: nowrap;
     vertical-align: middle;
+}
+
+#view {
+    margin-left: 0.5rem;
+    margin-right: 5rem;
 }
 
 .acceptedBottom p {

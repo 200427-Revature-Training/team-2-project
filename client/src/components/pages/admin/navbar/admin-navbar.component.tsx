@@ -49,7 +49,8 @@ const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
 
     
     return (
-        <div className="infoStrip">
+        <div className="infoStrip">   
+
             {/* <nav className="navbar navbar-dark bg-primary">
                 <a className="navbar-brand" href="#">Bank of Money</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +64,7 @@ const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
                     </ul>
                 </div>
             </nav> */}
-        
+            <h1 className="departmentName">Ask IT</h1>
             <section className='breakout'>
                 {/* <a href='../'>
                     <div className="button left">Logout</div>

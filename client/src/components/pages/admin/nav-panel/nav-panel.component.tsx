@@ -22,16 +22,16 @@ export const NavPanelComponent: React.FC = () => {
                 <p className="links">
                 <FontAwesomeIcon icon={faCalendar} />
                     Calendar
-                </p>
-                <p className="links">
+                    <br />
+                    <br />
                     <FontAwesomeIcon icon={faBusinessTime} />
                     Timeline
-                </p>
-                <p className="links">
+                    <br />
+                    <br />
                     <FontAwesomeIcon icon={faChartLine} />
                     Activity Log
-                </p>
-                <p className="links">
+                    <br />
+                    <br />
                     <FontAwesomeIcon icon={faCog} />
                     Settings
                 </p>  
