@@ -87,3 +87,7 @@ button {
     margin: auto;
     vertical-align: baseline;
 }
+
+#open {
+    margin-right: 1.2rem;
+}

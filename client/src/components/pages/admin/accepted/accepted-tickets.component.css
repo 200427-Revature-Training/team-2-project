@@ -78,6 +78,11 @@
     vertical-align: middle;
 }
 
+#view {
+    margin-left: 0.5rem;
+    margin-right: 5rem;
+}
+
 .acceptedBottom p {
     padding-top: .7rem;
     color: #0000ff;
