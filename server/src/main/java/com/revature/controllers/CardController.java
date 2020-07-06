@@ -48,6 +48,16 @@ public class CardController {
 		System.out.println("dbcard retrieved");
 		return cardService.createReactTicket(dbcard);
 	}
+		
+		
+		@GetMapping("/administrator/tickets/{id}")
+		public ReactTicketModel getCardByIda(@PathVariable int id) {
+			System.out.println("request received");
+//			id = 1; //enable this line to replace any received information with hardcoded value
+			Card dbcard = cardService.getCardById(id); //path variable is used as an arg for method in cardService
+			System.out.println("dbcard retrieved");
+			return cardService.createReactTicket(dbcard);		
+	}
 	
 	//GET a list of postickets by its user_id and returns it as an array of JSON objects.
 	@GetMapping("/employee/history/{id}")

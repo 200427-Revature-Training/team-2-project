@@ -19,6 +19,9 @@ export const createToken = async (login: Authenticate) => {
 
 // Login:create token & request user payload
 export const getbyId = async (userId: number | string | null) => {
-    const response = await internalAxios.get<Users>(`/user/login/${userId}`); //Comeback to this
-    return response; //console.log(response);
+    const response = await internalAxios.get<Users>(`/user/id/${userId}`); //Comeback to this
+    console.log("searchterm c")
+    console.log(response);
+    console.log(response.data);
+    return response;
 }
