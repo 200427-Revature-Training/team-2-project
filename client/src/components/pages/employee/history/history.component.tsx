@@ -97,7 +97,7 @@ export const HistoryComponent: React.FC = () => {
                                 <tr>
                                   <td>{a.ticketStatus}</td>
                                   <button
-                                    className="btn btn-success"
+                                    className="btn btn-light"
                                     onClick={() => loadModal(a)}
                                   >
                                     View Past Ticket/Post

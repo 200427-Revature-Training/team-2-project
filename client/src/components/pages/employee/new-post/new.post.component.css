@@ -17,3 +17,8 @@
 .modalMargin {
     margin: 1rem;
 }
+
+.rightBar button {
+    background-color: cornflowerblue;
+    border-color: cornflowerblue;
+}
