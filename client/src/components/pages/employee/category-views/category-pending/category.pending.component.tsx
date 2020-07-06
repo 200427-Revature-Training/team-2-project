@@ -134,7 +134,7 @@ export const CategoryPendingComponent: React.FC<CategoryPendingComponentProps> =
                                                 Resolve
                                             </button> */}
                                                 <div className='downLeft'>Save</div>
-                                            <button className="btn btn-success"
+                                            <button className="btn btn-light"
                                                 onClick={() => loadModal(a)}>
                                                 View Ticket/Post
                                             </button>

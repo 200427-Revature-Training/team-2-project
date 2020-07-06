@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   background-color: #eee;
-  margin-top: 4rem;
+  margin-top: 3.8rem;
 }
 
 .App p {
@@ -11,6 +11,10 @@
   margin-top: 5rem;
   min-height: 2rem;
   margin-bottom: 0;
+}
+
+.App h1 {
+  background-color: white;
 }
 
 .App-logo {
