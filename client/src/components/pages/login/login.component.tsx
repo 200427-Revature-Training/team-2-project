@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import * as accountRemote from '../../../remote/account.remote';
 import './login.component.css';
 import { useHistory } from 'react-router';

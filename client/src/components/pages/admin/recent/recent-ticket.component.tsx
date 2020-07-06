@@ -5,6 +5,9 @@ import { Tickets } from '../../../../models/Tickets'; //Global Model
 import { UpdateTickets } from '../../../../models/admin/UpdateTickets';
 import { Replies } from '../../../../models/Replies'; //Global Model
 import { Modal, Button, Form } from 'react-bootstrap';
+import { Users } from '../../../../models/Users';
+import * as accountRemote from '../../../../remote/account.remote';
+
 
 //Test Object if server not working
 const testPayload = [{ 
@@ -95,6 +98,16 @@ export const RecentTicketsComponent: React.FC = ()=> {
         adminId: 0
     });
 
+    const [inputGetbyId, setGetbyId] = useState<Replies>({
+        rid: 0,
+        ticketPostId: 0,
+        date: '',
+        userFirstName: '',
+        userLastName: '',
+        userImage: '',
+        replies: ''
+    });
+
 
     const [modalVisible, setModalVisible] = useState(false); //Modal Set to default [Off]
     const [inputTicketID, setInputTicketID] = useState(0); //Update status by ticket id
@@ -122,18 +135,31 @@ export const RecentTicketsComponent: React.FC = ()=> {
 
     /**Load ticket-card data */ 
     const loadTables = () => {  
-        adminRemote.getRepliesById().then(replies => {
-            setAllReplies(replies);
-        });
+        // adminRemote.getRepliesById().then(replies => {
+        //     setAllReplies(replies);
+        // });
 
         adminRemote.getRecentTickets().then(tickets => {
             setAllTickets(tickets);
         });
     };
 
+    // //Get replies
+    // const GetByIdTest = async (a:any) => {
+    //     const testthing = await accountRemote.getbyId(a);
+    //     const newUser = testthing.data
+    //     setGetbyId(newUser);
+    // };
+
     /**View Ticket Button */
-    const loadModal = (a: any)=> {
+    const loadModal = async (a: any)=> {
         setAllRecentTickets(a); //load modal with ticket data
+        const testthing = await accountRemote.getbyId(a.ticketId);
+        console.log(testthing);
+        const newUser = testthing.data
+        console.log(newUser);
+        setGetbyId(newUser);
+
         setModalVisible(true); //Open Modal
     }
 
@@ -248,18 +274,18 @@ export const RecentTicketsComponent: React.FC = ()=> {
                                 <Form.Label>Status::</Form.Label>
                                 <p> {allRecentTickets.ticketStatus} </p>
                             </Form.Group>
-                                {allReplies.map(b => {
-                                    return(
+                                {/* {allReplies.map(b => {
+                                    return( */}
                                         <Form.Group>
                                             <Form.Label>Comments:</Form.Label>
-                                            <p> {b.date} </p>
-                                            {/* <p> {b.ticketPostId} </p> */}
-                                            <p> {b.userFirstName} </p>
-                                            <p> {b.userLastName} </p>
-                                            <p> {b.replies} </p>
+                                            <p> {inputGetbyId.date} </p>
+                                            {/* <p> {inputGetbyId.ticketPostId} </p> */}
+                                            <p> {inputGetbyId.userFirstName} </p>
+                                            <p> {inputGetbyId.userLastName} </p>
+                                            <p> {inputGetbyId.replies} </p>
                                             </Form.Group>
-                                        )
-                                    })}
+                                        {/* )
+                                    })} */}
                             {/* get ticket id for update request */}
                             <Form.Group> 
                                 <Form.Label> Select this ticket:</Form.Label>
