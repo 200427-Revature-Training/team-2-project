@@ -178,7 +178,7 @@ export const AcceptedTicketsComponent: React.FC = ()=> {
                             <div className='allAccepted'>
                                 <div className='acceptedCard'>
                                     <div className='acceptedTop'>
-                                        <div className='resize'><img src={a.userImage} width="50.5%" alt='0' /></div>
+                                        <div className='resize'><img id='iconAccpeted' src={a.userImage} width="50.5%" alt='0' /></div>
                                         {/* <div className='resize'>{a.img}</div> */}
                                         <div className='boldIt'>{a.title}</div>
                                     </div>

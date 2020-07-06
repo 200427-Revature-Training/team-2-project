@@ -206,7 +206,8 @@ export const RecentTicketsComponent: React.FC = ()=> {
                                             <span className='bold'>
                                                 <span className='line'> | </span>
                                                 {a.title}
-                                            </span></p>
+                                            </span>
+                                        </p>
                                         {/* <p className='boldIt'>{a.title}</p> */}
                                         <p className="message">{a.message}</p>
                                     </div>

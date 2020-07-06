@@ -6,6 +6,14 @@ a:visited, a:link {
     color: inherit;
 }
 
+.departmentName {
+    position: relative;
+    float: left;
+    margin: -2.4rem 0 0 12%;
+    color: cornflowerblue;
+    margin-left: 5rem;
+}
+
 .infoStrip {
     background-color: white;
     height: 2rem;
