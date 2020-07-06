@@ -94,7 +94,7 @@ const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
                             <tr key={u.ticketId}>
                                 <td className="imgTD">{u.img}</td> {/* <td className="imgTD">{localStorage.getItem('userImage')}</td> */}
                                 <tr>
-                                    <td className='top'>{u.userFirstName}&nbsp;{u.userLastName}</td> {/* <td className='top'>{localStorage.getItem('firstName')}&nbsp;{localStorage.getItem('lastName')}</td> */}
+                                    {/* <td className='top'>{u.userFirstName}&nbsp;{u.userLastName}</td> */} <td className='top'>{localStorage.getItem('firstName')}&nbsp;{localStorage.getItem('lastName')}</td>
                                 </tr>
                                 <tr>
                                     <td className='bottom'>Employee</td>
