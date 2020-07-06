@@ -6,6 +6,7 @@ import * as adminRemote from '../../../../remote/admin.remote';
 import anim0 from '../../../../temppics/aa0.png';
 import { Users } from '../../../../models/Users';
 import * as accountRemote from '../../../../remote/account.remote';
+import { useHistory } from 'react-router';
 
 
 const testPayload = [{
@@ -22,6 +23,8 @@ const testPayload = [{
 }];
 
 const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
+
+    const history = useHistory(); // Access history for redirect
 
     const renderOnCurrentPath = (path: string) => {
         console.log(props.location.pathname);
@@ -46,6 +49,12 @@ const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
         });
     };
 
+
+    const logOut = () => {
+        // localStorage.removeItem('accessToken');
+        localStorage.clear();
+        history.push('/');
+    }
 
     /**Test */
     // const GetByIdTables = async () => {
@@ -73,9 +82,12 @@ const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
             </nav> */}
         
             <section className='breakout'>
-                <a href='../'>
+                {/* <a href='../'>
                     <div className="button left">Logout</div>
-                </a>
+                </a> */}
+
+                <div className="button left" onClick={() => logOut()}>Logout</div>
+
                 <div className="right">
                    {/**Remove mapping */} {testPayload.map(u => { 
                         return (

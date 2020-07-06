@@ -19,15 +19,10 @@ function App() {
 
   return (
     <BrowserRouter>
-    <div className="App">
-        {/*<p>User Role: { isEmployee ? 'Employee' : 'OTHER' }</p>  Test for auth token Validation */} 
-        <main>
-        <Suspense fallback={<div>Loading...</div>}> {/* Loadbar for lazy loading  */}
-
+      <div className="App">
           {/*<p>User Role: { isEmployee ? 'Employee' : 'OTHER' }</p>  Test for auth token Validation */} 
           <main>
             <Suspense fallback={<div>Loading...</div>}> {/* lazy loading loadbar  */}
-
             <Route exact path="/">
               <LoginComponent />
             </Route>
@@ -36,17 +31,19 @@ function App() {
               {/* <Route path="/template"> */}
               {/* { isEmployee ? (<TestComponent />) : (<Redirect to="/"/>)} Lazy load  */}
               {/* </Route> */}
-
-            <Route path="/employee"> {/* Change routes url */}
-              <EmployeeNavbarComponent />
-              { isEmployee ? (<EmployeeComponent />) : (<Redirect to="/"/>)}
-              
-            </Route>
-            </div>
-          </Switch>
-          </Suspense>
-        </main>
-    </div>
+              <Route path="/administrator">
+                <AdminNavbarComponent />
+                { isAdmin ? (<AdminComponent />) : (<Redirect to="/"/>)}
+              </Route>
+              <Route path="/employee">
+                <EmployeeNavbarComponent />
+                { isEmployee ? (<EmployeeComponent />) : (<Redirect to="/"/>)}
+              </Route>
+              </div>
+            </Switch>
+            </Suspense>
+          </main>
+      </div>
     </BrowserRouter>
   );
 }
