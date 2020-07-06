@@ -71,6 +71,8 @@ const NavbarComponent: React.FC<RouteComponentProps> = (props) => {
                     </ul>
                 </div>
             </nav> */}
+
+            <h1 className='departmentName'>Ask IT</h1>
         
             <section className='breakout'>
                 <a href='../'>

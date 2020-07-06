@@ -29,7 +29,7 @@ function App() {
               <LoginComponent />
             </Route>
             <Switch>
-                <div> 
+                <div className='p'> 
               {/* <Route path="/template"> */}
               {/* { isEmployee ? (<TestComponent />) : (<Redirect to="/"/>)} Lazy load  */}
               {/* </Route> */}
