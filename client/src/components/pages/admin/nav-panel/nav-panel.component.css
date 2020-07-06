@@ -4,7 +4,7 @@
     width: fit-content;
     background-color: sienna;
     color: white;
-    padding: .6rem 2.45rem .6rem 2.45rem;
+    padding: 1rem 4rem 1rem 4rem;
     border-radius: .28rem;
     margin-right: 0.5rem;
 }
@@ -18,7 +18,7 @@
     padding: .6rem 2.45rem .6rem 2.45rem;
     border-radius: .28rem;
     margin-top: 2.5rem;
-    /* margin-right: 0.5rem; */
+    margin-left: 0.75rem;
 }
 
 svg {
@@ -32,6 +32,7 @@ svg {
     margin-left: 0;
 }
 
-.links {
+p.links {
     background-color: white;
+    margin-top: 0;
 }

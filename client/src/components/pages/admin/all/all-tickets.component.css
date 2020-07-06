@@ -24,6 +24,10 @@
     overflow: hidden;
 } */
 
+.history {
+    font-size: 1.3rem;
+}
+
 img {
     border-radius: 110px;
     overflow: hidden;

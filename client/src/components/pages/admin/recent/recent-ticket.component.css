@@ -51,8 +51,20 @@ button {
     color: blue;
 }
 
-.boldIt {
-    font-weight: bold;
+.dark {
+    color: #5F6B99;
+}
+
+.bold {
+    margin-left: 1rem;
+    /* font-weight: bold; */
+    color: black;
+}
+
+.line {
+    font-weight: normal;
+    color: grey;
+    /* margin-right: 1rem; */
 }
 
 .recentBottom {
@@ -74,4 +86,8 @@ button {
     height: 90%;
     margin: auto;
     vertical-align: baseline;
+}
+
+#open {
+    margin-right: 1.2rem;
 }

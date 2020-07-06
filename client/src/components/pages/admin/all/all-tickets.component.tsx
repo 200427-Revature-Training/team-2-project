@@ -82,15 +82,19 @@ export const AllTicketsComponent: React.FC = ()=> {
     };
 
     return(
+        <div>
+        <h2 id="accounts-header" className="dark">
+            All Tickets 
+        </h2>
         <div className='fullTable'>
-
+            <h2 className="history">
+                History
+            </h2>
             <section>
                  {/* NOTE: Using BootStrap Table for testing.
                 Replace table to best reflect wireframe table.
                 Data should be populating from global Ticket.ts model as its currently doing so now */}
                 <header>
-                    <h2 id="accounts-header" className="dark">All Tickets 
-                    </h2>
                 </header>
                 <table className="alternating table-striped">
                     <tbody>
@@ -151,6 +155,7 @@ export const AllTicketsComponent: React.FC = ()=> {
                     </tbody>
                 </table> */}
             </section>
+        </div>
         </div>
     );
 };
